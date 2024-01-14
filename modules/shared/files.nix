@@ -7,4 +7,5 @@ let
   xdg_stateHome  = "${config.users.users.${user}.home}/.local/state"; in
 {
   "${xdg_configHome}/starship.toml".source = ./files/starship.toml;
+  "${xdg_configHome}/wezterm" = { source = ./files/wezterm; recursive = true; };
 }
