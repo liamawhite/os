@@ -1,22 +1,20 @@
 { pkgs }:
 
 with pkgs; [
+  # General Applications
+  slack
+  spotify
+
   # General packages for development and system management
-  act
   aspell
   aspellDicts.en
-  bash-completion
-  bat
-  bottom
   coreutils
+  gh
   neofetch
   neovim
-  openssh
   sqlite
-  starship
+  syncthing
   wezterm
-  wget
-  zip
 
   # Languages
   go
@@ -29,6 +27,7 @@ with pkgs; [
   _1password #cli
 
   # Cloud-related tools and SDKs
+  act
   azure-cli
   awscli2
   crd2pulumi
@@ -40,15 +39,22 @@ with pkgs; [
   pulumi
 
   # Text and terminal utilities
+  bash-completion
+  bat
+  bottom
   htop
   iftop
   jq
   fzf
+  openssh
   ripgrep
+  starship
   tree
   tmux
   unrar
   unzip
+  wget
+  zip
 
   # Media-related packages
   ffmpeg

@@ -1,9 +1,8 @@
 _:
 
 [
-  # Utility Tools
-  "syncthing"
-  "stats"
+  # System Tools
+  "amethyst"
 
   # Browsers
   "google-chrome"
