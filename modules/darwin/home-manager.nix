@@ -22,9 +22,6 @@ in
   homebrew = {
     enable = true;
     casks = pkgs.callPackage ./casks.nix {};
-    brews = [
-      ({ name = "1password"; start_service = true; })
-    ];
 
     # These app IDs are from using the mas CLI app
     # mas = mac app store

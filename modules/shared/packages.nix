@@ -1,9 +1,10 @@
 { pkgs }:
 
 with pkgs; [
-  # General Applications
+  # Consumer Applications
   slack
   spotify
+  obsidian
 
   # General packages for development and system management
   aspell
