@@ -73,9 +73,10 @@ let user = "liamawhite"; in
       };
 
       dock = {
-        autohide = false;
+        autohide = true;
+        autohide-delay = 0.01;
         show-recents = false;
-        launchanim = true;
+        launchanim = false;
         orientation = "bottom";
         tilesize = 48;
       };
