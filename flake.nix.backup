@@ -1,0 +1,43 @@
+{
+    inputs = {
+        nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+        home-manager.url = "github:nix-community/home-manager/master";
+        home-manager.inputs.nixpkgs.follows = "nixpkgs";
+        darwin.url = "github:lnl7/nix-darwin";
+        darwin.inputs.nixpkgs.follows = "nixpkgs";
+    };
+    outputs = inputs @ { self, darwin, nixpkgs, home-manager }: {
+        darwinConfigurations = {
+            macdesktop = darwin.lib.darwinSystem {
+                pkgs = import nixpkgs { system = "aarch64-darwin"; };
+                modules = [
+                    ({pkgs, ...}: {
+                        system.stateVersion = "23.11";
+                        services.nix-daemon.enable = true;
+
+                        programs.zsh.enable = true;
+                        environment.shells = [ pkgs.bash pkgs.zsh ];
+                        environment.loginShell = pkgs.zsh;
+
+                        fonts.fontDir.enable = true;
+                        fonts.fonts = [ (pkgs.nerdfonts.override { fonts = ["JetBrainsMono"]; }) ];
+                    })
+                    home-manager.darwinModules.home-manager {
+                        home-manager = {
+                            useGlobalPkgs = true;
+                            useUserPkgs = true;
+                            users.liamawhite.imports = [
+                                ({pkgs, ...}: {
+                                    home.stateVersion = "23.11";
+                                    home.packages = [ pkgs.ripgrep ];
+
+                                    programs.git.enable = true;
+                                })
+                            ];
+                        };
+                    }
+                ];
+            };
+        };
+    };
+}
