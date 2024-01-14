@@ -16,6 +16,9 @@ let name = "Liam White";
         . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
       fi
 
+      # Starship
+      eval "$(starship init zsh)"
+
       # Define variables for directories
       export PATH=$HOME/.pnpm-packages/bin:$HOME/.pnpm-packages:$PATH
       export PATH=$HOME/.npm-packages/bin:$HOME/bin:$PATH
@@ -23,15 +26,6 @@ let name = "Liam White";
 
       # Remove history data we don't want to see
       export HISTIGNORE="pwd:ls:cd"
-
-      # Emacs is my editor
-      export ALTERNATE_EDITOR=""
-      export EDITOR="emacsclient -t"
-      export VISUAL="emacsclient -c -a emacs"
-
-      e() {
-          emacsclient -t "$@"
-      }
 
       # nix shortcuts
       shell() {
@@ -66,11 +60,11 @@ let name = "Liam White";
       core = { 
         editor = "nvim";
       };
-      # url = {
-      #   "ssh://git@host" = {
-      #     insteadOf = "otherhost";
-      #   };
-      # };
+      url = {
+        "ssh://git@github.com/" = {
+          insteadOf = https://github.com/;
+        };
+      };
     };
   };
 

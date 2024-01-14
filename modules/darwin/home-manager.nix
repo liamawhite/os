@@ -2,12 +2,8 @@
 
 let
   user = "liam";
-  # Define the content of your file as a derivation
-  myEmacsLauncher = pkgs.writeScript "emacs-launcher.command" ''
-    #!/bin/sh
-    emacsclient -c -n &
-  '';
   additionalFiles = import ./files.nix { inherit user config pkgs; };
+  sharedFiles = import ../shared/files.nix { inherit user config pkgs; };
 in
 {
 
@@ -42,7 +38,7 @@ in
         packages = pkgs.callPackage ./packages.nix {};
         file = lib.mkMerge [
           additionalFiles
-          { "emacs-launcher.command".source = myEmacsLauncher; }
+          sharedFiles
         ];
         stateVersion = "23.11";
       };

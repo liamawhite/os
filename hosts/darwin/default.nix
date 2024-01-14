@@ -37,7 +37,10 @@ let user = "liam"; in
   environment.systemPackages = with pkgs; [] ++ (import ../../modules/shared/packages.nix { inherit pkgs; });
 
   # Enable fonts dir
-  fonts.fontDir.enable = true;
+  fonts = {
+    fontDir.enable = true;
+    fonts = [ (pkgs.nerdfonts.override { fonts = ["JetBrainsMono"]; }) ];
+  };
 
   system = {
     stateVersion = 4;
