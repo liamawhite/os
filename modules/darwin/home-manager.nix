@@ -7,7 +7,6 @@ let
     #!/bin/sh
     emacsclient -c -n &
   '';
-  sharedFiles = import ../shared/files.nix { inherit config pkgs; };
   additionalFiles = import ./files.nix { inherit user config pkgs; };
 in
 {
@@ -44,7 +43,6 @@ in
         enableNixpkgsReleaseCheck = false;
         packages = pkgs.callPackage ./packages.nix {};
         file = lib.mkMerge [
-          sharedFiles
           additionalFiles
           { "emacs-launcher.command".source = myEmacsLauncher; }
         ];
