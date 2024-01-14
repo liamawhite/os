@@ -69,6 +69,7 @@ let user = "liam"; in
         launchanim = false;
         orientation = "bottom";
         tilesize = 48;
+        mru-spaces = false;
       };
 
       finder = {
