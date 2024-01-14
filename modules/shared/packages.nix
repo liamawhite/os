@@ -23,8 +23,8 @@ with pkgs; [
   yarn-berry
 
   # Encryption and security tools
-  _1password-gui
-  _1password #cli
+  # The 1password gui can't be installed here as it needs to be ran from /Applications
+  _1password
 
   # Cloud-related tools and SDKs
   act

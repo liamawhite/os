@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 
-let user = "liamawhite"; in
+let user = "liam"; in
 {
 
   imports = [
@@ -45,6 +45,7 @@ let user = "liamawhite"; in
     defaults = {
       NSGlobalDomain = {
         ApplePressAndHoldEnabled = false;
+        "com.apple.swipescrolldirection" = true;
 
         # 120, 90, 60, 30, 12, 6, 2
         KeyRepeat = 2;

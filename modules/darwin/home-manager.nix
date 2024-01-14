@@ -1,7 +1,7 @@
 { config, pkgs, lib, home-manager, ... }:
 
 let
-  user = "liamawhite";
+  user = "liam";
   # Define the content of your file as a derivation
   myEmacsLauncher = pkgs.writeScript "emacs-launcher.command" ''
     #!/bin/sh
@@ -22,6 +22,9 @@ in
   homebrew = {
     enable = true;
     casks = pkgs.callPackage ./casks.nix {};
+    brews = [
+      ({ name = "1password"; start_service = true; })
+    ];
 
     # These app IDs are from using the mas CLI app
     # mas = mac app store
