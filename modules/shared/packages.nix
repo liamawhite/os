@@ -2,70 +2,54 @@
 
 with pkgs; [
   # General packages for development and system management
-  act
-  alacritty
-  aspell
-  aspellDicts.en
+  # act
+  # aspell
+  # aspellDicts.en
   bash-completion
   bat
-  btop
+  # btop
   coreutils
   killall
-  neofetch
+  # neofetch
   openssh
-  pandoc
+  # pandoc
   sqlite
+  wezterm
   wget
   zip
 
   # Encryption and security tools
-  age
-  age-plugin-yubikey
-  gnupg
-  libfido2
-  pinentry
-  yubikey-manager
+  _1password-gui
+  _1password #cli
+  # age
+  # age-plugin-yubikey
+  # gnupg
+  # libfido2
+  # pinentry
+  # yubikey-manager
 
   # Cloud-related tools and SDKs
   docker
   docker-compose
 
   awscli2
-  flyctl
-  ngrok
+  # flyctl
+  # ngrok
   tflint
 
   # Media-related packages
-  emacs-all-the-icons-fonts
-  dejavu_fonts
   ffmpeg
   fd
-  font-awesome
-  hack-font
-  noto-fonts
-  noto-fonts-emoji
-  meslo-lgs-nf
-
-  # Node.js development tools
-  nodePackages.nodemon
-  nodePackages.prettier
-  nodePackages.npm # globally install npm
-  nodejs
 
   # Text and terminal utilities
-  htop
-  hunspell
-  iftop
-  jetbrains-mono
+  # htop
+  # hunspell
+  # iftop
+  # jetbrains-mono
   jq
   ripgrep
   tree
   tmux
   unrar
   unzip
-  zsh-powerlevel10k
-
-  # Python packages
-  python39
-  python39Packages.virtualenv # globally install virtualenv
 ]

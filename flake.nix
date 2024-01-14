@@ -81,14 +81,6 @@
             nix-homebrew.darwinModules.nix-homebrew
             mac-app-util.darwinModules.default
             home-manager.darwinModules.home-manager
-            (
-              { pkgs, config, inputs, ... }:
-              {
-                home-manager.users.${user}.imports = [
-                  mac-app-util.homeManagerModules.default
-                ];
-              }
-            )
             {
               nix-homebrew = {
                 enable = true;

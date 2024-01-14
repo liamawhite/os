@@ -44,7 +44,6 @@ let user = "liamawhite"; in
 
     defaults = {
       NSGlobalDomain = {
-        AppleShowAllExtensions = true;
         ApplePressAndHoldEnabled = false;
 
         # 120, 90, 60, 30, 12, 6, 2
@@ -69,6 +68,7 @@ let user = "liamawhite"; in
       };
 
       finder = {
+        AppleShowAllExtensions = true;
         _FXShowPosixPathInTitle = false;
       };
 

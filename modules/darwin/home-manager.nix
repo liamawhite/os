@@ -30,9 +30,7 @@ in
     # $ nix shell nixpkgs#mas
     # $ mas search <app name>
     #
-    masApps = {
-      "1password" = 1333542190;
-    };
+    masApps = {};
   };
 
   # Enable home-manager
