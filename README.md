@@ -28,10 +28,11 @@ Configure your system!
 nix --extra-experimental-features 'nix-command flakes' run .#build-switch
 ```
 
-Generate ssh key for github and add it [here](https://github.com/settings/keys).
+Generate ssh key for github and add it.
 
 ```sh
 nix run .#create-keys
+gh auth login
 ```
 
 ### Updating

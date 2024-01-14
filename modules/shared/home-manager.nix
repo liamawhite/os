@@ -19,6 +19,11 @@ let name = "Liam White";
       # Starship
       eval "$(starship init zsh)"
 
+      # Add our bins/helpers to the path
+      if [[ ! "$PATH" == $HOME/bin/* ]]; then
+        export PATH="$PATH:$HOME/bin"
+      fi
+
       # Remove history data we don't want to see
       export HISTIGNORE="pwd:ls:cd"
 

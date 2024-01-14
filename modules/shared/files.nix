@@ -8,4 +8,6 @@ let
 {
   "${xdg_configHome}/starship.toml".source = ./files/starship.toml;
   "${xdg_configHome}/wezterm" = { source = ./files/wezterm; recursive = true; };
+  "${xdg_configHome}/nvim" = { source = ./files/nvim; recursive = true; };
+  "${xdg_home}/bin" = { source = ./files/bin; recursive = true; executable = true; };
 }

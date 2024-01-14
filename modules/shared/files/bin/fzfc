@@ -1,0 +1,4 @@
+#! /bin/sh
+
+common_dirs="$(find ~/github.com -type d -mindepth 2 -maxdepth 2)"
+echo "$common_dirs" | fzf
