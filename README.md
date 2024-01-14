@@ -28,6 +28,12 @@ Configure your system!
 nix --extra-experimental-features 'nix-command flakes' run .#build-switch
 ```
 
+Generate ssh key for github and add it [here](https://github.com/settings/keys).
+
+```sh
+nix run .#create-keys
+```
+
 ### Updating
 
 Once bootstrapped, you can drop the `--extra-experimental-features 'nix-command flakes'`
