@@ -8,18 +8,7 @@ let name = "Liam White";
   zsh = {
     enable = true;
     autocd = false;
-    plugins = [
-      {
-        name = "powerlevel10k";
-        src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      }
-      {
-        name = "powerlevel10k-config";
-        src = lib.cleanSource ./config;
-        file = "p10k.zsh";
-      }
-    ];
+    plugins = [];
 
     initExtraFirst = ''
       if [[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
@@ -62,6 +51,10 @@ let name = "Liam White";
     ignores = [ "*.swp" ".DS_Store" ];
     userName = name;
     userEmail = email;
+    difftastic = {
+      enable = true;
+      background = "dark";
+    };
     lfs = {
       enable = true;
     };
@@ -69,6 +62,15 @@ let name = "Liam White";
       init.defaultBranch = "main";
       pull.rebase = true;
       rebase.autoStash = true;
+      push.autoSetupRemote = true;
+      core = { 
+        editor = "nvim";
+      };
+      # url = {
+      #   "ssh://git@host" = {
+      #     insteadOf = "otherhost";
+      #   };
+      # };
     };
   };
 
