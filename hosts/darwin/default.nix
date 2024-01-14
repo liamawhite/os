@@ -74,7 +74,8 @@ let user = "liamawhite"; in
 
       dock = {
         autohide = true;
-        autohide-delay = 0.01;
+        autohide-delay = 0.0;
+        autohide-time-modifier = 10.0;
         show-recents = false;
         launchanim = false;
         orientation = "bottom";
@@ -89,11 +90,38 @@ let user = "liamawhite"; in
         Clicking = true;
         TrackpadThreeFingerDrag = true;
       };
+
+      CustomUserPreferences = {
+        "com.apple.finder" = {
+          ShowExternalHardDrivesOnDesktop = true;
+          ShowHardDrivesOnDesktop = true;
+          ShowMountedServersOnDesktop = true;
+          ShowRemovableMediaOnDesktop = true;
+          _FXSortFoldersFirst = true;
+          # When performing a search, search the current folder by default
+          FXDefaultSearchScope = "SCcf";
+        };
+        # Avoid creating .DS_Store files on network or USB volumes
+        "com.apple.desktopservices" = {
+          DSDontWriteNetworkStores = true;
+          DSDontWriteUSBStores = true;
+        };
+        "com.apple.screensaver" = {
+          # Require password immediately after sleep or screen saver begins
+          askForPassword = 1;
+          askForPasswordDelay = 0;
+        };
+      };
     };
 
     keyboard = {
       enableKeyMapping = true;
       remapCapsLockToControl = true;
     };
+
+    # Following line should allow us to avoid a logout/login cycle
+    activationScripts.postUserActivation.text = ''
+      /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+    '';
   };
 }
