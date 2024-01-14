@@ -1,4 +1,0 @@
-
-# TODO check for args 1 set
-darwin-rebuild switch --flake .#$1
-home-manager switch --flake .#$1

@@ -1,69 +1,126 @@
 {
-  description = "Example Darwin system flake";
-
+  description = "Configuration for MacOS and NixOS";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nix-darwin.url = "github:lnl7/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.url = "github:nix-community/home-manager/master";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager";
+    darwin = {
+      url = "github:LnL7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-homebrew = {
+      url = "github:zhaofengli-wip/nix-homebrew";
+    };
+    homebrew-bundle = {
+      url = "github:homebrew/homebrew-bundle";
+      flake = false;
+    };
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # Fixes spotlight loading
+    mac-app-util.url = "github:hraban/mac-app-util";
   };
-
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
-  {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#macdesktop
-    darwinConfigurations = {
-      macdesktop = nix-darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
-      modules = [ 
-        ({ pkgs, ... }: {
-          services.nix-daemon.enable = true; # Auto upgrade nix daemon
-          nix.package = pkgs.nix; # Auto upgrade nix package
-          nix.settings.experimental-features = "nix-command flakes"; # Necessary for using flakes on this system.
-          system.configurationRevision = self.rev or self.dirtyRev or null; # Set Git commit hash for darwin-version.
-          nixpkgs.hostPlatform = "aarch64-darwin";
-          # Used for backwards compatibility, please read the changelog before changing.
-          # $ darwin-rebuild changelog
-          system.stateVersion = 4;
-
-          system.defaults = {
-            dock.autohide = true;
-            finder.AppleShowAllExtensions = true;
-          };
-
-          # Create /etc/zshrc that loads the nix-darwin environment.
-          programs.zsh.enable = true;  # default shell on catalina
-          environment.shells = [ pkgs.bash pkgs.zsh ];
-          environment.loginShell = pkgs.zsh;
-
-          fonts.fontDir.enable = true;
-          fonts.fonts = [ (pkgs.nerdfonts.override { fonts = ["JetBrainsMono"]; }) ];
-
-          # Allow installation of unfree software (e.g. raycast)
-          nixpkgs.config.allowUnfree = true;
-          environment.systemPackages = [
-            pkgs._1password # cli
-            pkgs._1password-gui
-            pkgs.raycast
-            pkgs.slack
-          ];
-
-          # homebrew = {
-          #   enable = true;
-          # }
-        })
-      ];
-    };
-    };
-    homeConfigurations = {
-      macdesktop = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-        modules = [ ./machines/macdesktop/home-manager.nix ];
+  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, home-manager, nixpkgs, disko, mac-app-util } @inputs:
+    let
+      user = "liamawhite";
+      linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
+      darwinSystems = [ "aarch64-darwin" ];
+      forAllSystems = f: nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
+      devShell = system: let pkgs = nixpkgs.legacyPackages.${system}; in {
+        default = with pkgs; mkShell {
+          nativeBuildInputs = with pkgs; [ bashInteractive git ];
+          shellHook = with pkgs; ''
+            export EDITOR=vim
+          '';
+        };
       };
-    };
+      mkApp = scriptName: system: {
+        type = "app";
+        program = "${(nixpkgs.legacyPackages.${system}.writeScriptBin scriptName ''
+          #!/usr/bin/env bash
+          PATH=${nixpkgs.legacyPackages.${system}.git}/bin:$PATH
+          echo "Running ${scriptName} for ${system}"
+          exec ${self}/apps/${system}/${scriptName}
+        '')}/bin/${scriptName}";
+      };
+      mkLinuxApps = system: {
+        "apply" = mkApp "apply" system;
+        "build-switch" = mkApp "build-switch" system;
+        "copy-keys" = mkApp "copy-keys" system;
+        "create-keys" = mkApp "create-keys" system;
+        "check-keys" = mkApp "check-keys" system;
+        "install" = mkApp "install" system;
+      };
+      mkDarwinApps = system: {
+        "apply" = mkApp "apply" system;
+        "build" = mkApp "build" system;
+        "build-switch" = mkApp "build-switch" system;
+        "copy-keys" = mkApp "copy-keys" system;
+        "create-keys" = mkApp "create-keys" system;
+        "check-keys" = mkApp "check-keys" system;
+      };
+    in
+    {
+      devShells = forAllSystems devShell;
+      apps = nixpkgs.lib.genAttrs linuxSystems mkLinuxApps // nixpkgs.lib.genAttrs darwinSystems mkDarwinApps;
 
-    # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations.macdesktop.pkgs;
+      darwinConfigurations = let user = "liamawhite"; in {
+        macos = darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          specialArgs = inputs;
+          modules = [
+            nix-homebrew.darwinModules.nix-homebrew
+            mac-app-util.darwinModules.default
+            home-manager.darwinModules.home-manager
+            (
+              { pkgs, config, inputs, ... }:
+              {
+                home-manager.users.${user}.imports = [
+                  mac-app-util.homeManagerModules.default
+                ];
+              }
+            )
+            {
+              nix-homebrew = {
+                enable = true;
+                user = "${user}";
+                taps = {
+                  "homebrew/homebrew-core" = homebrew-core;
+                  "homebrew/homebrew-cask" = homebrew-cask;
+                  "homebrew/homebrew-bundle" = homebrew-bundle;
+                };
+                mutableTaps = false;
+                autoMigrate = true;
+              };
+            }
+            ./hosts/darwin
+          ];
+        };
+      };
+
+      nixosConfigurations = nixpkgs.lib.genAttrs linuxSystems (system: nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = inputs;
+        modules = [
+          disko.nixosModules.disko
+          home-manager.nixosModules.home-manager {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.${user} = import ./modules/nixos/home-manager.nix;
+            };
+          }
+          ./hosts/nixos
+        ];
+     });
   };
 }
