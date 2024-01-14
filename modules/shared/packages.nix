@@ -22,6 +22,7 @@ with pkgs; [
   nodejs_20 # latest LTS
   rustc
   yarn-berry
+  jdk20 # latest LTS
 
   # Encryption and security tools
   # The 1password gui can't be installed here as it needs to be ran from /Applications
@@ -47,6 +48,7 @@ with pkgs; [
   iftop
   jq
   fzf
+  lazygit
   openssh
   ripgrep
   starship

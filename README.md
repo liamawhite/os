@@ -8,6 +8,7 @@ Install dependencies
 
 ```sh
 xcode-select --install
+softwareupdate --install-rosetta
 ```
 
 Install nix from Determinate Systems
