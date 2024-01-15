@@ -16,6 +16,13 @@ let name = "Liam White";
         . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
       fi
 
+      # Turn off MacOS intercepting Ctrl + Left/Right.
+      # see https://superuser.com/a/1522945
+      # TODO: is there a way to make this only get added to mac zshrcs?
+      bindkey '^[[1;5D' backward-word
+      bindkey '^[[1;5C' forward-word
+
+
       # Starship
       eval "$(starship init zsh)"
 

@@ -35,6 +35,12 @@ Generate ssh key for github and add it.
 nix run .#create-keys
 gh auth login
 ```
+### Additional Steps
+
+Its probably possible to automate these steps but I've not had time to research how.
+
+- Remove mission control control arrow bindings. Settings -> Keyboard -> shortcuts -> Mission Control -> All ^<direction> shortcuts. 
+
 
 ### Updating
 
