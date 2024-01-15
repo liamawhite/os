@@ -1,3 +1,5 @@
 #! /bin/sh
 
-nix run ~/github.com/liamawhite/os#build-switch
+pushd ~/github.com/liamawhite/os
+nix run .#build-switch
+popd
