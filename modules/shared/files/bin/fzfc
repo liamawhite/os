@@ -1,7 +1,7 @@
 #! /bin/sh
 
 
-code_dirs="$(find ~/github.com -type d -mindepth 2 -maxdepth 2)"
+code_dirs="$(find ~/github.com -type d -mindepth 2 -maxdepth 3)"
 note_dirs="$(find ~/notes -type d -mindepth 1 -maxdepth 1)"
 
 common_dirs="$code_dirs\n$note_dirs"
