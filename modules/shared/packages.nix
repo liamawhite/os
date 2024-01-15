@@ -5,7 +5,7 @@ with pkgs; [
   slack
   spotify
   obsidian
-
+  
   # General packages for development and system management
   aspell
   aspellDicts.en
