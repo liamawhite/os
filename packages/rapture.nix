@@ -1,4 +1,3 @@
-# { stdenv, buildGoModule, fetchFromGitHub }:
 { pkgs }:
 with pkgs;
 
@@ -11,7 +10,7 @@ buildGoModule rec {
     owner = "daveadams";
     repo = "go-rapture";
     rev = "v${version}";
-    sha256 = "sha256-aqY/O6mE2nQPNhRhuHUpXSD/CYyvMSHJ9KzsacWkKmQ="
+    sha256 = "sha256-aqY/O6mE2nQPNhRhuHUpXSD/CYyvMSHJ9KzsacWkKmQ=";
   };
 
   vendorHash = "sha256-+xqTeDLyNagXmm6Aj6Up8lccAa67ygYvapA+Y6ZeFzQ=";
