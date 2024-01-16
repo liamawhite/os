@@ -24,6 +24,8 @@ let name = "Liam White";
 
       export PATH="$(go env GOPATH)/bin:$PATH"
 
+      eval "$(ssh-agent -s)" > /dev/null
+
       # Starship
       eval "$(starship init zsh)"
 
