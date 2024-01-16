@@ -5,5 +5,8 @@ let shared-packages = import ../shared/packages.nix { inherit pkgs; }; in
 shared-packages ++ [
   raycast
   stats
-  # karabiner-elements
+  # Fix macOS sed and grep
+  gnused
+  gnugrep
+# karabiner-elements
 ]

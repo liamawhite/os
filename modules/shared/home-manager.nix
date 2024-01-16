@@ -22,6 +22,7 @@ let name = "Liam White";
       bindkey '^[[1;5D' backward-word
       bindkey '^[[1;5C' forward-word
 
+      export PATH="$(go env GOPATH)/bin:$PATH"
 
       # Starship
       eval "$(starship init zsh)"
