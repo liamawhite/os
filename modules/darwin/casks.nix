@@ -3,7 +3,8 @@ _:
 [
   # System Tools
   "amethyst"
-  
+  "docker" # docker for mac is required on macOS 
+
   # Consumer Applications
   "elgato-stream-deck"
   "firefox" # for some reason the pkg doesn't work on macOS
