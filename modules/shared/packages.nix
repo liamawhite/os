@@ -62,4 +62,7 @@ with pkgs; [
   # Media-related packages
   ffmpeg
   fd
+
+  # Local ones that weren't in nixpkgs
+  (import ../../packages/rapture.nix { inherit pkgs; })
 ]
