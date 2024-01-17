@@ -20,7 +20,7 @@ in
     
     # Pulumi was misbehaving with nixpkgs, so I'm using homebrew for it
     brews = [
-        # "pulumi/tap/pulumi"
+       # "pulumi"
         # "crd2pulumi"
     ];
 

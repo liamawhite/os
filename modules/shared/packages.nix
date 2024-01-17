@@ -5,7 +5,8 @@ with pkgs; [
   slack
   spotify
   obsidian
-  
+  discord
+
   # General packages for development and system management
   aspell
   aspellDicts.en
@@ -37,6 +38,9 @@ with pkgs; [
   google-cloud-sdk
   kubectl
   k9s
+  crd2pulumi
+  pulumi-bin
+
 
   # Text and terminal utilities
   bash-completion
