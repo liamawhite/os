@@ -326,6 +326,22 @@
         "type": "github"
       }
     },
+    "pulumi": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1705104789,
+        "narHash": "sha256-lgWNHl9cY6A+fEcLKDbVVih76E5HeoxuAauOx4qpbok=",
+        "owner": "pulumi",
+        "repo": "homebrew-tap",
+        "rev": "342634c48b6dee20552a7346f50ece51625ec776",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pulumi",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "darwin": "darwin",
@@ -336,7 +352,8 @@
         "homebrew-core": "homebrew-core",
         "mac-app-util": "mac-app-util",
         "nix-homebrew": "nix-homebrew",
-        "nixpkgs": "nixpkgs_5"
+        "nixpkgs": "nixpkgs_5",
+        "pulumi": "pulumi"
       }
     },
     "systems": {

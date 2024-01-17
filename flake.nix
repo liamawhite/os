@@ -22,6 +22,10 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+    pulumi = {
+      url = "github:pulumi/homebrew-tap";
+      flake = false;
+    };
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,7 +33,7 @@
     # Fixes spotlight loading
     mac-app-util.url = "github:hraban/mac-app-util";
   };
-  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, home-manager, nixpkgs, disko, mac-app-util } @inputs:
+  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, pulumi, home-manager, nixpkgs, disko, mac-app-util } @inputs:
     let
       user = "liam";
       email = "liamawhite@gmail.com";
@@ -91,6 +95,7 @@
                   "homebrew/homebrew-core" = homebrew-core;
                   "homebrew/homebrew-cask" = homebrew-cask;
                   "homebrew/homebrew-bundle" = homebrew-bundle;
+                  "pulumi/tap" = pulumi;
                 };
                 mutableTaps = false;
                 autoMigrate = true;

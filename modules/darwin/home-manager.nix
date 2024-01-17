@@ -17,6 +17,13 @@ in
 
   homebrew = {
     enable = true;
+    
+    # Pulumi was misbehaving with nixpkgs, so I'm using homebrew for it
+    brews = [
+        # "pulumi/tap/pulumi"
+        # "crd2pulumi"
+    ];
+
     casks = pkgs.callPackage ./casks.nix {};
 
     # These app IDs are from using the mas CLI app

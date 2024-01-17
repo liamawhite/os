@@ -32,13 +32,11 @@ with pkgs; [
   act
   azure-cli
   awscli2
-  crd2pulumi
   docker
   docker-compose
   google-cloud-sdk
   kubectl
   k9s
-  pulumi
 
   # Text and terminal utilities
   bash-completion
