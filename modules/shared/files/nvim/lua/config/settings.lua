@@ -8,6 +8,7 @@ vim.cmd("set noshowmode")
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.numberwidth = 4
+vim.opt.splitright = true
 
 -- Disable netrw
 vim.g.loaded_netrwPlugin = 1
