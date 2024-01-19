@@ -29,6 +29,10 @@ let name = "Liam White";
       # Starship
       eval "$(starship init zsh)"
 
+      # Fuzzy rapture has to be an alias otherwise it doesn't work
+      alias rap='rapture assume $(rapture role ls | cut -f 2 -d " " | fzf)'
+      eval "$( command rapture shell-init )"
+
       # Add our bins/helpers to the path
       if [[ ! "$PATH" == $HOME/bin/* ]]; then
         export PATH="$PATH:$HOME/bin"
