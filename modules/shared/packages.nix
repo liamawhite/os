@@ -67,5 +67,6 @@ with pkgs; [
 
   # Local ones that weren't in nixpkgs
   (import ../../packages/rapture.nix { inherit pkgs; })
+  (import ../../packages/temporal.nix { inherit pkgs; })
   (import ../../packages/vaulted.nix { inherit pkgs; })
 ]
