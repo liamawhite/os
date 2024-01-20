@@ -22,6 +22,7 @@ with pkgs; [
   go
   nodejs_20 # latest LTS
   rustc
+  cargo
   yarn-berry
   jdk20 # latest LTS
 
