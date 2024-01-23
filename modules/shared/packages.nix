@@ -20,9 +20,11 @@ with pkgs; [
 
   # Languages
   go
+  cobra-cli
   nodejs_20 # latest LTS
   rustc
   cargo
+  rustfmt
   yarn-berry
   jdk20 # latest LTS
 

@@ -23,12 +23,13 @@ let name = "Liam White";
       bindkey '^[[1;5C' forward-word
 
       export PATH="$(go env GOPATH)/bin:$PATH"
+      alias cobra=cobra-cli
 
       eval "$(ssh-agent -s)" > /dev/null
 
       # Starship
       eval "$(starship init zsh)"
-
+      
       # Fuzzy rapture has to be an alias otherwise it doesn't work
       alias rap='rapture assume $(rapture role ls | cut -f 2 -d " " | fzf)'
       eval "$( command rapture shell-init )"
