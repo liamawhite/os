@@ -41,9 +41,6 @@ with pkgs; [
   google-cloud-sdk
   kubectl
   k9s
-  crd2pulumi
-  pulumi-bin
-
 
   # Text and terminal utilities
   bash-completion

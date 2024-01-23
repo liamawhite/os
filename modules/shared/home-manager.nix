@@ -21,6 +21,9 @@ let name = "Liam White";
       # TODO: is there a way to make this only get added to mac zshrcs?
       bindkey '^[[1;5D' backward-word
       bindkey '^[[1;5C' forward-word
+      
+      # Add homebrew to the path
+      export PATH="/opt/homebrew/bin:$PATH"
 
       export PATH="$(go env GOPATH)/bin:$PATH"
       alias cobra=cobra-cli

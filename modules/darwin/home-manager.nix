@@ -20,10 +20,11 @@ in
     
     # Pulumi was misbehaving with nixpkgs, so I'm using homebrew for it
     brews = [
-       # "pulumi"
-        # "crd2pulumi"
+       "pulumi/homebrew-tap/pulumi"
+       "pulumi/homebrew-tap/crd2pulumi"
     ];
-
+    taps = ["pulumi/homebrew-tap"];
+    
     casks = pkgs.callPackage ./casks.nix {};
 
     # These app IDs are from using the mas CLI app
