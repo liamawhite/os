@@ -49,6 +49,7 @@ with pkgs; [
   htop
   iftop
   jq
+  flock
   fzf
   lazygit
   openssh
