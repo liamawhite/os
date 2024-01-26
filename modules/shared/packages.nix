@@ -51,6 +51,7 @@ with pkgs; [
   jq
   flock
   fzf
+  grpcurl
   lazygit
   openssh
   ripgrep
