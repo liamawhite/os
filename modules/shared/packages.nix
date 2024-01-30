@@ -11,6 +11,7 @@ with pkgs; [
   aspell
   aspellDicts.en
   coreutils
+  buf
   gh
   neofetch
   neovim
