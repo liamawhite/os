@@ -15,6 +15,8 @@ with pkgs; [
   gh
   neofetch
   neovim
+  protoc-gen-connect-go
+  protoc-gen-go
   sqlite
   syncthing
   wezterm
