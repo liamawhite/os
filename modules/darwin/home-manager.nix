@@ -34,7 +34,9 @@ in
     # $ nix shell nixpkgs#mas
     # $ mas search <app name>
     #
-    masApps = {};
+    masApps = {
+        "Amazon Kindle" = 302584613;
+    };
   };
 
   # Enable home-manager

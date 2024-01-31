@@ -60,4 +60,14 @@ return {
             vim.keymap.set("n", "<leader>xq", function() trouble.toggle("quickfix") end)
         end,
     },
+    {
+        "nvimdev/lspsaga.nvim",
+        config = function ()
+            require('lspsaga').setup({})
+        end,
+        dependencies = {
+            "neovim/nvim-lspconfig",
+            "nvim-treesitter/nvim-treesitter",
+        },
+    }
 }
