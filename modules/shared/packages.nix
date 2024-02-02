@@ -23,6 +23,7 @@ with pkgs; [
 
   # Languages
   go
+  golangci-lint
   cobra-cli
   nodejs_20 # latest LTS
   rustc
