@@ -22,8 +22,10 @@ in
     brews = [
        "pulumi/homebrew-tap/pulumi"
        "pulumi/homebrew-tap/crd2pulumi"
+       "dagger/homebrew-tap/dagger"
     ];
-    taps = ["pulumi/homebrew-tap"];
+    # Taps are declarative via nix-homebrew
+    taps = [];
     
     casks = pkgs.callPackage ./casks.nix {};
 

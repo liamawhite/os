@@ -26,6 +26,10 @@
       url = "github:pulumi/homebrew-tap";
       flake = false;
     };
+    dagger = {
+      url = "github:dagger/homebrew-tap";
+      flake = false;
+    };
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,7 +37,7 @@
     # Fixes spotlight loading
     mac-app-util.url = "github:hraban/mac-app-util";
   };
-  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, pulumi, home-manager, nixpkgs, disko, mac-app-util } @inputs:
+  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, pulumi, dagger, home-manager, nixpkgs, disko, mac-app-util } @inputs:
     let
       user = "liam";
       email = "liamawhite@gmail.com";
@@ -96,8 +100,9 @@
                   "homebrew/homebrew-cask" = homebrew-cask;
                   "homebrew/homebrew-bundle" = homebrew-bundle;
                   "pulumi/tap" = pulumi;
+                  "dagger/tap" = dagger;
                 };
-                mutableTaps = false;
+                mutableTaps = true; # Setting this to false caused too much pain
                 autoMigrate = true;
               };
             }
