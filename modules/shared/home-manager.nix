@@ -16,12 +16,17 @@ let name = "Liam White";
         . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
       fi
 
+      # Add our bins/helpers to the path
+      if [[ ! "$PATH" == $HOME/bin/* ]]; then
+        export PATH="$PATH:$HOME/bin"
+      fi
+
       # Turn off MacOS intercepting Ctrl + Left/Right.
       # see https://superuser.com/a/1522945
       # TODO: is there a way to make this only get added to mac zshrcs?
       bindkey '^[[1;5D' backward-word
       bindkey '^[[1;5C' forward-word
-      
+
       # Add homebrew to the path
       export PATH="/opt/homebrew/bin:$PATH"
 
@@ -36,11 +41,9 @@ let name = "Liam White";
       # Fuzzy rapture has to be an alias otherwise it doesn't work
       alias rap='rapture assume $(rapture role ls | cut -f 2 -d " " | fzf)'
       eval "$( command rapture shell-init )"
-
-      # Add our bins/helpers to the path
-      if [[ ! "$PATH" == $HOME/bin/* ]]; then
-        export PATH="$PATH:$HOME/bin"
-      fi
+      
+      # Source the Pulumi Access Token if it exists
+      . pulumi_access_token
 
       # Remove history data we don't want to see
       export HISTIGNORE="pwd:ls:cd"

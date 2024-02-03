@@ -22,6 +22,7 @@ in
     brews = [
        "pulumi/homebrew-tap/pulumi"
        "pulumi/homebrew-tap/crd2pulumi"
+       "pulumi/homebrew-tap/esc"
        "dagger/homebrew-tap/dagger"
     ];
     # Taps are declarative via nix-homebrew
