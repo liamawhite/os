@@ -1,10 +1,9 @@
 return {
-    {
-        "github/copilot.vim",
-    },
-    {
-        "hrsh7th/cmp-nvim-lsp"
-    },
+    { "github/copilot.vim" },
+    { "hrsh7th/cmp-nvim-lsp" },
+    { "hrsh7th/cmp-path" },
+    { "hrsh7th/cmp-buffer" },
+
     {
         "L3MON4D3/LuaSnip",
         dependencies = {
@@ -17,6 +16,28 @@ return {
         config = function()
             local cmp = require("cmp")
             require("luasnip.loaders.from_vscode").lazy_load()
+
+            cmp.setup.cmdline("/", {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = {
+                    { name = "buffer" },
+                },
+            })
+
+            cmp.setup.cmdline(":", {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = cmp.config.sources({
+                    { name = "path" },
+                }, {
+                    {
+                        name = "cmdline",
+                        option = {
+                            ignore_cmds = { 'Man', '!' },
+                        },
+                    },
+                }),
+
+            })
 
             cmp.setup({
                 snippet = {
@@ -62,12 +83,19 @@ return {
     },
     {
         "nvimdev/lspsaga.nvim",
-        config = function ()
+        config = function()
             require('lspsaga').setup({})
         end,
         dependencies = {
             "neovim/nvim-lspconfig",
             "nvim-treesitter/nvim-treesitter",
         },
+    },
+    {
+        "smjonas/inc-rename.nvim",
+        config = function()
+            require("inc_rename").setup()
+            vim.keymap.set("n", "<leader>rn", ":IncRename ")
+        end,
     }
 }
