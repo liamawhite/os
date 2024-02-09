@@ -26,3 +26,5 @@ vim.keymap.set("n", "<leader>Y", 'gg"*yG')
 -- Line shifting
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+vim.keymap.set("n", "<leader>x", ":!chmod +x %<CR>") -- Make current file executable
