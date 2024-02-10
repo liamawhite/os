@@ -60,8 +60,8 @@ with pkgs; [
   openssh
   ripgrep
   starship
-  tree
   tmux
+  tree
   unrar
   unzip
   wget

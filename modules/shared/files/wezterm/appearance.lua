@@ -12,6 +12,8 @@ function module.apply_to_config(config)
     config.window_background_opacity = 1 -- opacity
     config.color_scheme = "Catppuccin Mocha"
 
+    config.enable_tab_bar = false
+
     config.window_padding = {
         left = 0,
         right = 0,

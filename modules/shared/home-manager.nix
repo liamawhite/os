@@ -2,7 +2,20 @@
 
 let name = "Liam White";
     user = "liam";
-    email = "liamawhite@gmail.com"; in
+    email = "liamawhite@gmail.com";
+    tmux-catppuccin = pkgs.tmuxPlugins.mkTmuxPlugin
+    {
+      pluginName = "tmux-catppuccin";
+      version = "a0119d25283ba2b18287447c1f86720a255fb652";
+      rtpFilePath = "catppuccin.tmux";
+      src = pkgs.fetchFromGitHub {
+        owner = "catppuccin";
+        repo = "tmux";
+        rev = "a0119d25283ba2b18287447c1f86720a255fb652";
+        sha256 = "sha256-SGJjDrTrNNxnurYV1o1KbHRIHFyfmbXDX/t4KN8VCao=";
+      };
+    };
+in
 {
   # Shared shell configuration
   zsh = {
@@ -20,6 +33,7 @@ let name = "Liam White";
       if [[ ! "$PATH" == $HOME/bin/* ]]; then
         export PATH="$PATH:$HOME/bin"
       fi
+      
 
       # Turn off MacOS intercepting Ctrl + Left/Right.
       # see https://superuser.com/a/1522945
@@ -58,6 +72,8 @@ let name = "Liam White";
 
       # Always color ls and group directories
       alias ls='ls --color=auto'
+
+      alias nv='nvim .'
     '';
   };
 
@@ -223,16 +239,33 @@ let name = "Liam White";
   tmux = {
     enable = true;
     plugins = with pkgs.tmuxPlugins; [
-      vim-tmux-navigator
       sensible
-      yank
-      prefix-highlight
-      {
-        plugin = power-theme;
+    {
+        plugin = tmux-catppuccin;
         extraConfig = ''
-           set -g @tmux_power_theme 'gold'
+          set -g @catppuccin_custom_plugin_dir "$HOME/.tmux/modules"
+
+          set -g @catppuccin_window_left_separator "█"
+          set -g @catppuccin_window_right_separator "█ "
+          set -g @catppuccin_window_number_position "right"
+          set -g @catppuccin_window_middle_separator "  █"
+
+          set -g @catppuccin_window_default_fill "number"
+
+          set -g @catppuccin_window_current_fill "number"
+          # set -g @catppuccin_window_current_text "#{pane_current_path}"
+
+          set -g @catppuccin_status_modules_right "application cpu ram session"
+          set -g @catppuccin_status_left_separator  "█"
+          set -g @catppuccin_status_right_separator "█"
+          set -g @catppuccin_status_right_separator_inverse "no"
+          set -g @catppuccin_status_fill "all"
+          set -g @catppuccin_status_connect_separator "yes"
         '';
       }
+          {
+        plugin = cpu;
+    }
       {
         plugin = resurrect; # Used by tmux-continuum
 
@@ -242,6 +275,7 @@ let name = "Liam White";
           set -g @resurrect-dir '$HOME/.cache/tmux/resurrect'
           set -g @resurrect-capture-pane-contents 'on'
           set -g @resurrect-pane-contents-area 'visible'
+          # set -g @resurrect-strategy-nvim 'session'
         '';
       }
       {
@@ -253,15 +287,31 @@ let name = "Liam White";
       }
     ];
     terminal = "screen-256color";
-    prefix = "C-x";
+    mouse = true;
+    prefix = "C-a";
     escapeTime = 10;
     historyLimit = 50000;
     extraConfig = ''
       # Remove Vim mode delays
       set -g focus-events on
 
-      # Enable full mouse support
-      set -g mouse on
+      # Fix Neovim colours
+      set -as terminal-features ",xterm-256color:RGB"
+
+      # Start windows and panes at 1, not 0
+      set -g base-index 1
+      setw -g pane-base-index 1
+
+      # Statusline
+      set -g status-position top
+      set -g status-interval 2
+
+      # Current window name bold
+      set -g window-status-current-style fg=terminal,bold
+
+      # Automatically set window title and number
+      setw -g automatic-rename
+      set -g renumber-windows on
 
       # -----------------------------------------------------------------------------
       # Key bindings
@@ -272,35 +322,40 @@ let name = "Liam White";
       unbind '"'
       unbind %
 
-      # Split panes, vertical or horizontal
-      bind-key x split-window -v
-      bind-key v split-window -h
-
-      # Move around panes with vim-like bindings (h,j,k,l)
-      bind-key -n M-k select-pane -U
-      bind-key -n M-h select-pane -L
-      bind-key -n M-j select-pane -D
-      bind-key -n M-l select-pane -R
+      # Vim-like bindings 
+      ## Move around (h,j,k,l)
+      bind-key -n C-k select-pane -U
+      bind-key -n C-h select-pane -L
+      bind-key -n C-j select-pane -D
+      bind-key -n C-l select-pane -R
 
       # Smart pane switching with awareness of Vim splits.
-      # This is copy paste from https://github.com/christoomey/vim-tmux-navigator
+      # See: https://github.com/christoomey/vim-tmux-navigator
+
+      # decide whether we're in a Vim process
       is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
-        | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
-      bind-key -n 'C-h' if-shell "$is_vim" 'send-keys C-h'  'select-pane -L'
-      bind-key -n 'C-j' if-shell "$is_vim" 'send-keys C-j'  'select-pane -D'
-      bind-key -n 'C-k' if-shell "$is_vim" 'send-keys C-k'  'select-pane -U'
-      bind-key -n 'C-l' if-shell "$is_vim" 'send-keys C-l'  'select-pane -R'
+          | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
+
+      bind-key -n 'C-h' if-shell "$is_vim" 'send-keys C-h' 'select-pane -L'
+      bind-key -n 'C-j' if-shell "$is_vim" 'send-keys C-j' 'select-pane -D'
+      bind-key -n 'C-k' if-shell "$is_vim" 'send-keys C-k' 'select-pane -U'
+      bind-key -n 'C-l' if-shell "$is_vim" 'send-keys C-l' 'select-pane -R'
+
       tmux_version='$(tmux -V | sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")'
+
       if-shell -b '[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]' \
-        "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\'  'select-pane -l'"
+          "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\'  'select-pane -l'"
       if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
-        "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\\\'  'select-pane -l'"
+          "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\\\'  'select-pane -l'"
+
+      bind-key -n 'C-Space' if-shell "$is_vim" 'send-keys C-Space' 'select-pane -t:.+'
 
       bind-key -T copy-mode-vi 'C-h' select-pane -L
       bind-key -T copy-mode-vi 'C-j' select-pane -D
       bind-key -T copy-mode-vi 'C-k' select-pane -U
       bind-key -T copy-mode-vi 'C-l' select-pane -R
       bind-key -T copy-mode-vi 'C-\' select-pane -l
+      bind-key -T copy-mode-vi 'C-Space' select-pane -t:.+
       '';
     };
 }
