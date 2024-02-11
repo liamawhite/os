@@ -3,10 +3,9 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- Quick quit
--- Terminal exit bug: https://github.com/neovim/neovim/issues/14061
--- vim.keymap.set("n", "<leader>qq", ":wqa <CR>")
-vim.keymap.set("n", "<leader>sa", ":wa <CR>")
-vim.keymap.set("n", "<leader>qf", ":qa! <CR>")
+vim.keymap.set("n", "<leader>sa", ":wa <CR>") -- save all
+vim.keymap.set("n", "<leader>qf", ":qa! <CR>") -- quit (force)
+vim.keymap.set('n', '<leader>qq', ":bd<CR>") -- quit (buffer)
 
 -- Window Navigation
 vim.keymap.set("n", "<C-Left>", ":wincmd h<CR>")
