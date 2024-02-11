@@ -7,7 +7,7 @@ local conditions = {
         if vim.bo.filetype == 'neo-tree' then
             return false
         end
-        if vim.bo.filetype == 'neo-tree' or vim.bo.filetype == 'Trouble' then
+        if vim.bo.filetype == 'neo-tree' or vim.bo.filetype == 'Trouble' or vim.bo.filetype == 'toggleterm' then
             return false
         end
       return true
@@ -64,14 +64,14 @@ return {
         config = function()
             local lsps = function()
                 local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
-                local clients = vim.lsp.get_active_clients()
+                local clients = vim.lsp.buf_get_clients()
                 if next(clients) == nil then
                     return 'No Active Lsp'
                 end
                 local clientMsgs = {}
-                for _, client in ipairs(clients) do
+                for _, client in pairs(clients) do
                     local filetypes = client.config.filetypes
-                    if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+                    if filetypes and vim.fn.index(filetypes,buf_ft) ~= -1 then
                         table.insert(clientMsgs, client.name)
                     end
                 end
