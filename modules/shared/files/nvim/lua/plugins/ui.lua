@@ -63,17 +63,13 @@ return {
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function()
             local lsps = function()
-                local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
                 local clients = vim.lsp.buf_get_clients()
                 if next(clients) == nil then
                     return 'No Active Lsp'
                 end
                 local clientMsgs = {}
                 for _, client in pairs(clients) do
-                    local filetypes = client.config.filetypes
-                    if filetypes and vim.fn.index(filetypes,buf_ft) ~= -1 then
-                        table.insert(clientMsgs, client.name)
-                    end
+                    table.insert(clientMsgs, client.name)
                 end
                 return table.concat(clientMsgs, "/")
             end
