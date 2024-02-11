@@ -1,3 +1,16 @@
+local conditions = {
+    buffer_not_empty = function()
+        local filename = vim.api.nvim_buf_get_name(0)
+        if vim.fn.len(filename) == 0 then
+            return false
+        end
+        if vim.bo.filetype == 'neo-tree' then
+            return false
+        end
+      return true
+    end,
+}
+
 return {
     {
         "nvim-neo-tree/neo-tree.nvim",
@@ -45,49 +58,66 @@ return {
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
-        opts = {
-            options = {
-                icons_enabled = true,
-                theme = "catppuccin",
-                component_separators = { left = "", right = "" },
-                section_separators = { left = "", right = "" },
-                always_divide_middle = true,
-                globalstatus = true,
-                refresh = {
-                    statusline = 1000,
-                    tabline = 1000,
-                    winbar = 1000,
-                },
-            },
-            sections = {
-                lualine_a = { "mode" },
-                lualine_b = { "branch", "diff", "diagnostics" },
-                lualine_c = { "searchcount" },
-                lualine_x = { "filetype" },
-                lualine_y = { "progress" },
-                lualine_z = { "location" },
-            },
-            tabline = {},
-            winbar = {
-                lualine_c = { "navic" },
-                lualine_x = {
-                    {
-                        function()
-                            return "  "
-                        end,
-                        cond = function()
-                            local present, navic = pcall(require, "nvim-navic")
-                            if not present then
-                                return false
-                            end
-                            return navic.is_available()
-                        end,
+        config = function()
+            local lsps = function()
+                local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+                local clients = vim.lsp.get_active_clients()
+                if next(clients) == nil then
+                    return 'No Active Lsp'
+                end
+                local clientMsgs = {}
+                for _, client in ipairs(clients) do
+                    local filetypes = client.config.filetypes
+                    if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+                        table.insert(clientMsgs, client.name)
+                    end
+                end
+                return table.concat(clientMsgs, "/")
+            end
+            require("lualine").setup({
+                options = {
+                    icons_enabled = true,
+                    theme = "catppuccin",
+                    component_separators = { left = "", right = "" },
+                    section_separators = { left = "", right = "" },
+                    always_divide_middle = true,
+                    globalstatus = true,
+                    refresh = {
+                        statusline = 1000,
+                        tabline = 1000,
+                        winbar = 1000,
                     },
                 },
-            },
-            inactive_winbar = {},
-            extensions = {},
-        }
+                sections = {
+                    lualine_a = { "mode" },
+                    lualine_b = { "diagnostics", "searchcount" },
+                    lualine_c = { { "filename", cond = conditions.buffer_not_empty } },
+                    lualine_x = { lsps },
+                    lualine_y = { "filetype" },
+                    lualine_z = { "location" },
+                },
+                tabline = {},
+                -- winbar = {
+                --     lualine_c = { "navic" },
+                --     lualine_x = {
+                --         {
+                --             function()
+                --                 return "  "
+                --             end,
+                --             cond = function()
+                --                 local present, navic = pcall(require, "nvim-navic")
+                --                 if not present then
+                --                     return false
+                --                 end
+                --                 return navic.is_available()
+                --             end,
+                --         },
+                --     },
+                -- },
+                inactive_winbar = {},
+                extensions = {},
+            })
+        end
     },
     {
         "folke/noice.nvim",
