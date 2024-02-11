@@ -55,6 +55,7 @@ with pkgs; [
   jq
   flock
   fzf
+  gitmux
   grpcurl
   lazygit
   openssh

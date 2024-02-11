@@ -6,27 +6,11 @@
 
 format = """
 $os\
-$username\
-[](bg:#769ff0 fg:#a3aed2)\
 $directory\
-[](fg:#769ff0 bg:#394260)\
-$git_branch\
-$git_status\
-[](fg:#394260) """
+[󰄾 ](bg:#1e1e2e fg:#cdd6f4)"""
 
 right_format = """
-$pulumi\
-$c\
-$elixir\
-$elm\
-$golang\
-$haskell\
-$java\
-$julia\
-$nodejs\
-$nim\
-$rust\
-$scala"""
+"""
 
 # Disable the blank line at the start of the prompt
 add_newline = false
@@ -34,15 +18,13 @@ add_newline = false
 # An alternative to the username module which displays a symbol that
 # represents the current operating system
 [os]
-format = "[ $symbol]($style)"
-style = "bg:#a3aed2 fg:#090c0c"
+format = "[ $symbol ]($style)"
+style = "fg:#585b70 bg:#1e1e2e"
 disabled = false
 
 [directory]
-style = "fg:#e3e5e5 bg:#769ff0"
+style = "fg:#f5e0dc bg:#1e1e2e"
 format = "[ $path ]($style)"
-repo_root_style = "fg:#e3e5e5 bg:#769ff0"
-repo_root_format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = ""
 
@@ -52,108 +34,40 @@ truncation_symbol = ""
 "Music" = " "
 "Pictures" = " "
 
-[git_branch]
-symbol = ""
-style = "bg:#394260"
-format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
-
-[git_status]
-style = "bg:#394260"
-format = '[[($all_status$ahead_behind)](fg:#769ff0 bg:#394260)]($style)'
-
-[pulumi]
-symbol = "󱋖"
-format = "[$symbol$stack ]($style)"
-
-[c]
-symbol = ""
-format = '[$symbol( $version)]($style)'
-version_format = '$raw'
-
-[elixir]
-symbol = ""
-format = '[$symbol( $version)]($style)'
-version_format = '$raw'
-
-[elm]
-symbol = ""
-format = '[$symbol( $version)]($style)'
-version_format = '$raw'
-
-[golang]
-symbol = ""
-format = '[$symbol( $version)]($style)'
-version_format = '$raw'
-
-[haskell]
-symbol = ""
-format = '[$symbol( $version)]($style)'
-version_format = '$raw'
-
-[java]
-symbol = ""
-format = '[$symbol( $version)]($style)'
-version_format = '$raw'
-
-[julia]
-symbol = ""
-format = '[$symbol( $version)]($style)'
-version_format = '$raw'
-
-[nodejs]
-symbol = ""
-format = '[$symbol( $version)]($style)'
-version_format = '$raw'
-
-[nim]
-symbol = ""
-format = '[$symbol( $version)]($style)'
-version_format = '$raw'
-
-[rust]
-symbol = ""
-format = '[$symbol( $version)]($style)'
-version_format = '$raw'
-
-[scala]
-symbol = ""
-format = '[$symbol( $version)]($style)'
-version_format = '$raw'
-
 [os.symbols]
-Alpine = " "
-Amazon = " "
-Android = " "
-Arch = " "
-CentOS = " "
-Debian = " "
-DragonFly = " "
-Emscripten = " "
-EndeavourOS = " "
-Fedora = " "
-FreeBSD = " "
-Garuda = "﯑ "
-Gentoo = " "
-HardenedBSD = "ﲊ "
-Illumos = " "
-Linux = " "
-Macos = " "
-Manjaro = " "
-Mariner = " "
-MidnightBSD = " "
-Mint = " "
-NetBSD = " "
-NixOS = " "
-OpenBSD = " "
-openSUSE = " "
-OracleLinux = " "
-Pop = " "
-Raspbian = " "
-Redhat = " "
-RedHatEnterprise = " "
-Redox = " "
-Solus = "ﴱ "
-SUSE = " "
-Ubuntu = " "
-Unknown = " "
-Windows = " "
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = ""
+CentOS = ""
+Debian = ""
+DragonFly = ""
+Emscripten = ""
+EndeavourOS = ""
+Fedora = ""
+FreeBSD = ""
+Garuda = "﯑"
+Gentoo = ""
+HardenedBSD = "ﲊ"
+Illumos = ""
+Linux = ""
+Macos = ""
+Manjaro = ""
+Mariner = ""
+MidnightBSD = ""
+Mint = ""
+NetBSD = ""
+NixOS = ""
+OpenBSD = ""
+openSUSE = ""
+OracleLinux = ""
+Pop = ""
+Raspbian = ""
+Redhat = ""
+RedHatEnterprise = ""
+Redox = ""
+Solus = "ﴱ"
+SUSE = ""
+Ubuntu = ""
+Unknown = ""
+Windows = ""

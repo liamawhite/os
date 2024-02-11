@@ -246,7 +246,7 @@ in
           set -g @catppuccin_custom_plugin_dir "$HOME/.tmux/modules"
 
           set -g @catppuccin_window_left_separator "█"
-          set -g @catppuccin_window_right_separator "█ "
+          set -g @catppuccin_window_right_separator "█"
           set -g @catppuccin_window_number_position "right"
           set -g @catppuccin_window_middle_separator "  █"
 
@@ -255,7 +255,7 @@ in
           set -g @catppuccin_window_current_fill "number"
           # set -g @catppuccin_window_current_text "#{pane_current_path}"
 
-          set -g @catppuccin_status_modules_right "application cpu ram session"
+          set -g @catppuccin_status_modules_right "git cpu ram session"
           set -g @catppuccin_status_left_separator  "█"
           set -g @catppuccin_status_right_separator "█"
           set -g @catppuccin_status_right_separator_inverse "no"
