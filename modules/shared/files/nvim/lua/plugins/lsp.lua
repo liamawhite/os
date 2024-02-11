@@ -1,12 +1,12 @@
 function on_list_vsplit(options)
     -- if there are multiple items, warn the user
     if #options.items > 1 then
-      vim.notify("Multiple items found, opening first one", vim.log.levels.WARN)
+        vim.notify("Multiple items found, opening first one", vim.log.levels.WARN)
     end
 
     if #options.items == 0 then
         vim.notify("No items found", vim.log.levels.WARN)
-      end
+    end
 
     -- Open the first item in a vertical split
     local item = options.items[1]
@@ -14,8 +14,6 @@ function on_list_vsplit(options)
 
     vim.cmd(cmd)
 end
-
-
 
 return {
     {
@@ -29,10 +27,9 @@ return {
         config = function()
             require("mason-lspconfig").setup({
                 ensure_installed = {
+                    -- TODO: Migrate these to nix
                     "bashls",
-                    "gopls",
                     "lua_ls",
-                    "rust_analyzer",
                     "tailwindcss",
                     "tsserver",
                 },
@@ -51,6 +48,16 @@ return {
             lspconfig.rust_analyzer.setup({ capabilities = capabilities })
             lspconfig.tailwindcss.setup({ capabilities = capabilities })
             lspconfig.tsserver.setup({ capabilities = capabilities })
+            lspconfig.nil_ls.setup({
+                capabilities = capabilities,
+                settings = {
+                    ['nil'] = {
+                        formatting = {
+                            command = { "nixpkgs-fmt" },
+                        },
+                    },
+                }
+            })
 
             -- Use LspAttach autocommand to only map the following keys
             -- after the language server attaches to the current buffer
@@ -107,7 +114,6 @@ return {
             vim.api.nvim_create_autocmd('LspAttach', {
                 group = vim.api.nvim_create_augroup('UserLspGotoPreviewCfg', {}),
                 callback = function(ev)
-
                     -- Buffer local mappings.
                     -- See `:help vim.lsp.*` for documentation on any of the below functions
                     local opts = { buffer = ev.buf }
@@ -115,7 +121,6 @@ return {
                     -- vim.keymap.set('n', 'gd', preview.goto_preview_definition, opts)
 
                     -- todo split window and close all floating windows
-
                 end,
             })
         end,

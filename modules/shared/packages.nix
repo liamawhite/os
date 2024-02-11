@@ -24,11 +24,15 @@ with pkgs; [
   # Languages
   go
   golangci-lint
+  gopls
   cobra-cli
   nodejs_20 # latest LTS
   rustc
   cargo
+  nil
+  nixpkgs-fmt  
   rustfmt
+  rust-analyzer
   yarn-berry
   jdk20 # latest LTS
 

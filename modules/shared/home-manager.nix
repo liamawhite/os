@@ -1,9 +1,10 @@
 { config, pkgs, lib, ... }:
 
-let name = "Liam White";
-    user = "liam";
-    email = "liamawhite@gmail.com";
-    tmux-catppuccin = pkgs.tmuxPlugins.mkTmuxPlugin
+let
+  name = "Liam White";
+  user = "liam";
+  email = "liamawhite@gmail.com";
+  tmux-catppuccin = pkgs.tmuxPlugins.mkTmuxPlugin
     {
       pluginName = "tmux-catppuccin";
       version = "a0119d25283ba2b18287447c1f86720a255fb652";
@@ -21,7 +22,29 @@ in
   zsh = {
     enable = true;
     autocd = false;
-    plugins = [];
+    plugins = [
+      {
+        # will source zsh-autosuggestions.plugin.zsh
+        name = "zsh-autosuggestions";
+        src = pkgs.fetchFromGitHub {
+          owner = "zsh-users";
+          repo = "zsh-autosuggestions";
+          rev = "v0.4.0";
+          sha256 = "0z6i9wjjklb4lvr7zjhbphibsyx51psv50gm07mbb0kj9058j6kc";
+        };
+      }
+      # Doesnt seem to work?
+      # {
+      #   # will source zsh-autocomplete.plugin.zsh
+      #   name = "zsh-autocomplete";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "marlonrichert";
+      #     repo = "zsh-autocomplete";
+      #     rev = "c7b65508fd3a016dc9cdb410af9ee7806b3f9be1";
+      #     sha256 = "0z6i9wjjklb4lvr7zjhbphibsyx51psv50gm07mbb0kj9058j6kc";
+      #   };
+      # }
+    ];
 
     initExtraFirst = ''
       if [[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
@@ -104,7 +127,7 @@ in
       pull.rebase = true;
       rebase.autoStash = true;
       push.autoSetupRemote = true;
-      core = { 
+      core = {
         editor = "nvim";
       };
       url = {
@@ -222,8 +245,8 @@ in
 
       let g:airline_theme='bubblegum'
       let g:airline_powerline_fonts = 1
-      '';
-     };
+    '';
+  };
 
 
   ssh = {
@@ -250,7 +273,7 @@ in
     enable = true;
     plugins = with pkgs.tmuxPlugins; [
       sensible
-    {
+      {
         plugin = tmux-catppuccin;
         extraConfig = ''
           set -g @catppuccin_custom_plugin_dir "$HOME/.tmux/modules"
@@ -273,9 +296,9 @@ in
           set -g @catppuccin_status_connect_separator "yes"
         '';
       }
-          {
+      {
         plugin = cpu;
-    }
+      }
       {
         plugin = resurrect; # Used by tmux-continuum
 
@@ -366,6 +389,6 @@ in
       bind-key -T copy-mode-vi 'C-l' select-pane -R
       bind-key -T copy-mode-vi 'C-\' select-pane -l
       bind-key -T copy-mode-vi 'C-Space' select-pane -t:.+
-      '';
-    };
+    '';
+  };
 }
