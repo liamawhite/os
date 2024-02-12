@@ -33,17 +33,16 @@ in
           sha256 = "0z6i9wjjklb4lvr7zjhbphibsyx51psv50gm07mbb0kj9058j6kc";
         };
       }
-      # Doesnt seem to work?
-      # {
-      #   # will source zsh-autocomplete.plugin.zsh
-      #   name = "zsh-autocomplete";
-      #   src = pkgs.fetchFromGitHub {
-      #     owner = "marlonrichert";
-      #     repo = "zsh-autocomplete";
-      #     rev = "c7b65508fd3a016dc9cdb410af9ee7806b3f9be1";
-      #     sha256 = "0z6i9wjjklb4lvr7zjhbphibsyx51psv50gm07mbb0kj9058j6kc";
-      #   };
-      # }
+      {
+        name = "enhancd";
+        file = "init.sh";
+        src = pkgs.fetchFromGitHub {
+          owner = "b4b4r07";
+          repo = "enhancd";
+          rev = "v2.5.1";
+          sha256 = "kaintLXSfLH7zdLtcoZfVNobCJCap0S/Ldq85wd3krI=";
+        };
+      }
     ];
 
     initExtraFirst = ''
