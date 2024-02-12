@@ -4,9 +4,6 @@ local conditions = {
         if vim.fn.len(filename) == 0 then
             return false
         end
-        if vim.bo.filetype == 'neo-tree' then
-            return false
-        end
         if vim.bo.filetype == 'neo-tree' or vim.bo.filetype == 'Trouble' or vim.bo.filetype == 'toggleterm' then
             return false
         end
