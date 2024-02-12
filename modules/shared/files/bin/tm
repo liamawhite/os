@@ -1,16 +1,20 @@
 #! /bin/sh
 
-session=$(fzfc)
-session_name=$(basename "$session" | tr . _ )
-
-# No matching session, create one.
-if ! tmux has-session -t "$session_name" 2> /dev/null; then
-    tmux new-session -s "$session_name" -c "$session" -d
+if [ -z ${1+x} ]; then
+    session=$(fzfc)
+    session_name=$(basename "$session" | tr . _ )
+    
+    # No matching session, create one.
+    if ! tmux has-session -t "$session_name" 2> /dev/null; then
+        tmux new-session -s "$session_name" -c "$session" -d
+    fi
+else
+    session_name=$1
 fi
 
 # Outside of TMUX
 if [ -z "$TMUX" ]; then
-    tmux attach -t "$sessionName";
+    tmux attach -t "$session_name";
 fi
 
 # Inside of TMUX so switch
