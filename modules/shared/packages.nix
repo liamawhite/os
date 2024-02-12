@@ -54,6 +54,7 @@ with pkgs; [
   bash-completion
   bat
   bottom
+  cht-sh
   htop
   iftop
   jq

@@ -104,6 +104,8 @@ in
       alias ls='ls --color=auto'
 
       alias nv='nvim .'
+
+      alias cht='cht\.sh'
     '';
   };
 
