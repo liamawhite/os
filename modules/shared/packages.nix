@@ -71,6 +71,7 @@ with pkgs; [
   unzip
   wget
   zip
+  zoxide
 
   # Media-related packages
   ffmpeg

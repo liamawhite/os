@@ -33,16 +33,6 @@ in
           sha256 = "0z6i9wjjklb4lvr7zjhbphibsyx51psv50gm07mbb0kj9058j6kc";
         };
       }
-      {
-        name = "enhancd";
-        file = "init.sh";
-        src = pkgs.fetchFromGitHub {
-          owner = "b4b4r07";
-          repo = "enhancd";
-          rev = "v2.5.1";
-          sha256 = "kaintLXSfLH7zdLtcoZfVNobCJCap0S/Ldq85wd3krI=";
-        };
-      }
     ];
 
     initExtraFirst = ''
@@ -70,6 +60,14 @@ in
       alias cobra=cobra-cli
 
       eval "$(ssh-agent -s)" > /dev/null
+
+      # zoxide
+      # see https://github.com/ajeetdsouza/zoxide/issues/633
+      function z () {
+        __zoxide_z "$@"
+      }
+      eval "$(zoxide init zsh --no-cmd)"
+      alias cd=z
 
       # Starship
       eval "$(starship init zsh)"
