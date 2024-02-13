@@ -103,6 +103,8 @@ in
       alias ls=eza
       alias du=dust
       alias cat=bat
+      alias spotify=spotify_player
+      alias spt=spotify_player
     '';
   };
 

@@ -4,6 +4,7 @@ with pkgs; [
   # Consumer Applications
   slack
   spotify
+  spotify-player
   obsidian
   discord
   ookla-speedtest
