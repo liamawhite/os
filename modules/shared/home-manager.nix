@@ -97,15 +97,12 @@ in
           nix-shell '<nixpkgs>' -A "$1"
       }
 
-      # Use difftastic, syntax-aware diffing
       alias diff=difft
-
-      # Always color ls and group directories
-      alias ls='ls --color=auto'
-
       alias nv='nvim .'
-
       alias cht='cht\.sh'
+      alias ls=eza
+      alias du=dust
+      alias cat=bat
     '';
   };
 

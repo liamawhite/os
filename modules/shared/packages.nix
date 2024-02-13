@@ -55,9 +55,11 @@ with pkgs; [
   bat
   bottom
   cht-sh
+  du-dust
   htop
   iftop
   jq
+  eza
   flock
   fzf
   gitmux
