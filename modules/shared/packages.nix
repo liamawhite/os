@@ -6,6 +6,7 @@ with pkgs; [
   spotify
   obsidian
   discord
+  ookla-speedtest
 
   # General packages for development and system management
   aspell
