@@ -13,7 +13,7 @@ right_format = """
 """
 
 # Disable the blank line at the start of the prompt
-add_newline = false
+add_newline = true
 
 # An alternative to the username module which displays a symbol that
 # represents the current operating system
