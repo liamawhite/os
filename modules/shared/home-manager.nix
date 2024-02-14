@@ -279,8 +279,6 @@ in
         extraConfig = ''
           set -g @catppuccin_custom_plugin_dir "$HOME/.tmux/modules"
 
-          set -g @catppuccin_window_status_enable "yes"
-          set -g @catppuccin_window_status_icon_enable "yes"
           set -g @catppuccin_window_default_text "#W"
           set -g @catppuccin_window_current_text "#W"
 
