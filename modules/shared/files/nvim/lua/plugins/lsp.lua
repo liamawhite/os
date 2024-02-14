@@ -48,6 +48,7 @@ return {
             lspconfig.rust_analyzer.setup({ capabilities = capabilities })
             lspconfig.tailwindcss.setup({ capabilities = capabilities })
             lspconfig.tsserver.setup({ capabilities = capabilities })
+            lspconfig.yamlls.setup({ capabilities = capabilities })
             lspconfig.nil_ls.setup({
                 capabilities = capabilities,
                 settings = {

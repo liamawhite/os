@@ -36,6 +36,7 @@ with pkgs; [
   rustfmt
   rust-analyzer
   yarn-berry
+  yaml-language-server
   jdk20 # latest LTS
 
   # Encryption and security tools

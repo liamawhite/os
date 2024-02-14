@@ -61,6 +61,9 @@ in
 
       eval "$(ssh-agent -s)" > /dev/null
 
+      # tmuxinator
+      export TMUXINATOR_CONFIG=$HOME/.tmux/projects
+
       # zoxide
       # see https://github.com/ajeetdsouza/zoxide/issues/633
       function z () {
@@ -276,6 +279,11 @@ in
         extraConfig = ''
           set -g @catppuccin_custom_plugin_dir "$HOME/.tmux/modules"
 
+          set -g @catppuccin_window_status_enable "yes"
+          set -g @catppuccin_window_status_icon_enable "yes"
+          set -g @catppuccin_window_default_text "#W"
+          set -g @catppuccin_window_current_text "#W"
+
           set -g @catppuccin_window_left_separator ""
           set -g @catppuccin_window_right_separator "█"
           set -g @catppuccin_window_number_position "right"
@@ -317,6 +325,9 @@ in
         '';
       }
     ];
+    tmuxinator = {
+      enable = true;
+    };
     terminal = "screen-256color";
     mouse = true;
     prefix = "C-a";
@@ -341,7 +352,7 @@ in
       set -g window-status-current-style fg=terminal,bold
 
       # Automatically set window title and number
-      setw -g automatic-rename
+      # setw -g automatic-rename
       set -g renumber-windows on
 
       # -----------------------------------------------------------------------------
