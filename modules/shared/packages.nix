@@ -25,9 +25,11 @@ with pkgs; [
 
   # Languages
   buf-language-server
+  delve
   go
   golangci-lint
   gopls
+  gotools
   cobra-cli
   nodejs_20 # latest LTS
   rustc

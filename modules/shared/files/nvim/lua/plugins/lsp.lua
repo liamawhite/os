@@ -44,7 +44,18 @@ return {
 
             lspconfig.bashls.setup({ capabilities = capabilities })
             lspconfig.bufls.setup({ capabilities = capabilities })
-            lspconfig.gopls.setup({ capabilities = capabilities })
+            lspconfig.gopls.setup({
+                capabilities = capabilities,
+                cmd = { "gopls" },
+                filetypes = { "go", "gomod", "gowork", "gotmpl" },
+                root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
+                settings = {
+                    gopls = {
+                        completeUnimported = true,
+                        usePlaceholders = true,
+                    },
+                },
+            })
             lspconfig.lua_ls.setup({ capabilities = capabilities })
             lspconfig.rust_analyzer.setup({ capabilities = capabilities })
             lspconfig.tailwindcss.setup({ capabilities = capabilities })
