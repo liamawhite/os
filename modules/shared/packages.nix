@@ -24,6 +24,7 @@ with pkgs; [
   wezterm
 
   # Languages
+  buf-language-server
   go
   golangci-lint
   gopls
