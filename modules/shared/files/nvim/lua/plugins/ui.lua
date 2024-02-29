@@ -7,7 +7,7 @@ local conditions = {
         if vim.bo.filetype == 'neo-tree' or vim.bo.filetype == 'Trouble' or vim.bo.filetype == 'toggleterm' then
             return false
         end
-      return true
+        return true
     end,
 }
 
@@ -148,7 +148,7 @@ return {
                     },
                 },
                 presets = {
-                    inc_rename = true,            -- enables an input dialog for inc-rename.nvim
+                    inc_rename = true, -- enables an input dialog for inc-rename.nvim
                 },
                 views = {
                     cmdline_popup = {
@@ -182,6 +182,15 @@ return {
                 },
             })
         end,
+    },
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+        end,
+        opts = {}
     }
 
 }
