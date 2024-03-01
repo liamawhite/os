@@ -1,7 +1,10 @@
 name: default
 root: ~/
 
+attach: false
+
 windows:
   - terminal:
       layout: main-vertical
-  - spotify: spotify_player
+  # - spotify: spotify_player
+  # - notes: nvim .

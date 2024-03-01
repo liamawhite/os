@@ -258,15 +258,12 @@ in
         Host github.com
           Hostname github.com
           IdentitiesOnly yes
-      ''
-      (lib.mkIf pkgs.stdenv.hostPlatform.isLinux
-        ''
           IdentityFile /home/${user}/.ssh/id_github
-        '')
-      (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin
-        ''
-          IdentityFile /Users/${user}/.ssh/id_github
-        '')
+
+    
+        Host *
+          IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+      ''
     ];
   };
 
@@ -361,6 +358,11 @@ in
       unbind C-b
       unbind '"'
       unbind %
+
+      # Personal Navigation shortcuts
+      bind-key "M" run-shell "tm default:spotify"
+      bind-key "T" run-shell "tm default:tsk"
+      bind-key "N" run-shell "tm default:notes"
 
       # Vim-like bindings 
       ## Move around (h,j,k,l)

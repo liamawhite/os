@@ -45,6 +45,7 @@ with pkgs; [
   # Encryption and security tools
   # The 1password gui can't be installed here as it needs to be ran from /Applications
   _1password
+  tailscale
 
   # Cloud-related tools and SDKs
   act

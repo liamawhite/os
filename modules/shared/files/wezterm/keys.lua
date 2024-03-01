@@ -28,6 +28,27 @@ function module.apply_to_config(config)
         mods = 'CMD',
         action = act.Multiple { tmux_prefix, act.SendKey { key = '&' } },
     })
+
+    -- These are shortcuts for my personal tmux navigation
+    -- Spotify
+    table.insert(keys, {
+        key = 'm',
+        mods = 'CMD',
+        action = act.Multiple { tmux_prefix, act.SendKey { key = 'M' } },
+    })
+    -- Notes
+    table.insert(keys, {
+        key = 'n',
+        mods = 'CMD',
+        action = act.Multiple { tmux_prefix, act.SendKey { key = 'N' } },
+    })
+    -- Task Manager
+    table.insert(keys, {
+        key = 'd',
+        mods = 'CMD',
+        action = act.Multiple { tmux_prefix, act.SendKey { key = 'T' } },
+    })
+
     for i = 0, 9 do
         table.insert(keys, {
             key = tostring(i),
