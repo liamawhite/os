@@ -249,24 +249,6 @@ in
     '';
   };
 
-
-  ssh = {
-    enable = true;
-
-    extraConfig = lib.mkMerge [
-      ''
-        Host github.com
-          Hostname github.com
-          IdentitiesOnly yes
-          IdentityFile /home/${user}/.ssh/id_github
-
-    
-        Host *
-          IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-      ''
-    ];
-  };
-
   tmux = {
     enable = true;
     plugins = with pkgs.tmuxPlugins; [
