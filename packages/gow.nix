@@ -3,22 +3,22 @@ with pkgs;
 
 # https://nixos.org/manual/nixpkgs/stable/#sec-language-go
 buildGoModule rec {
-  pname = "rapture";
-  version = "2.0.0";
+  pname = "gow";
+  version = "af11a6e1e9ebccdcdace2a6df619355b85494d74";
 
   src = fetchFromGitHub {
-    owner = "daveadams";
-    repo = "go-rapture";
-    rev = "v${version}";
-    sha256 = "sha256-aqY/O6mE2nQPNhRhuHUpXSD/CYyvMSHJ9KzsacWkKmQ=";
+    owner = "mitranim";
+    repo = "gow";
+    rev = "${version}";
+    sha256 = "sha256-NmjJd3GVImCtYo5CxGnQHHPERx5R0sD4bzBsbxNGc3o=";
   };
 
-  vendorHash = "sha256-+xqTeDLyNagXmm6Aj6Up8lccAa67ygYvapA+Y6ZeFzQ=";
+  vendorHash = "sha256-Xw9V7bYaSfu5kA2505wmef2Ns/Y0RHKbZHUkvCtVNSM=";
   ldFlags="-w -s";
-  subPackages = [ "cmd/rapture" ];
+  # subPackages = [ "" ];
 
   meta = with stdenv.lib; {
-    description = "Shell-integrated CLI for assuming AWS IAM roles";
+    description = "Watch go files and execute a command";
     homepage = src.meta.homepage;
   };
 }
