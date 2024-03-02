@@ -12,16 +12,22 @@ return {
         --   "BufNewFile path/to/my-vault/**.md",
         -- },
         dependencies = {
+            -- Required.
             "nvim-lua/plenary.nvim",
+
+            -- see below for full list of optional dependencies 👇
         },
-        opts = {
-            -- https://github.com/epwalsh/obsidian.nvim?tab=readme-ov-file#configuration-options
-            workspaces = {
-                {
-                    name = "personal",
-                    path = "~/github.com/liamawhite/notes",
+        config = function()
+            require("obsidian").setup({
+                workspaces = {
+                    {
+                        name = "personal",
+                        path = "~/notes",
+                    },
                 },
-            },
-        },
+            })
+            vim.opt.conceallevel = 1
+        end,
     }
 }
+
