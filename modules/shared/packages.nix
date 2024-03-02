@@ -56,6 +56,7 @@ with pkgs; [
   google-cloud-sdk
   kubectl
   k9s
+  istioctl
 
   # Text and terminal utilities
   bash-completion
@@ -88,6 +89,7 @@ with pkgs; [
   fd
 
   # Local ones that weren't in nixpkgs
+  (import ../../packages/gow.nix { inherit pkgs; })
   (import ../../packages/rapture.nix { inherit pkgs; })
   (import ../../packages/temporal.nix { inherit pkgs; })
   (import ../../packages/vaulted.nix { inherit pkgs; })
