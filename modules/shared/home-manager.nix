@@ -108,6 +108,8 @@ in
       alias cat=bat
       alias spotify=spotify_player
       alias spt=spotify_player
+      alias k=kubectl
+      alias i=istioctl
     '';
   };
 
