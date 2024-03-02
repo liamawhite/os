@@ -48,6 +48,17 @@ function module.apply_to_config(config)
         mods = 'CMD',
         action = act.Multiple { tmux_prefix, act.SendKey { key = 'T' } },
     })
+    -- Remap previous/next to i and io
+    table.insert(keys, {
+        key = 'i',
+        mods = 'CMD',
+        action = act.Multiple { tmux_prefix, act.SendKey { key = ')' } },
+    })
+    table.insert(keys, {
+        key = 'o',
+        mods = 'CMD',
+        action = act.Multiple { tmux_prefix, act.SendKey { key = '(' } },
+    })
 
     for i = 0, 9 do
         table.insert(keys, {
