@@ -11,6 +11,3 @@ vim.opt.relativenumber = true
 vim.opt.numberwidth = 4
 vim.opt.splitright = true
 vim.opt.scrolloff = 10
-
--- Disable netrw
-vim.g.loaded_netrwPlugin = 1

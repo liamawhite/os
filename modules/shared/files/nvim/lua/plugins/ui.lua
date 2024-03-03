@@ -41,7 +41,7 @@ return {
                     enabled = true,          -- This will find and focus the file in the active buffer.
                     leave_dirs_open = false, -- closes auto expanded dirs
                 },
-                hijack_netrw_behavior = "open_default",
+                hijack_netrw_behavior = "open_default", -- netrw is left enabled to support gx
             },
         },
         keys = function()
