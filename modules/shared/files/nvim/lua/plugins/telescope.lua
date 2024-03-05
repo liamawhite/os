@@ -27,6 +27,24 @@ return {
                     end,
                     desc = "Find open buffers",
                 },
+                {
+                    "<leader>fd",
+                    function()
+                        builtin.diagnostics()
+                    end,
+                },
+                {
+                    "<leader>fh",
+                    function()
+                        builtin.help_tags()
+                    end,
+                },
+                {
+                    "<leader>fr",
+                    function()
+                        builtin.lsp_references()
+                    end,
+                },
 			}
 		end,
 	},
