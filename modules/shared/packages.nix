@@ -57,6 +57,7 @@ with pkgs; [
   kubectl
   k9s
   istioctl
+  terraform
 
   # Text and terminal utilities
   bash-completion
@@ -90,6 +91,7 @@ with pkgs; [
 
   # Local ones that weren't in nixpkgs
   (import ../../packages/gow.nix { inherit pkgs; })
+  (import ../../packages/licenser.nix { inherit pkgs; })
   (import ../../packages/nt.nix { inherit pkgs; })
   (import ../../packages/rapture.nix { inherit pkgs; })
   (import ../../packages/temporal.nix { inherit pkgs; })
