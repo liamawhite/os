@@ -10,6 +10,7 @@ _:
   "elgato-stream-deck"
   "firefox" # for some reason the pkg doesn't work on macOS
   "google-chrome"
+  "obs"
   "vivaldi"
 
   # Security
