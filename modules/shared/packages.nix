@@ -32,6 +32,7 @@ with pkgs; [
   gotools
   cobra-cli
   nodejs_20 # latest LTS
+  nodePackages.typescript-language-server
   rustc
   cargo
   nil
