@@ -42,7 +42,13 @@ return {
             lspconfig.lua_ls.setup({ capabilities = capabilities })
             lspconfig.rust_analyzer.setup({ capabilities = capabilities })
             lspconfig.tailwindcss.setup({ capabilities = capabilities })
-            lspconfig.tsserver.setup({ capabilities = capabilities })
+            lspconfig.tsserver.setup({
+                capabilities = capabilities,
+                init_options = {
+                    hostInfo = "neovim",
+                    maxTsServerMemory = 8192,
+                },
+            })
             lspconfig.yamlls.setup({ capabilities = capabilities })
             lspconfig.nil_ls.setup({
                 capabilities = capabilities,
