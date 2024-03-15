@@ -58,6 +58,7 @@ with pkgs; [
   kubectl
   k9s
   istioctl
+  podman
   terraform
 
   # Text and terminal utilities
