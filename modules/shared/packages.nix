@@ -24,6 +24,7 @@ with pkgs; [
   wezterm
 
   # Languages
+  nodePackages.bash-language-server
   buf-language-server
   delve
   go
@@ -33,13 +34,14 @@ with pkgs; [
   cobra-cli
   lua-language-server
   nodejs_20 # latest LTS
-  nodePackages.typescript-language-server
   rustc
   cargo
   nil
   nixpkgs-fmt  
   rustfmt
   rust-analyzer
+  tailwindcss-language-server
+  nodePackages.typescript-language-server
   yarn-berry
   yaml-language-server
   jdk20 # latest LTS

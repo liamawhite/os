@@ -5,18 +5,6 @@ return {
             require("mason").setup()
         end,
     },
-    {
-        "williamboman/mason-lspconfig.nvim",
-        config = function()
-            require("mason-lspconfig").setup({
-                ensure_installed = {
-                    -- TODO: Migrate these to nix
-                    "bashls",
-                    "tailwindcss",
-                },
-            })
-        end,
-    },
     { "folke/neodev.nvim" },
     {
         "neovim/nvim-lspconfig",
@@ -44,10 +32,6 @@ return {
                 settings = {
                     Lua = {
                         completion = { callSnippet = "Replace" },
-                        diagnostics = {
-                            -- Get the language server to recognize the `vim` global
-                            -- globals = { "vim" },
-                        },
                     },
                 },
             })
