@@ -31,6 +31,7 @@ with pkgs; [
   gopls
   gotools
   cobra-cli
+  lua-language-server
   nodejs_20 # latest LTS
   nodePackages.typescript-language-server
   rustc

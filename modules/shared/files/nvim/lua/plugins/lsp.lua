@@ -12,12 +12,12 @@ return {
                 ensure_installed = {
                     -- TODO: Migrate these to nix
                     "bashls",
-                    "lua_ls",
                     "tailwindcss",
                 },
             })
         end,
     },
+    { "folke/neodev.nvim" },
     {
         "neovim/nvim-lspconfig",
         config = function()
@@ -38,21 +38,15 @@ return {
                     },
                 },
             })
+            require("neodev").setup() -- force to be ran before the lua language server
             lspconfig.lua_ls.setup({
                 capabilities = capabilities,
                 settings = {
                     Lua = {
+                        completion = { callSnippet = "Replace" },
                         diagnostics = {
                             -- Get the language server to recognize the `vim` global
-                            globals = { "vim" },
-                        },
-                        workspace = {
-                            -- Make the server aware of Neovim runtime files
-                            library = vim.api.nvim_get_runtime_file("", true),
-                        },
-                        -- Do not send telemetry data containing a randomized but unique identifier
-                        telemetry = {
-                            enable = false,
+                            -- globals = { "vim" },
                         },
                     },
                 },
