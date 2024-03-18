@@ -28,6 +28,13 @@ function module.apply_to_config(config)
         mods = 'CMD',
         action = act.Multiple { tmux_prefix, act.SendKey { key = '&' } },
     })
+    for i = 0, 9 do
+        table.insert(keys, {
+            key = tostring(i),
+            mods = 'CMD',
+            action = act.Multiple { tmux_prefix, act.SendKey { key = tostring(i) } },
+        })
+    end
 
     -- These are shortcuts for my personal tmux navigation
     -- Spotify
@@ -54,14 +61,12 @@ function module.apply_to_config(config)
         mods = 'CMD',
         action = act.Multiple { tmux_prefix, act.SendKey { key = 'L' } },
     })
-
-    for i = 0, 9 do
-        table.insert(keys, {
-            key = tostring(i),
-            mods = 'CMD',
-            action = act.Multiple { tmux_prefix, act.SendKey { key = tostring(i) } },
-        })
-    end
+    -- Jump using tm
+    table.insert(keys, {
+        key = 'j',
+        mods = 'CMD',
+        action = act.Multiple { tmux_prefix, act.SendKey { key = 'J' } },
+    })
 
     config.keys = keys
 end

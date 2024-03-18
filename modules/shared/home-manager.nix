@@ -347,6 +347,7 @@ in
       bind-key "M" run-shell "tm default:spotify"
       bind-key "T" run-shell "tm default:tsk"
       bind-key "N" run-shell "tm default:notes"
+      bind-key "J" display-popup -E "tm"
 
       # Vim-like bindings 
       ## Move around (h,j,k,l)
