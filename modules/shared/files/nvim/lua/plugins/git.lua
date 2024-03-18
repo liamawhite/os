@@ -1,12 +1,20 @@
 return {
     {
-        -- https://github.com/tpope/vim-fugitive/blob/master/doc/fugitive.txt
-        'tpope/vim-fugitive',
+        "NeogitOrg/neogit",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "sindrets/diffview.nvim",
+            "nvim-telescope/telescope.nvim",
+        },
         config = function()
-            -- Reset to upstream master/main
-            vim.keymap.set("n", "<leader>GR", ":Git fetch upstream<CR>:Git checkout master<CR>:Git reset --hard upstream/master<CR>:Git push origin master --force<CR>")
-            vim.keymap.set("n", "<leader>gr", ":Git fetch upstream<CR>:Git checkout main<CR>:Git reset --hard upstream/main<CR>:Git push origin main --force<CR>")
-        end
+            local neogit = require('neogit')
+            neogit.setup()
+            vim.keymap.set("n", "<leader>gg", neogit.open),
+            vim.keymap.set("n", "<leader>gc", neogit.open({ "commit"}),
+            vim.keymap.set("n", "<leader>gp", neogit.open({ "pull" }),
+            vim.keymap.set("n", "<leader>gP", neogit.open({ "push" }),
+            vim.keymap.set("n", "<leader>gb", ":Telescope git_branches<CR>"),
+        end,
     },
     {
         'tpope/vim-rhubarb',
