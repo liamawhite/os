@@ -62,6 +62,7 @@ with pkgs; [
   k9s
   istioctl
   podman
+  qemu # required for podman
   terraform
 
   # Text and terminal utilities
