@@ -42,6 +42,7 @@ with pkgs; [
   rust-analyzer
   tailwindcss-language-server
   nodePackages.typescript-language-server
+  vscode-langservers-extracted # markdown html css json eslin (not all are used)
   yarn-berry
   yaml-language-server
   jdk20 # latest LTS

@@ -14,6 +14,7 @@ return {
 
             lspconfig.bashls.setup({ capabilities = capabilities })
             lspconfig.bufls.setup({ capabilities = capabilities })
+            lspconfig.cssls.setup({ capabilities = capabilities })
             lspconfig.gopls.setup({
                 capabilities = capabilities,
                 cmd = { "gopls" },
