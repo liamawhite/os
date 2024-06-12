@@ -56,6 +56,7 @@ with pkgs; [
   act
   azure-cli
   awscli2
+  cmctl
   docker
   docker-compose
   google-cloud-sdk
