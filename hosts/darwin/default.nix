@@ -14,7 +14,7 @@ let user = "liam"; in
 
   # Setup user, packages, programs
   nix = {
-    package = pkgs.nixUnstable;
+    package = pkgs.nixVersions.latest;
     settings.trusted-users = [ "@admin" "${user}" ];
 
     gc = {
@@ -38,8 +38,7 @@ let user = "liam"; in
 
   # Enable fonts dir
   fonts = {
-    fontDir.enable = true;
-    fonts = [ (pkgs.nerdfonts.override { fonts = ["JetBrainsMono"]; }) ];
+    packages = [ (pkgs.nerdfonts.override { fonts = ["JetBrainsMono"]; }) ];
   };
 
   system = {

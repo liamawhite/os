@@ -42,7 +42,7 @@ return {
                 capabilities = capabilities,
                 init_options = {
                     hostInfo = "neovim",
-                    maxTsServerMemory = 10240,
+                    maxTsServerMemory = 15360,
                 },
             })
             lspconfig.yamlls.setup({ capabilities = capabilities })

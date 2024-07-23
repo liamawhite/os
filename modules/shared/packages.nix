@@ -45,7 +45,7 @@ with pkgs; [
   vscode-langservers-extracted # markdown html css json eslin (not all are used)
   yarn-berry
   yaml-language-server
-  jdk20 # latest LTS
+  jdk22 # latest LTS
 
   # Encryption and security tools
   # The 1password gui can't be installed here as it needs to be ran from /Applications
@@ -66,6 +66,7 @@ with pkgs; [
   podman
   qemu # required for podman
   terraform
+  kubernetes-helm
 
   # Text and terminal utilities
   bash-completion
