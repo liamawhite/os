@@ -74,7 +74,7 @@
     {
       apps = nixpkgs.lib.genAttrs linuxSystems mkLinuxApps // nixpkgs.lib.genAttrs darwinSystems mkDarwinApps;
 
-      darwinConfigurations = let user = "liam"; in {
+      darwinConfigurations = {
         macos = darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           specialArgs = inputs;
@@ -85,7 +85,7 @@
             {
               nix-homebrew = {
                 enable = true;
-                user = "${user}";
+                user = user;
                 taps = {
                   "homebrew/homebrew-core" = homebrew-core;
                   "homebrew/homebrew-cask" = homebrew-cask;

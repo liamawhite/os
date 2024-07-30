@@ -9,4 +9,5 @@ shared-packages ++ [
   gnused
   gnugrep
 # karabiner-elements
+  mas # Mac App Store CLI
 ]
