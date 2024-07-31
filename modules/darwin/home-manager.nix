@@ -6,8 +6,6 @@ let
   sharedFiles = import ../shared/files.nix { inherit user config pkgs; };
 in
 {
-
-  # It me
   users.users.${user} = {
     name = "${user}";
     home = "/Users/${user}";
@@ -28,7 +26,7 @@ in
     # Taps are declarative via nix-homebrew
     taps = [];
     
-    casks = pkgs.callPackage ./casks.nix {};
+    casks = pkgs.callPackage ./homebrew/casks.nix {};
 
     # These app IDs are from using the mas CLI app
     # $ mas search <app name>
@@ -37,7 +35,6 @@ in
     };
   };
 
-  # Enable home-manager
   home-manager = {
     useGlobalPkgs = true;
     users.${user} = { pkgs, config, lib, ... }:{
@@ -51,6 +48,13 @@ in
         stateVersion = "23.11";
       };
       programs = {} // import ../shared/home-manager.nix { inherit config pkgs lib; };
+
+      services = {
+        # TODO: https://github.com/nix-community/home-manager/issues/4049
+        syncthing = {
+          enable = true;
+        };
+      };
 
       # Marked broken Oct 20, 2022 check later to remove this
       # https://github.com/nix-community/home-manager/issues/3344

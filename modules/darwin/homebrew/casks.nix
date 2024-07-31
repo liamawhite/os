@@ -4,7 +4,6 @@ _:
   # System Tools
   "amethyst"
   "docker" # docker for mac is required on macOS
-  "syncthing"
 
   # Consumer Applications
   "elgato-stream-deck"

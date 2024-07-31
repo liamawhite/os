@@ -1,10 +1,11 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib,  ... }:
 
 let user = "liam"; in
 {
 
   imports = [
     ../../modules/darwin/home-manager.nix
+    ../../modules/darwin/homebrew
     ../../modules/shared
     ../../modules/shared/cachix
   ];

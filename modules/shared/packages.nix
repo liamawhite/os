@@ -20,7 +20,8 @@ with pkgs; [
   protoc-gen-connect-go
   protoc-gen-go
   sqlite
-  syncthing
+  #syncthing
+  vscode
   wezterm
 
   # Languages

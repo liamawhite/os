@@ -22,11 +22,11 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
-    pulumi = {
+    homebrew-pulumi = {
       url = "github:pulumi/homebrew-tap";
       flake = false;
     };
-    dagger = {
+    homebrew-dagger = {
       url = "github:dagger/homebrew-tap";
       flake = false;
     };
@@ -37,13 +37,11 @@
     # Fixes spotlight loading
     mac-app-util.url = "github:hraban/mac-app-util";
   };
-  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, pulumi, dagger, home-manager, nixpkgs, disko, mac-app-util } @inputs:
+  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, homebrew-pulumi, homebrew-dagger, home-manager, nixpkgs, disko, mac-app-util } @inputs:
     let
-      user = "liam";
       email = "liamawhite@gmail.com";
-      linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
       darwinSystems = [ "aarch64-darwin" ];
-      forAllSystems = f: nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
+      forAllSystems = f: nixpkgs.lib.genAttrs (darwinSystems) f;
       mkApp = scriptName: system: {
         type = "app";
         program = "${(nixpkgs.legacyPackages.${system}.writeScriptBin scriptName ''
@@ -54,26 +52,13 @@
           exec ${self}/apps/${system}/${scriptName}
         '')}/bin/${scriptName}";
       };
-      mkLinuxApps = system: {
-        "apply" = mkApp "apply" system;
-        "build-switch" = mkApp "build-switch" system;
-        "copy-keys" = mkApp "copy-keys" system;
-        "create-keys" = mkApp "create-keys" system;
-        "check-keys" = mkApp "check-keys" system;
-        "install" = mkApp "install" system;
-      };
       mkDarwinApps = system: {
-        "apply" = mkApp "apply" system;
-        "build" = mkApp "build" system;
         "build-switch" = mkApp "build-switch" system;
-        "copy-keys" = mkApp "copy-keys" system;
-        "create-keys" = mkApp "create-keys" system;
-        "check-keys" = mkApp "check-keys" system;
       };
     in
     {
-      apps = nixpkgs.lib.genAttrs linuxSystems mkLinuxApps // nixpkgs.lib.genAttrs darwinSystems mkDarwinApps;
-
+      apps = nixpkgs.lib.genAttrs darwinSystems mkDarwinApps;
+      
       darwinConfigurations = {
         macos = darwin.lib.darwinSystem {
           system = "aarch64-darwin";
@@ -82,21 +67,6 @@
             nix-homebrew.darwinModules.nix-homebrew
             mac-app-util.darwinModules.default
             home-manager.darwinModules.home-manager
-            {
-              nix-homebrew = {
-                enable = true;
-                user = user;
-                taps = {
-                  "homebrew/homebrew-core" = homebrew-core;
-                  "homebrew/homebrew-cask" = homebrew-cask;
-                  "homebrew/homebrew-bundle" = homebrew-bundle;
-                  "pulumi/tap" = pulumi;
-                  "dagger/tap" = dagger;
-                };
-                mutableTaps = true; # Setting this to false caused too much pain
-                autoMigrate = true;
-              };
-            }
             ./hosts/darwin
           ];
         };

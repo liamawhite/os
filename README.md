@@ -23,50 +23,34 @@ First-time installations require you to move the current /etc/nix/nix.conf out o
 [ -f /etc/nix/nix.conf ] && sudo mv /etc/nix/nix.conf /etc/nix/nix.conf.before-nix-darwin
 ```
 
+Clone this repo
+
+```sh
+mkdir ~/.ssh
+ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+git clone https://github.com/liamawhite/os.git
+```
+
 Configure your system!
 
 ```sh
 nix --extra-experimental-features 'nix-command flakes' run .#build-switch
 ```
 
-Generate ssh key for github and add it.
-
-```sh
-nix run .#create-keys
-gh auth login
-```
 ### Additional Steps
 
 Its probably possible to automate these steps but I've not had time to research how.
 
 - Remove mission control control arrow bindings. Settings -> Keyboard -> shortcuts -> Mission Control -> All ^<direction> shortcuts. 
 
+## Setup syncthing...
 
 ### Updating
 
-Once bootstrapped, you can drop the `--extra-experimental-features 'nix-command flakes'`
+Once bootstrapped, you can just use `./switch`
 
 ```sh
-nix run .#build-switch
+switch
 ```
-
-
-
 
 https://github.com/dustinlyons/nixos-config#installing
-
-https://search.nixos.org/packages
-
-https://daiderd.com/nix-darwin/manual/index.html
-https://medium.com/@zmre/nix-darwin-quick-tip-activate-your-preferences-f69942a93236
-
-
-```sh
-/run/current-system/sw/bin/brew list
-```
-
-# TODO
-- raycast setup
-
-# Manual Setups
-- stats

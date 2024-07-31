@@ -8,7 +8,6 @@ let
 {
   "${xdg_home}/.amethyst.yml".source = ./files/amethyst.yml;
 
-
   # Raycast script so that "Run Emacs" is available and uses Emacs daemon
   # TODO use this pattern for other things
   "${xdg_dataHome}/bin/emacsclient" = {

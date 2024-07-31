@@ -32,22 +32,6 @@
         "type": "github"
       }
     },
-    "dagger": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1719271702,
-        "narHash": "sha256-NocTn8oTo6d6cScU+ASKhIkLoVmewwH59UD79duEp8c=",
-        "owner": "dagger",
-        "repo": "homebrew-tap",
-        "rev": "c20c231cd7be6c8b2b77283e54ed1b6a234556e0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "dagger",
-        "repo": "homebrew-tap",
-        "type": "github"
-      }
-    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -207,6 +191,38 @@
         "type": "github"
       }
     },
+    "homebrew-dagger": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1721933039,
+        "narHash": "sha256-2ek6b8Ipp7UcRdUITEkVpZ5+3mXjfxnKGGlDKdt1rKg=",
+        "owner": "dagger",
+        "repo": "homebrew-tap",
+        "rev": "fd5fd0089d541944630a7a81511f350834864744",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dagger",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
+    "homebrew-pulumi": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1721949321,
+        "narHash": "sha256-g6xiCH6fMGR0qRoPZcdfdJLSeulck3e7wryZ7CbkkUo=",
+        "owner": "pulumi",
+        "repo": "homebrew-tap",
+        "rev": "19c01a3fbaae79a8943ab966096551b97592eac0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pulumi",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
     "mac-app-util": {
       "inputs": {
         "cl-nix-lite": "cl-nix-lite",
@@ -344,35 +360,19 @@
         "type": "github"
       }
     },
-    "pulumi": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1720789059,
-        "narHash": "sha256-1h18mrY6KWYqu6YjNJu+jKO/GebFuNzWJ+9W5zbLRvM=",
-        "owner": "pulumi",
-        "repo": "homebrew-tap",
-        "rev": "221c94d20752da9e2e3c773fe4a7583070ce39e8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "pulumi",
-        "repo": "homebrew-tap",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
-        "dagger": "dagger",
         "darwin": "darwin",
         "disko": "disko",
         "home-manager": "home-manager",
         "homebrew-bundle": "homebrew-bundle",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "homebrew-dagger": "homebrew-dagger",
+        "homebrew-pulumi": "homebrew-pulumi",
         "mac-app-util": "mac-app-util",
         "nix-homebrew": "nix-homebrew",
-        "nixpkgs": "nixpkgs_5",
-        "pulumi": "pulumi"
+        "nixpkgs": "nixpkgs_5"
       }
     },
     "systems": {
