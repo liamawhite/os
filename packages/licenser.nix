@@ -14,7 +14,7 @@ buildGoModule rec {
   };
 
   vendorHash = "sha256-LBVVhg69VdQVsVARCkwooe6N6DacgViIW/iQWHCya4k=";
-  ldFlags="-w -s";
+  ldFlags = "-w -s";
 
   meta = with stdenv.lib; {
     description = "Verify and apply licenses to your project";

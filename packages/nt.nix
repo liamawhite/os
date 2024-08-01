@@ -14,7 +14,7 @@ buildGoModule rec {
   };
 
   vendorHash = "sha256-0yQMrQXAc7MPEXvOYl1INCj1k4HzViFVeMzv16XCK40=";
-  ldFlags="-w -s";
+  ldFlags = "-w -s";
 
   meta = with stdenv.lib; {
     description = "A cli for interacting with my notes";

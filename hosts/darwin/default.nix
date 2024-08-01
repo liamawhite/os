@@ -1,4 +1,4 @@
-{ config, pkgs, lib,  ... }:
+{ config, pkgs, lib, ... }:
 
 let user = "liam"; in
 {
@@ -35,11 +35,11 @@ let user = "liam"; in
   system.checks.verifyNixPath = false;
 
   # Load configuration that is shared across systems
-  environment.systemPackages = with pkgs; [] ++ (import ../../modules/shared/packages.nix { inherit pkgs; });
+  environment.systemPackages = with pkgs; [ ] ++ (import ../../modules/shared/packages.nix { inherit pkgs; });
 
   # Enable fonts dir
   fonts = {
-    packages = [ (pkgs.nerdfonts.override { fonts = ["JetBrainsMono"]; }) ];
+    packages = [ (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
   };
 
   system = {

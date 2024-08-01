@@ -14,7 +14,7 @@ buildGoModule rec {
   };
 
   vendorHash = "sha256-VzY7m5HIsqH3GkHw1YFFL/zAOyR6Hq9MgxlIilU83FM=";
-  ldFlags="-w -s -X github.com/temporalio/cli/headers.Version=${version}";
+  ldFlags = "-w -s -X github.com/temporalio/cli/headers.Version=${version}";
   subPackages = [ "cmd/temporal" ];
 
   meta = with stdenv.lib; {
