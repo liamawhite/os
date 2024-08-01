@@ -32,6 +32,9 @@ in
     # $ mas search <app name>
     masApps = {
       "Amazon Kindle" = 302584613;
+      "Logic Pro" = 634148309;
+      "NordVPN: VPN Fast & Secure" = 905953485;
+      "Tailscale" = 1475387142;
     };
   };
 
