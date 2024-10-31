@@ -7,7 +7,6 @@ let user = "liam"; in
     ../../modules/darwin/home-manager.nix
     ../../modules/darwin/homebrew
     ../../modules/shared
-    ../../modules/shared/cachix
   ];
 
   # Auto upgrade nix package and the daemon service.

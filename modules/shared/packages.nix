@@ -50,7 +50,7 @@ with pkgs; [
 
   # Encryption and security tools
   # The 1password gui can't be installed here as it needs to be ran from /Applications
-  _1password
+  _1password-cli
   tailscale
 
   # Cloud-related tools and SDKs
@@ -102,7 +102,6 @@ with pkgs; [
   # Local ones that weren't in nixpkgs
   (import ../../packages/gow.nix { inherit pkgs; })
   (import ../../packages/licenser.nix { inherit pkgs; })
-  (import ../../packages/nt.nix { inherit pkgs; })
   (import ../../packages/rapture.nix { inherit pkgs; })
   (import ../../packages/temporal.nix { inherit pkgs; })
   (import ../../packages/vaulted.nix { inherit pkgs; })

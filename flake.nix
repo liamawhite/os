@@ -49,7 +49,7 @@
           export EMAIL=${email}
           PATH=${nixpkgs.legacyPackages.${system}.git}/bin:$PATH
           echo "Running ${scriptName} for ${system}"
-          exec ${self}/apps/${system}/${scriptName}
+          exec ${self}/scripts/${system}/${scriptName}
         '')}/bin/${scriptName}";
       };
       mkDarwinApps = system: {
