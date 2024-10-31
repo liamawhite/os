@@ -4,7 +4,7 @@ with pkgs;
 # https://nixos.org/manual/nixpkgs/stable/#sec-language-go
 buildGoModule rec {
   pname = "temporal";
-  version = "0.10.7";
+  version = "1.1.1";
 
   src = fetchFromGitHub {
     owner = "temporalio";
