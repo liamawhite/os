@@ -11,6 +11,7 @@ _:
   "google-chrome"
   "obs"
   "vivaldi"
+  "vlc"
 
   # Security
   # 1password gui is available in nixpkgs but it has to be ran from /Applications
