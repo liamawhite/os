@@ -6,7 +6,6 @@ attach: false
 windows:
   - terminal:
       layout: main-vertical
-  - spotify: spotify_player
   - notes:
       root: ~/notes
       panes: 

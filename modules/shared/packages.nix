@@ -4,7 +4,6 @@ with pkgs; [
   # Consumer Applications
   slack
   spotify
-  spotify-player
   obsidian
   discord
   ookla-speedtest
@@ -46,7 +45,7 @@ with pkgs; [
   vscode-langservers-extracted # markdown html css json eslin (not all are used)
   yarn-berry
   yaml-language-server
-  jdk22 # latest LTS
+  jdk23 # latest LTS
 
   # Encryption and security tools
   # The 1password gui can't be installed here as it needs to be ran from /Applications
