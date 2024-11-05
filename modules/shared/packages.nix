@@ -49,7 +49,7 @@ with pkgs; [
 
   # Encryption and security tools
   # The 1password gui can't be installed here as it needs to be ran from /Applications
-  _1password
+  _1password-cli
   tailscale
 
   # Cloud-related tools and SDKs
@@ -57,8 +57,8 @@ with pkgs; [
   azure-cli
   awscli2
   cmctl
-  docker
-  docker-compose
+  # docker needs to be installed on linux only as it's included in the docker-desktop on mac
+  # docker-compose
   google-cloud-sdk
   kubectl
   k9s

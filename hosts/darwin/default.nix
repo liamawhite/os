@@ -5,7 +5,6 @@ let user = "liam"; in
 
   imports = [
     ../../modules/darwin/home-manager.nix
-    ../../modules/darwin/homebrew
     ../../modules/shared
   ];
 
