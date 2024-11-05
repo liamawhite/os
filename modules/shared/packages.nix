@@ -99,6 +99,7 @@ with pkgs; [
   fd
 
   # Local ones that weren't in nixpkgs
+  (import ../../packages/crd2pulumi.nix { inherit pkgs; })
   (import ../../packages/gow.nix { inherit pkgs; })
   (import ../../packages/licenser.nix { inherit pkgs; })
   (import ../../packages/rapture.nix { inherit pkgs; })

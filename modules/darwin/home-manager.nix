@@ -43,7 +43,6 @@ in
     # Pulumi was misbehaving with nixpkgs, so I'm using homebrew for it
     brews = [
       "pulumi/homebrew-tap/pulumi"
-      "pulumi/homebrew-tap/crd2pulumi"
       "pulumi/homebrew-tap/esc"
       "dagger/homebrew-tap/dagger"
     ];
