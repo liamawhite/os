@@ -110,6 +110,9 @@ in
       alias spt=spotify_player
       alias k=kubectl
       alias i=istioctl
+
+      # Record the terminal session
+      record
     '';
   };
 

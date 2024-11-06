@@ -95,8 +95,11 @@ with pkgs; [
   zoxide
 
   # Media-related packages
+  asciinema
   ffmpeg
   fd
+  ttyd
+  vhs
 
   # Local ones that weren't in nixpkgs
   (import ../../packages/crd2pulumi.nix { inherit pkgs; })
