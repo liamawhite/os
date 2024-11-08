@@ -111,8 +111,6 @@ in
       alias k=kubectl
       alias i=istioctl
 
-      # Record the terminal session
-      record
     '';
   };
 

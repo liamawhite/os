@@ -27,5 +27,5 @@ time=$(date +"%H-%M-%S")
 mkdir -p "${dir}"
 
 # Start the recording
-asciinema rec --idle-time-limit=1 --quiet "${dir}/${date}_${time}.cast"
+asciinema rec --idle-time-limit=1 "${dir}/${date}_${time}.cast"
  
