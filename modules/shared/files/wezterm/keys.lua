@@ -1,17 +1,8 @@
 local wezterm = require 'wezterm'
 local session = require 'sessions'
-local workspace = require 'sessions.workspace'
+local history = require 'sessions.history'
 local act = wezterm.action
 local module = {}
-
-local function contains(array, element)
-    for _, value in ipairs(array) do
-        if value == element then
-            return true
-        end
-    end
-    return false
-end
 
 function module.apply_to_config(config)
     local keys = {}
@@ -42,6 +33,7 @@ function module.apply_to_config(config)
                                     act.SwitchToWorkspace { name = label, spawn = { label = label, cwd = id } },
                                     inner_pane
                                 )
+                                history.handle_jump(label)
                             end
                         end
                     ),
@@ -56,25 +48,54 @@ function module.apply_to_config(config)
 
     })
 
+    -- Naviate back in workspace history
+    table.insert(keys, {
+        key = 'o',
+        mods = 'CMD',
+        action = wezterm.action_callback(function(window, pane)
+            local workspace = history.back()
+            if workspace then
+                wezterm.log_info('switching to workspace ' .. workspace)
+                window:perform_action(act.SwitchToWorkspace { name = workspace }, pane)
+                return
+            end
+            wezterm.log_info('we\'ve reached the beginning of the history')
+        end),
+    })
+
+    -- Naviate forward in workspace history
+    table.insert(keys, {
+        key = 'i',
+        mods = 'CMD',
+        action = wezterm.action_callback(function(window, pane)
+            local workspace = history.forward()
+            if workspace then
+                wezterm.log_info('switching to workspace ' .. workspace)
+                window:perform_action(act.SwitchToWorkspace { name = workspace }, pane)
+                return
+            end
+            wezterm.log_info('we\'ve reached the end of the history')
+        end),
+    })
+
     -- Notes
     table.insert(keys, {
         key = 'n',
         mods = 'CMD',
-        action = act.SwitchToWorkspace { name = 'notes' },
+        action = wezterm.action_callback(function(window, pane)
+            history.handle_jump('notes')
+            window:perform_action(act.SwitchToWorkspace { name = 'notes' }, pane)
+        end),
     })
     -- Task Manager
     table.insert(keys, {
         key = 'a',
         mods = 'CMD',
-        action = act.SwitchToWorkspace { name = 'task' },
+        action = wezterm.action_callback(function(window, pane)
+            history.handle_jump('tasks')
+            window:perform_action(act.SwitchToWorkspace { name = 'tasks' }, pane)
+        end),
     })
-    -- -- Remap last session to out (o)
-    -- table.insert(keys, {
-    --     key = 'o',
-    --     mods = 'CMD',
-    --     action = act.Multiple { tmux_prefix, act.SendKey { key = 'L' } },
-    -- })
-
 
     config.keys = keys
 end

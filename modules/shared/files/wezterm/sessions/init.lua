@@ -2,11 +2,12 @@
 local wezterm = require("wezterm")
 local workspace = require("sessions.workspace")
 local utils = require("sessions.utils")
+local history = require("sessions.history")
 local mux = wezterm.mux
 local manager = {}
 
 function manager.attach()
-    wezterm.on('update-status', function(window) manager.save_workspace_data(window) end)
+    -- wezterm.on('update-status', function(window) manager.save_workspace_data(window) end)
     wezterm.on('gui-startup', function(_) manager.build() end)
 end
 
@@ -14,6 +15,7 @@ function manager.build()
     workspace.setup_notes()
     workspace.setup_task()
     mux.set_active_workspace 'notes'
+    history.handle_jump('notes')
 end
 
 function manager.choices()
@@ -39,22 +41,6 @@ function manager.choices()
         ::continue::
     end
     return choices
-end
-
-function manager.encode_filename(name)
-    return string.gsub(name, '/', '___') -- replace / with ___ to avoid creating subdirectories
-end
-
-function manager.decode_filename(name)
-    return string.gsub(name, '___', '/') -- replace ___ with / to restore the original name
-end
-
-function manager.save_workspace_data(window)
-    local data = workspace.retrieve_data(window)
-    local file_path = wezterm.config_dir .. "/sessions/state/" .. manager.encode_filename(data.name) .. ".json"
-    if not utils.save_to_json_file(data, file_path) then
-        utils.display_notification("failed to save workspace data to " .. file_path)
-    end
 end
 
 return manager
