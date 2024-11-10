@@ -108,4 +108,5 @@ with pkgs; [
   (import ../../packages/rapture.nix { inherit pkgs; })
   (import ../../packages/temporal.nix { inherit pkgs; })
   (import ../../packages/vaulted.nix { inherit pkgs; })
+  (import ../../packages/zsh-autosuggestions.nix { inherit pkgs; })
 ]

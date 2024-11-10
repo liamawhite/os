@@ -1,0 +1,108 @@
+#! /bin/sh
+
+wt_usage() {
+    echo "Usage: wt <command> [args]"
+    echo "Commands:"
+    echo "  setup <user|org>/<repo> <base-branch?main>"
+    echo "  add <worktree-name> <base-branch?main>"
+    echo "  rm <worktree-name>"
+}
+
+setup_worktree_repo() {
+    repo=$2
+    branch=$3
+
+    # Validate inputs
+    # repo should be in format of <user>/<repo>
+    case "$repo" in
+        */*) ;;
+        *) wt_usage ;;
+    esac
+
+    # if branch is not provided, default to main
+    if [ -z "$branch" ]; then
+        echo "Base branch not provided, defaulting to main"
+        branch="main"
+    fi
+
+    baserepo=$(echo "$repo" | cut -d'/' -f2)
+    org=$(echo "$repo" | cut -d'/' -f1)
+
+    echo "Ensuring fork of $repo exists"
+    gh repo fork "$repo"
+
+    echo "Cloning forked $baserepo repository and hiding .git internals"
+    mkdir -p "$baserepo"
+    cd "$baserepo" || return 1
+    git clone --bare "https://github.com/liamawhite/$baserepo.git" ".bare"
+    echo "gitdir: $(pwd)/.bare" > .git
+
+    echo "Adding upstream remote"
+    git remote add upstream "https://github.com/$org/$baserepo.git"
+
+    echo "Creating worktree for base branch $branch"
+    git worktree add "$branch"
+
+    echo "Ensuring $branch branch is up to date with upstream"
+    cd "$branch" || return 1
+    git pull upstream "$branch"
+    git push -f origin "$branch"
+    cd ..
+
+    echo "Creating worktree for a review branch"
+    git worktree add "review" --force
+}
+
+add_worktree() {
+    branch=$2
+    base=$3
+
+    # Validate inputs
+    # Worktree is required
+    if [ -z "$branch" ]; then
+        wt_usage
+        return 1
+    fi
+
+    # if base is not provided, default to main
+    if [ -z "$base" ]; then
+        echo "Base branch not provided, defaulting to main"
+        base="main"
+    fi
+
+    echo "Creating worktree and branch: $branch"
+    git worktree add -b "$branch" "$branch"
+    cd "$branch" || return 1
+}
+
+remove_worktree() {
+    branch=$2
+
+    # Validate inputs
+    # Worktree is required
+    if [ -z "$branch" ]; then
+        wt_usage
+        return 1
+    fi
+
+    echo "Removing worktree and branch: $branch"
+    git worktree remove "$branch"
+}
+
+if [ "$1" = "setup" ]; then
+    setup_worktree_repo "$@"
+    return 0
+fi
+
+if [ "$1" = "add" ]; then
+    add_worktree "$@"
+    return 0
+fi
+
+if [ "$1" = "rm" ]; then
+    remove_worktree "$@"
+    return 0
+fi
+
+usage
+

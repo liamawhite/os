@@ -6,6 +6,10 @@ attach: false
 windows:
   - terminal:
       layout: main-vertical
+  - task:
+      root: ~/notes
+      panes:
+        - 'task'
   - notes:
       root: ~/notes
       panes: 
