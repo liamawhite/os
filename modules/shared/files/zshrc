@@ -1,15 +1,13 @@
 
-if [[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
-    . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
-    . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
-fi
-
-# Add our bins/helpers to the path
-if [[ ! "$PATH" == $HOME/bin/* ]]; then
-    export PATH="$PATH:$HOME/bin"
-fi
-
 export EDITOR=nvim
+export HISTIGNORE="pwd:ls:cd" # Remove history data we don't want to see
+
+# Plugins
+source ~/.zsh/init.sh
+source ~/.zsh/zsh-autosuggestions.zsh
+for FILE in $(find ~/.zsh -not -name "init.sh" -name "*.sh"); do
+  source $FILE
+done
 
 # # Turn off MacOS intercepting Ctrl + Left/Right.
 # # see https://superuser.com/a/1522945
@@ -17,66 +15,11 @@ export EDITOR=nvim
 # # bindkey '^[[1;5D' backward-word
 # # bindkey '^[[1;5C' forward-word
 
-# Add homebrew to the path
-export PATH="/opt/homebrew/bin:$PATH"
-
-export PATH="$(go env GOPATH)/bin:$PATH"
-
-eval "$(ssh-agent -s)" > /dev/null
-
-# # zoxide
-# # see https://github.com/ajeetdsouza/zoxide/issues/633
-# # function z () {
-# #   __zoxide_z "$@"
-# # }
-# # eval "$(zoxide init zsh --no-cmd)"
-# # alias cd=z
-
-# Starship
-eval "$(starship init zsh)"
-
-# FZF
-if [ -n "$(fzf-share)" ]; then
-source "$(fzf-share)/key-bindings.zsh"
-source "$(fzf-share)/completion.zsh"
-fi
-export FZF_DEFAULT_OPTS=" \
---color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
---color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
---color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
-
-# ZSH Autosuggestions
-source ~/.zsh/zsh-autosuggestions.zsh
-
-# Fuzzy rapture has to be an alias otherwise it doesn't work
-alias rap='rapture assume $(rapture role ls | cut -f 2 -d " " | fzf)'
-eval "$( command rapture shell-init )"
-
-# Source the Pulumi Access Token if it exists
-. pulumi_access_token
-
-# Remove history data we don't want to see
-export HISTIGNORE="pwd:ls:cd"
-
-# # nix shortcuts
-# shell() {
-#     nix-shell '<nixpkgs>' -A "$1"
-# }
-
-# Notedown TUIs
-export NOTEDOWN_DIR=$HOME/notes
-
 alias diff=difft
 alias nv='nvim .'
 alias cht='cht\.sh'
 alias ls=eza
-alias cobra=cobra-cli
 alias du=dust
 alias cat=bat
-alias spotify=spotify_player
-alias spt=spotify_player
 alias k=kubectl
 alias i=istioctl
-alias t=task
-alias wt='source worktree' # source it so it can change the current shell
-alias wts='source wt switch'

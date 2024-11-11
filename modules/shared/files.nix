@@ -15,5 +15,6 @@ in
   "${xdg_home}/.tmux" = { source = ./files/tmux; recursive = true; executable = true; };
   "${xdg_home}/.ssh" = { source = ./files/ssh; recursive = true; };
   "${xdg_home}/.zshrc" = { source = ./files/zshrc; };
+  "${xdg_home}/.zsh" = { source = ./files/zsh; recursive = true; executable = true; };
   "${xdg_home}/.zsh/zsh-autosuggestions.zsh" = { source = "${zsh-autosuggestions}/zsh/zsh-autosuggestions.zsh"; };
 }
