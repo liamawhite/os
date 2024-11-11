@@ -27,8 +27,8 @@ function tabs.formatted_title(tab, tabs_info, _, config, _, _)
         index = " "     -- no index for active tab
     end
 
-    local edge_left = "█"
-    local edge_right = ""
+    local edge_left = "█"
+    local edge_right = ""
 
     if tab.tab_index == 0 then
         edge_left = "██"

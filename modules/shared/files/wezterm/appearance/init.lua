@@ -33,7 +33,7 @@ function module.apply_to_config(config)
     }
 
     wezterm.on('format-tab-title', tabs.formatted_title)
-    wezterm.on('update-right-status', status.update)
+    wezterm.on('update-status', status.update)
 end
 
 return module

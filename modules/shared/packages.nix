@@ -33,6 +33,7 @@ with pkgs; [
   gotools
   cobra-cli
   lua-language-server
+  luarocks
   nodejs_20 # latest LTS
   rustc
   cargo
