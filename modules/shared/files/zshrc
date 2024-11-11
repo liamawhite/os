@@ -9,6 +9,7 @@ if [[ ! "$PATH" == $HOME/bin/* ]]; then
     export PATH="$PATH:$HOME/bin"
 fi
 
+export EDITOR=nvim
 
 # # Turn off MacOS intercepting Ctrl + Left/Right.
 # # see https://superuser.com/a/1522945
@@ -22,9 +23,6 @@ export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$(go env GOPATH)/bin:$PATH"
 
 eval "$(ssh-agent -s)" > /dev/null
-
-# # tmuxinator
-# export TMUXINATOR_CONFIG=$HOME/.tmux/projects
 
 # # zoxide
 # # see https://github.com/ajeetdsouza/zoxide/issues/633
@@ -81,3 +79,4 @@ alias k=kubectl
 alias i=istioctl
 alias t=task
 alias wt='source worktree' # source it so it can change the current shell
+alias wts='source wt switch'

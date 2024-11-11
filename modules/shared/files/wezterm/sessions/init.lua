@@ -23,7 +23,7 @@ function manager.choices()
 
     -- Github directories
     local github_dir = wezterm.home_dir .. '/github.com'
-    local github_dirs = utils.find(github_dir, 'd', 2, 3)
+    local github_dirs = utils.find(github_dir, 'd', 2, 2)
     if not github_dirs then
         utils.display_notification("no github directories found in " .. github_dir)
         return choices

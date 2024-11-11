@@ -6,6 +6,7 @@ wt_usage() {
     echo "  setup <user|org>/<repo> <base-branch?main>"
     echo "  add <worktree-name> <base-branch?main>"
     echo "  rm <worktree-name>"
+    echo "  switch (alias: sw)"
 }
 
 setup_worktree_repo() {
@@ -89,6 +90,32 @@ remove_worktree() {
     git worktree remove "$branch"
 }
 
+switch_worktree() {
+    # We have three possible states:
+    # 1. In the base directory of a git repo
+    # 2. In a git repo within a worktree
+    # 3. Not in a git repo
+    
+    if [ -d ".bare" ]; then
+        git_root=$(pwd)
+    elif git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+        git_root=$(dirname "$(git rev-parse --show-toplevel)")
+    else
+        echo "must be in a git repository to switch worktrees"
+        return 1
+    fi
+
+    worktree_dirs=$(find "$git_root" -mindepth 1 -maxdepth 1 -type d -not -name ".git" -not -name ".bare")
+    selected_worktree=$(echo "$worktree_dirs" | fzf)
+
+    if [ -z "$selected_worktree" ]; then
+        echo "no worktree selected, staying where we are"
+        return 0
+    fi
+
+    cd "$selected_worktree" || return 1
+}
+
 if [ "$1" = "setup" ]; then
     setup_worktree_repo "$@"
     return 0
@@ -101,6 +128,11 @@ fi
 
 if [ "$1" = "rm" ]; then
     remove_worktree "$@"
+    return 0
+fi
+
+if [ "$1" = "switch" ] || [ "$1" = "sw" ]; then
+    switch_worktree
     return 0
 fi
 
