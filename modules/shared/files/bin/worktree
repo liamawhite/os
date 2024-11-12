@@ -10,6 +10,7 @@ fi
 # If we've found the git root search for worktree_dirs
 if [ -n "$git_root" ]; then
     worktree_dirs=$(find "$git_root" -mindepth 1 -maxdepth 1 -type d -not -name ".git" -not -name ".bare")
+    filtered_worktrees=$(echo "$worktree_dirs" | grep -v "main" | grep -v "master" | grep -v "review")
 fi
 
 wt_usage() {
@@ -95,7 +96,6 @@ remove_worktree() {
         return 1
     fi
 
-    filtered_worktrees=$(echo "$worktree_dirs" | grep -v "main" | grep -v "review")
     selected_worktree=$(echo "$filtered_worktrees" | fzf)
 
     if [ -z "$selected_worktree" ]; then
@@ -104,7 +104,7 @@ remove_worktree() {
     fi
     
     echo "Removing worktree: $selected_worktree"
-    git worktree remove "$selected_worktree"
+    git worktree remove "$selected_worktree" --force
 }
 
 clear_worktrees() {
@@ -113,12 +113,11 @@ clear_worktrees() {
         return 1
     fi
 
-    echo "Removing all worktrees except main and review"
-    filtered_worktrees=$(echo "$worktree_dirs" | grep -v "main" | grep -v "review")
+    echo "Removing all worktrees except main/master and review"
     echo "$filtered_worktrees" | while IFS= read -r dir; do
         worktree=$(basename "$dir")
         echo "Removing worktree: $worktree"
-        git worktree remove "$worktree"
+        git worktree remove "$worktree" --force
     done
 }
 
