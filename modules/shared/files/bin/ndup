@@ -1,0 +1,6 @@
+#! /bin/bash
+
+pushd ~/github.com/notedownorg/task/main || exit 1
+git pull upstream main
+make install
+popd || exit 1
