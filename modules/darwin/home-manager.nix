@@ -26,12 +26,15 @@ in
   homebrew = {
     enable = true;
     onActivation = {
-      # Uninstalls all formulae not listed in the generated Brewfile, and if the
-      # formula is a cask, removes all files associated with that cask
-      cleanup = "zap";
+      # Automatically update Homebrew and all formulae
+      autoUpdate = true;
 
       # Automatically upgrade outdated formulae and Mac App Store apps
       upgrade = true;
+
+      # Uninstalls all formulae not listed in the generated Brewfile, and if the
+      # formula is a cask, removes all files associated with that cask
+      cleanup = "zap";
     };
 
     taps = [

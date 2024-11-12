@@ -1,3 +1,3 @@
 #! /bin/sh
 
-eval "$(starship init zsh)"
+export PATH="/opt/homebrew/bin:$PATH"
