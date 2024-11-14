@@ -1,7 +1,7 @@
-{ pkgs }:
+{ pkgs, licenser, system }:
 
 with pkgs;
-let shared-packages = import ../shared/packages.nix { inherit pkgs; }; in
+let shared-packages = import ../shared/packages/all.nix { inherit pkgs licenser system; }; in
 shared-packages ++ [
   raycast
   stats

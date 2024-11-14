@@ -1,4 +1,4 @@
-{ config, pkgs, lib, home-manager, ... }:
+{ config, pkgs, system, lib, licenser, home-manager, mac-app-util, ... }:
 
 let
   user = "liam";
@@ -13,15 +13,6 @@ in
     shell = pkgs.zsh;
   };
 
-  # Bootstrap machine with homebrew and xcode-select
-  system.activationScripts.preUserActivation.text = ''
-    if ! xcode-select --version 2>/dev/null; then
-      xcode-select --install
-    fi
-    if ! /opt/homebrew/bin/brew --version 2>/dev/null; then
-      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    fi
-  '';
 
   homebrew = {
     enable = true;
@@ -83,10 +74,11 @@ in
 
   home-manager = {
     useGlobalPkgs = true;
+    sharedModules = [ mac-app-util.homeManagerModules.default ];
     users.${user} = { pkgs, config, lib, ... }: {
       home = {
         enableNixpkgsReleaseCheck = false;
-        packages = pkgs.callPackage ./packages.nix { };
+        packages = import ./packages.nix { inherit pkgs licenser system; };
         file = lib.mkMerge [
           additionalFiles
           sharedFiles

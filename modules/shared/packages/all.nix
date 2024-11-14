@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, licenser, system }:
 
 with pkgs; [
   # Consumer Applications
@@ -14,6 +14,7 @@ with pkgs; [
   coreutils
   buf
   gh
+  licenser.packages.${system}.default
   neofetch
   neovim
   protoc-gen-connect-go
@@ -103,11 +104,11 @@ with pkgs; [
   vhs
 
   # Local ones that weren't in nixpkgs
-  (import ../../packages/crd2pulumi.nix { inherit pkgs; })
-  (import ../../packages/gow.nix { inherit pkgs; })
-  (import ../../packages/licenser.nix { inherit pkgs; })
-  (import ../../packages/rapture.nix { inherit pkgs; })
-  (import ../../packages/temporal.nix { inherit pkgs; })
-  (import ../../packages/vaulted.nix { inherit pkgs; })
-  (import ../../packages/zsh-autosuggestions.nix { inherit pkgs; })
+  (import ./crd2pulumi.nix { inherit pkgs; })
+  (import ./gow.nix { inherit pkgs; })
+  # (import ../../packages/licenser.nix { inherit pkgs; })
+  (import ./rapture.nix { inherit pkgs; })
+  (import ./temporal.nix { inherit pkgs; })
+  (import ./vaulted.nix { inherit pkgs; })
+  (import ./zsh-autosuggestions.nix { inherit pkgs; })
 ]

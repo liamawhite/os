@@ -5,7 +5,7 @@ let
   xdg_configHome = "${config.users.users.${user}.home}/.config";
   xdg_dataHome   = "${config.users.users.${user}.home}/.local/share";
   xdg_stateHome  = "${config.users.users.${user}.home}/.local/state";
-  zsh-autosuggestions = pkgs.callPackage ./../../packages/zsh-autosuggestions.nix {};
+  zsh-autosuggestions = pkgs.callPackage ./packages/zsh-autosuggestions.nix {};
 in
 {
   "${xdg_configHome}/starship.toml".source = ./files/starship.toml;

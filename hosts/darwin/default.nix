@@ -1,6 +1,8 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, system, mac-app-util, licenser, ... }:
 
-let user = "liam"; in
+let
+  user = "liam";
+in
 {
 
   imports = [
@@ -29,88 +31,9 @@ let user = "liam"; in
     '';
   };
 
-  # Turn off NIX_PATH warnings now that we're using flakes
-  system.checks.verifyNixPath = false;
-
-  # Load configuration that is shared across systems
-  environment.systemPackages = with pkgs; [ ] ++ (import ../../modules/shared/packages.nix { inherit pkgs; });
-
-  # Enable fonts dir
   fonts = {
     packages = [ (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
   };
 
-  system = {
-    stateVersion = 4;
-
-    defaults = {
-      NSGlobalDomain = {
-        ApplePressAndHoldEnabled = false;
-        "com.apple.swipescrolldirection" = true;
-
-        # 120, 90, 60, 30, 12, 6, 2
-        KeyRepeat = 2;
-
-        # 120, 94, 68, 35, 25, 15
-        InitialKeyRepeat = 15;
-
-        "com.apple.mouse.tapBehavior" = 1;
-        "com.apple.sound.beep.volume" = 0.0;
-        "com.apple.sound.beep.feedback" = 0;
-      };
-
-      dock = {
-        autohide = true;
-        autohide-delay = 0.0;
-        autohide-time-modifier = 10.0;
-        show-recents = false;
-        launchanim = false;
-        orientation = "bottom";
-        tilesize = 48;
-        mru-spaces = false;
-      };
-
-      finder = {
-        AppleShowAllExtensions = true;
-        _FXShowPosixPathInTitle = false;
-      };
-
-      trackpad = {
-        Clicking = true;
-        TrackpadThreeFingerDrag = true;
-      };
-
-      CustomUserPreferences = {
-        "com.apple.finder" = {
-          ShowExternalHardDrivesOnDesktop = true;
-          ShowHardDrivesOnDesktop = true;
-          ShowMountedServersOnDesktop = true;
-          ShowRemovableMediaOnDesktop = true;
-          _FXSortFoldersFirst = true;
-          # When performing a search, search the current folder by default
-          FXDefaultSearchScope = "SCcf";
-        };
-        # Avoid creating .DS_Store files on network or USB volumes
-        "com.apple.desktopservices" = {
-          DSDontWriteNetworkStores = true;
-          DSDontWriteUSBStores = true;
-        };
-        "com.apple.screensaver" = {
-          # Require password immediately after sleep or screen saver begins
-          askForPassword = 1;
-          askForPasswordDelay = 0;
-        };
-      };
-    };
-
-    keyboard = {
-      enableKeyMapping = true;
-      remapCapsLockToControl = true;
-    };
-
-    # Following line should allow us to avoid a logout/login cycle
-    activationScripts.postUserActivation.text = ''
-      /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
-    '';
-  };
+  system = import ./system.nix;
 }

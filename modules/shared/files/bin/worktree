@@ -7,9 +7,11 @@ elif git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
     git_root=$(dirname "$(git rev-parse --show-toplevel)")
 fi
 
-# If we've found the git root search for worktree_dirs
+# If we've found the git root set worktree dirs and new-worktree.sh
 if [ -n "$git_root" ]; then
-    worktree_dirs=$(find "$git_root" -mindepth 1 -maxdepth 1 -type d -not -name ".git" -not -name ".bare")
+    worktree_dirs=$(find "$git_root" -mindepth 1 -maxdepth 1 -type d -not -name ".git" -not -name ".bare" -not -name ".hooks")
+    worktree_hooks="$git_root/.hooks"
+    worktree_hooks_post_add="$worktree_hooks/post-add.sh"
     filtered_worktrees=$(echo "$worktree_dirs" | grep -v "main" | grep -v "master" | grep -v "review")
 fi
 
@@ -55,6 +57,13 @@ setup_worktree_repo() {
     echo "Adding upstream remote"
     git remote add upstream "https://github.com/$org/$baserepo.git"
 
+    echo "Creating worktree hooks"
+    worktree_hooks="$(pwd)/.hooks"
+    worktree_hooks_post_add="$worktree_hooks/post-add.sh"
+    mkdir -p "$worktree_hooks"
+    printf "#!/bin/sh\n\n# Anything here will be ran in the root of a newly created worktree\ngit pull upstream $branch" > "$worktree_hooks_post_add"
+    chmod +x "$worktree_hooks_post_add"
+
     echo "Creating worktree for base branch $branch"
     git worktree add "$branch"
 
@@ -85,9 +94,13 @@ add_worktree() {
         base="main"
     fi
 
+    cd "$git_root" || return 1
+
     echo "Creating worktree and branch: $branch"
     git worktree add -b "$branch" "$branch"
+
     cd "$branch" || return 1
+    . "../.hooks/post-add.sh"
 }
 
 remove_worktree() {
@@ -105,6 +118,7 @@ remove_worktree() {
     
     echo "Removing worktree: $selected_worktree"
     git worktree remove "$selected_worktree" --force
+    git branch -D "$selected_worktree"
 }
 
 clear_worktrees() {
@@ -113,11 +127,14 @@ clear_worktrees() {
         return 1
     fi
 
+    cd "$git_root" || return 1
+
     echo "Removing all worktrees except main/master and review"
     echo "$filtered_worktrees" | while IFS= read -r dir; do
         worktree=$(basename "$dir")
         echo "Removing worktree: $worktree"
         git worktree remove "$worktree" --force
+        git branch -D "$worktree"
     done
 }
 

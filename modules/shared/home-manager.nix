@@ -142,13 +142,4 @@ in
       let g:airline_powerline_fonts = 1
     '';
   };
-
-  tmux = {
-    enable = true;
-    plugins = with pkgs.tmuxPlugins; [
-      {
-        plugin = cpu;
-      }
-    ];
-  };
 }
