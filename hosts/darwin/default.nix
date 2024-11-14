@@ -1,4 +1,4 @@
-{ pkgs, system, mac-app-util, licenser, ... }:
+{ pkgs, ... }:
 
 let
   user = "liam";

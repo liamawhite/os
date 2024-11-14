@@ -1,4 +1,4 @@
-{ pkgs, licenser, system }:
+{ pkgs }:
 
 with pkgs; [
   # Consumer Applications
@@ -14,7 +14,7 @@ with pkgs; [
   coreutils
   buf
   gh
-  licenser.packages.${system}.default
+  licenser
   neofetch
   neovim
   protoc-gen-connect-go

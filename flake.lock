@@ -118,17 +118,16 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1731581438,
-        "narHash": "sha256-RH0Y49lDCPoC0v+5Dw5IpiImffY9OsM2nHxr0aUQTRc=",
+        "lastModified": 1731590293,
+        "narHash": "sha256-pRFul1BMH+e6ZGJ1phBRx1IMDHixdvbWB2Cfh6ZbXLw=",
         "owner": "liamawhite",
         "repo": "licenser",
-        "rev": "bdf2c1beeaf09aae9f27b9d680b5b6aa22e4f1a0",
+        "rev": "11f6a355e1205c18630d15b3dcf2e30237b42d6b",
         "type": "github"
       },
       "original": {
         "owner": "liamawhite",
         "repo": "licenser",
-        "rev": "bdf2c1beeaf09aae9f27b9d680b5b6aa22e4f1a0",
         "type": "github"
       }
     },

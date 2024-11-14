@@ -6,7 +6,7 @@
     darwin = { url = "github:LnL7/nix-darwin/master"; inputs.nixpkgs.follows = "nixpkgs"; };
     disko = { url = "github:nix-community/disko"; inputs.nixpkgs.follows = "nixpkgs"; };
     mac-app-util = { url = "github:hraban/mac-app-util"; inputs.nixpkgs.follows = "nixpkgs"; }; # Fixes spotlight loading
-    licenser = { url = "github:liamawhite/licenser/bdf2c1beeaf09aae9f27b9d680b5b6aa22e4f1a0"; inputs.nixpkgs.follows = "nixpkgs"; };
+    licenser = { url = "github:liamawhite/licenser"; inputs.nixpkgs.follows = "nixpkgs"; };
   };
   outputs = { self, darwin, home-manager, nixpkgs, disko, mac-app-util, licenser }@inputs:
     let
@@ -34,10 +34,11 @@
       darwinConfigurations = {
         macos = darwin.lib.darwinSystem rec {
           system = "aarch64-darwin";
-          specialArgs = inputs // { inherit system; };
+          specialArgs = inputs;
           modules = [
             mac-app-util.darwinModules.default
             home-manager.darwinModules.home-manager
+            ./overlays
             ./hosts/darwin
           ];
         };
