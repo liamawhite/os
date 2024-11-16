@@ -12,27 +12,14 @@
     let
       email = "liamawhite@gmail.com";
       darwinSystems = [ "aarch64-darwin" ];
-      linuxSystems = [ ];
-      forAllSystems = f: nixpkgs.lib.genAttrs (darwinSystems) f;
-      mkApp = scriptName: system: {
-        type = "app";
-        program = "${(nixpkgs.legacyPackages.${system}.writeScriptBin scriptName ''
-          #!/usr/bin/env bash
-          export EMAIL=${email}
-          PATH=${nixpkgs.legacyPackages.${system}.git}/bin:$PATH
-          echo "Running ${scriptName} for ${system}"
-          exec ${self}/scripts/${system}/${scriptName}
-        '')}/bin/${scriptName}";
-      };
-      mkDarwinApps = system: {
-        "build-switch" = mkApp "build-switch" system;
-      };
+      darwinApps = import ./apps/darwin.nix { inherit self nixpkgs email; };
+      # linuxSystems = [ ];
     in
     {
-      apps = nixpkgs.lib.genAttrs darwinSystems mkDarwinApps;
+      apps = nixpkgs.lib.genAttrs darwinSystems darwinApps; # // nixpkgs.lib.genAttrs linuxSystems linuxApps;
 
       darwinConfigurations = {
-        macos = darwin.lib.darwinSystem rec {
+        macos = darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           specialArgs = inputs;
           modules = [
