@@ -6,18 +6,18 @@ in
 {
 
   imports = [
-    ../../modules/darwin/home-manager.nix
+    ../../modules/darwin
     ../../modules/shared
   ];
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 
-  # Setup user, packages, programs
   nix = {
-    package = pkgs.nixVersions.latest;
+    package = pkgs.nixVersions.latest; # not macos specific
     settings.trusted-users = [ "@admin" "${user}" ];
 
+    # not macos specific
     gc = {
       user = "root";
       automatic = true;
@@ -25,7 +25,7 @@ in
       options = "--delete-older-than 30d";
     };
 
-    # Turn this on to make command line easier
+    # not macos specific
     extraOptions = ''
       experimental-features = nix-command flakes
     '';

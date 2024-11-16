@@ -1,4 +1,4 @@
-{ pkgs, licenser, system }:
+{ pkgs, system }:
 
 with pkgs;
 let shared-packages = import ../shared/packages/all.nix { inherit pkgs; }; in
