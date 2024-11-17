@@ -1,12 +1,13 @@
-{ config, pkgs, system, mac-app-util, user, email, ... }:
+{ pkgs, system, mac-app-util, user, email, ... }:
 
 let
-  file = import ./files/default.nix { inherit user config pkgs; };
+  home = "/Users/${user}";
+  root = "${home}/github.com/liamawhite/os/main";
 in
 {
   users.users.${user} = {
+    inherit home;
     name = "${user}";
-    home = "/Users/${user}";
     isHidden = false;
     shell = pkgs.zsh;
   };
@@ -18,8 +19,8 @@ in
     sharedModules = [ mac-app-util.homeManagerModules.default ];
     users.${user} = { pkgs, config, lib, ... }: {
       home = {
-        inherit file;
         enableNixpkgsReleaseCheck = false;
+        file = import ./files/default.nix { inherit user config pkgs root; };
         packages = import ./packages.nix { inherit pkgs system; };
         stateVersion = "23.11";
       };

@@ -3,8 +3,10 @@ export EDITOR=nvim
 export HISTIGNORE="pwd:ls:cd" # Remove history data we don't want to see
 
 # Plugins
+source ~/.zshplugins/zsh-autosuggestions.zsh
+
+# Load all files in the zsh directory
 source ~/.zsh/init.sh
-source ~/.zsh/zsh-autosuggestions.zsh
 for FILE in $(find ~/.zsh -not -name "init.sh" -name "*.sh"); do
   source $FILE
 done
