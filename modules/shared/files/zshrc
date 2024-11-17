@@ -7,7 +7,7 @@ source ~/.zshplugins/zsh-autosuggestions.zsh
 
 # Load all files in the zsh directory
 source ~/.zsh/init.sh
-for FILE in $(find ~/.zsh -not -name "init.sh" -name "*.sh"); do
+for FILE in $(find ~/.zsh/* -not -name "init.sh" -name "*.sh"); do
   source $FILE
 done
 

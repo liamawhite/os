@@ -121,6 +121,7 @@ return {
                         view = "notify",
                         filter = { event = "msg_showmode" },
                     },
+                    -- Hide written messages
                     {
                         filter = {
                             event = "msg_show",
@@ -129,7 +130,20 @@ return {
                         },
                         opts = { skip = true },
                     },
+                    -- Hide lsp progress messages
+                    {
+                        filter = {
+                            event = "lsp",
+                            kind = "progress",
+                            cond = function(message)
+                                local client = vim.tbl_get(message.opts, "progress", "client")
+                                return client == "lua_ls"
+                            end,
+                        },
+                        opts = { skip = true },
+                    },
                 },
+
                 presets = {
                     inc_rename = true, -- enables an input dialog for inc-rename.nvim
                 },
