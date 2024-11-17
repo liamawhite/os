@@ -1,10 +1,4 @@
 return {
-    {
-        "williamboman/mason.nvim",
-        config = function()
-            require("mason").setup()
-        end,
-    },
     { "folke/neodev.nvim" },
     {
         "neovim/nvim-lspconfig",
