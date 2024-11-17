@@ -10,6 +10,7 @@
   };
   outputs = { self, darwin, home-manager, nixpkgs, disko, mac-app-util, licenser }@inputs:
     let
+      user = "liam";
       email = "liamawhite@gmail.com";
       darwinSystems = [ "aarch64-darwin" ];
       darwinApps = import ./apps/darwin.nix { inherit self nixpkgs email; };
@@ -21,7 +22,7 @@
       darwinConfigurations = {
         macos = darwin.lib.darwinSystem {
           system = "aarch64-darwin";
-          specialArgs = inputs;
+          specialArgs = inputs // { inherit user email; };
           modules = [
             mac-app-util.darwinModules.default
             home-manager.darwinModules.home-manager

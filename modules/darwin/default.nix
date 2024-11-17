@@ -1,7 +1,6 @@
-{ config, pkgs, system, mac-app-util, ... }:
+{ config, pkgs, system, mac-app-util, user, email, ... }:
 
 let
-  user = "liam";
   file = import ./files/default.nix { inherit user config pkgs; };
 in
 {
@@ -25,8 +24,7 @@ in
         stateVersion = "23.11";
       };
 
-      # TODO: this one next!
-      programs = { } // import ../shared/home-manager.nix { inherit config pkgs lib; };
+      programs = import ./programs.nix { inherit pkgs config lib user email; };
 
       services = {
         # TODO: https://github.com/nix-community/home-manager/issues/4049

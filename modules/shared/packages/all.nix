@@ -106,7 +106,6 @@ with pkgs; [
   # Local ones that weren't in nixpkgs
   (import ./crd2pulumi.nix { inherit pkgs; })
   (import ./gow.nix { inherit pkgs; })
-  # (import ../../packages/licenser.nix { inherit pkgs; })
   (import ./rapture.nix { inherit pkgs; })
   (import ./temporal.nix { inherit pkgs; })
   (import ./vaulted.nix { inherit pkgs; })
