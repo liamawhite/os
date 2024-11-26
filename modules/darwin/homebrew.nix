@@ -16,6 +16,8 @@
     "homebrew/bundle"
     "pulumi/tap"
     "dagger/tap"
+    "nikitabobko/tap"
+    "FelixKratz/formulae"
   ];
 
   # Pulumi was misbehaving with nixpkgs, so I'm using homebrew for it
@@ -23,11 +25,13 @@
     "pulumi/homebrew-tap/pulumi"
     "pulumi/homebrew-tap/esc"
     "dagger/homebrew-tap/dagger"
+    "sketchybar"
+    "borders"
   ];
 
   casks = [
     # System Tools
-    "amethyst"
+    "nikitabobko/tap/aerospace"
     "docker" # docker for mac is required on macOS
 
     # Consumer Applications
@@ -44,6 +48,7 @@
 
     # AI
     "diffusionbee"
+    "ollama"
   ];
 
   # These app IDs are from using the mas CLI app
