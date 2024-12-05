@@ -1,9 +1,9 @@
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- Quick quit
-vim.keymap.set("n", "ZZ", ":wa <CR>") -- save all
+vim.keymap.set("n", "ZZ", ":wa <CR>")  -- save all
 vim.keymap.set("n", "ZF", ":qa! <CR>") -- quit (force)
-vim.keymap.set('n', 'ZB', ":bd<CR>") -- quit (buffer)
+vim.keymap.set('n', 'ZB', ":bd<CR>")   -- quit (buffer)
 
 -- Window Navigation
 vim.keymap.set("n", "<C-Left>", ":wincmd h<CR>")
@@ -24,4 +24,9 @@ vim.keymap.set("n", "<leader>Y", 'gg"*yG')
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
-vim.keymap.set("n", "<leader>x", ":!chmod +x %<CR>") -- Make current file executable
+-- Lua execution
+vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>") -- Source current file
+vim.keymap.set("n", "<leader>x", ":.lua<CR>")                 -- Execute current line
+vim.keymap.set("v", "<leader>x", ":lua<CR>")                  -- Execute selected lines
+
+vim.keymap.set("n", "<leader>X", ":!chmod +x %<CR>")          -- Make current file executable
