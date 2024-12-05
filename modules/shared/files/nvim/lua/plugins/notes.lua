@@ -32,6 +32,7 @@ return {
     --
     {
         dir = "/Users/liam/github.com/notelang/nl.nvim",
+        enabled = false,
     },
 }
 
