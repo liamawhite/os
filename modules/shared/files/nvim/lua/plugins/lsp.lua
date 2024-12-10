@@ -1,7 +1,22 @@
 return {
     { "folke/neodev.nvim" },
     {
+        "folke/lazydev.nvim",
+        ft = "lua", -- only load on lua files
+        opts = {
+            library = {
+                -- See the configuration section for more details
+                -- Load luvit types when the `vim.uv` word is found
+                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+            },
+        },
+    },
+    {
         "neovim/nvim-lspconfig",
+        dependencies = {
+            "folke/neodev.nvim",
+            "folke/lazydev.nvim",
+        },
         config = function()
             local lspconfig = require("lspconfig")
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -20,7 +35,7 @@ return {
                     },
                 },
             })
-            require("neodev").setup() -- force to be ran before the lua language server
+            lspconfig.pyright.setup({ capabilities = capabilities })
             lspconfig.lua_ls.setup({
                 capabilities = capabilities,
                 settings = {
@@ -28,6 +43,16 @@ return {
                         completion = { callSnippet = "Replace" },
                     },
                 },
+            })
+            lspconfig.nil_ls.setup({
+                capabilities = capabilities,
+                settings = {
+                    ['nil'] = {
+                        formatting = {
+                            command = { "nixpkgs-fmt" },
+                        },
+                    },
+                }
             })
             lspconfig.rust_analyzer.setup({ capabilities = capabilities })
             lspconfig.tailwindcss.setup({ capabilities = capabilities })
@@ -39,28 +64,21 @@ return {
                 },
             })
             lspconfig.yamlls.setup({ capabilities = capabilities })
-            lspconfig.nil_ls.setup({
-                capabilities = capabilities,
-                settings = {
-                    ['nil'] = {
-                        formatting = {
-                            command = { "nixpkgs-fmt" },
-                        },
-                    },
-                }
-            })
 
             -- Use LspAttach autocommand to only map the following keys
             -- after the language server attaches to the current buffer
             vim.api.nvim_create_autocmd('LspAttach', {
                 group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-                callback = function(ev)
+                callback = function(args)
+                    local client = vim.lsp.get_client_by_id(args.data.client_id)
+                    if not client then return end
+
                     -- Enable completion triggered by <c-x><c-o>
-                    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+                    vim.bo[args.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
                     -- Buffer local mappings.
                     -- See `:help vim.lsp.*` for documentation on any of the below functions
-                    local opts = { buffer = ev.buf }
+                    local opts = { buffer = args.buf }
                     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
                     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
                     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
@@ -78,9 +96,16 @@ return {
                         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
                     end, opts)
                     vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
-                    vim.keymap.set('n', '<leader>f', function()
-                        vim.lsp.buf.format { async = true }
-                    end, opts)
+
+                    -- Autoformat on save
+                    if client.supports_method('textDocument/formatting') then
+                        vim.api.nvim_create_autocmd('BufWritePre', {
+                            buffer = args.buf,
+                            callback = function()
+                                vim.lsp.buf.format({ buf = args.buf, id = client.id })
+                            end,
+                        })
+                    end
                 end,
             })
         end,

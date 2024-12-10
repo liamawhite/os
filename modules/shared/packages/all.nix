@@ -24,7 +24,7 @@ with pkgs; [
   vscode
   wezterm
 
-  # Languages
+  ## Languages
   nodePackages.bash-language-server
   buf-language-server
   delve
@@ -36,10 +36,18 @@ with pkgs; [
   lua-language-server
   luarocks
   nodejs_20 # latest LTS
+  nil
+  nixpkgs-fmt
+
+  python3
+  pyright
+  mypy
+  ruff
+  poetry
+  black
+  
   rustc
   cargo
-  nil
-  nixpkgs-fmt  
   rustfmt
   rust-analyzer
   tailwindcss-language-server
