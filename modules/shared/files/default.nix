@@ -5,7 +5,7 @@ let
   xdg_configHome = "${xdg_home}/.config";
   # xdg_dataHome   = "${xdg_home}/.local/share";
   # xdg_stateHome  = "${xdg_home}/.local/state";
-  zsh-autosuggestions = pkgs.callPackage ../packages/zsh-autosuggestions.nix {};
+  zsh-autosuggestions = pkgs.callPackage ../packages/zsh-autosuggestions.nix { };
 
   # Symlinks to a place in this repo so we can edit them without rebuilding the system
   useLocal = rel: config.lib.file.mkOutOfStoreSymlink "${root}/modules/shared/files/${rel}";

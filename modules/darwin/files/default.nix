@@ -12,5 +12,6 @@ let
 in
 shared //
 {
+  "${xdg_home}/bin-os".source = useLocal "bin";
   "${xdg_home}/.aerospace.toml".source = useLocal "aerospace.toml";
 }
