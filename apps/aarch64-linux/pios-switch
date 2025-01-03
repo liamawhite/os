@@ -1,0 +1,12 @@
+#!/bin/sh -e
+
+GREEN='\033[1;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
+FLAKE="pios"
+SYSTEM="homeConfigurations.$FLAKE.system"
+
+echo "${YELLOW}Starting build...${NC}"
+nix --experimental-features 'nix-command flakes' build .#$SYSTEM
+

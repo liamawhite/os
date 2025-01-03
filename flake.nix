@@ -14,12 +14,15 @@
       email = "liamawhite@gmail.com";
       darwinSystems = [ "aarch64-darwin" ];
       darwinApps = import ./apps/darwin.nix { inherit self nixpkgs email; };
-      # linuxSystems = [ ];
+      linuxSystems = [ "aarch64-linux" ];
+      linuxApps = import ./apps/linux.nix { inherit self nixpkgs email; };
     in
     {
-      apps = nixpkgs.lib.genAttrs darwinSystems darwinApps; # // nixpkgs.lib.genAttrs linuxSystems linuxApps;
+      apps = nixpkgs.lib.genAttrs darwinSystems darwinApps // nixpkgs.lib.genAttrs linuxSystems linuxApps;
 
+      # MacOS Machines
       darwinConfigurations = {
+        # All my laptops/desktops are running on ARM based Apple Silicon and are identical by design
         macos = darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           specialArgs = inputs // { inherit user email; };
@@ -28,6 +31,17 @@
             home-manager.darwinModules.home-manager
             ./overlays
             ./hosts/darwin
+          ];
+        };
+      };
+
+      # Linux Machines (non-NixOS)
+      homeConfigurations = {
+        # Its quite convuluted to get NixOS running on a Raspberry Pi 5, so I'm just using Nix to manage PiOS
+        pios = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.aarch64-linux;
+          modules = [
+            ./hosts/pios
           ];
         };
       };
