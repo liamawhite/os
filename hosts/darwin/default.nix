@@ -14,7 +14,6 @@
     package = pkgs.nixVersions.latest; # not macos specific
     settings.trusted-users = [ "@admin" "${user}" ];
 
-    # not macos specific
     gc = {
       user = "root";
       automatic = true;

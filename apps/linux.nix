@@ -4,6 +4,6 @@ let
   mk = import ./mk.nix { inherit self nixpkgs email; };
 in
 system: {
-  "macos-switch" = mk "macos-switch" system;
+  "pios-switch" = mk "pios-switch" system;
 }
 

@@ -1,5 +1,5 @@
 #! /bin/bash
 
 pushd ~/github.com/liamawhite/os/main || exit 1
-nix run .#build-switch
+nix run .#macos-switch
 popd || exit 1

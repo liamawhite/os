@@ -14,7 +14,7 @@ softwareupdate --install-rosetta
 Install nix from Determinate Systems
 
 ```sh
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --determinate
 ```
 
 First-time installations require you to move the current /etc/nix/nix.conf out of the way.
@@ -53,4 +53,28 @@ Once bootstrapped, you can just use `./switch`
 switch
 ```
 
-https://github.com/dustinlyons/nixos-config#installing
+## PiOS
+
+PiOS must be configured with username `pios`, wireless LAN access and password authenticated SSH when flashing the image.
+
+SSH into the Pi.
+
+```sh 
+ssh pios@<ip-address>
+```
+
+Install nix from Determinate Systems.
+
+```sh
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --determinate
+```
+
+Run the bootstrap script.
+
+```sh
+nix-shell -p git home-manager curl --run "curl --proto '=https' --tlsv1.2 -sSf -L https://raw.githubusercontent.com/liamawhite/os/refs/heads/main/bootstrap/pios.sh | sh -s"
+```
+
+TODO:
+- pios switch bin that pulls latest from main and switches to it
+

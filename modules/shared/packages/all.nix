@@ -24,38 +24,47 @@ with pkgs; [
   vscode
   wezterm
 
-  ## Languages
-  nodePackages.bash-language-server
-  buf-language-server
-  delve
+  # Languages
+
+  ## Golang
   go
   golangci-lint
   gopls
   gotools
+  delve
   cobra-cli
-  lua-language-server
-  luarocks
-  nodejs_20 # latest LTS
-  nil
-  nixpkgs-fmt
 
+  ## Python
   python3
   pyright
   mypy
   ruff
   poetry
   black
-  
+
+  ## Rust
   rustc
   cargo
   rustfmt
   rust-analyzer
+
+  ## JS/TS
   tailwindcss-language-server
   nodePackages.typescript-language-server
   vscode-langservers-extracted # markdown html css json eslin (not all are used)
   yarn-berry
   yaml-language-server
+
+  ## Misc
+  nodePackages.bash-language-server
+  buf-language-server
   jdk23 # latest LTS
+  lua-language-server
+  luarocks
+  nodejs_20 # latest LTS
+  nil
+  nixpkgs-fmt
+  elixir
 
   # Encryption and security tools
   # The 1password gui can't be installed here as it needs to be ran from /Applications
