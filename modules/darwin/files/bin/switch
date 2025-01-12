@@ -1,0 +1,6 @@
+#! /bin/bash
+
+# As this is running on in a desktop environment, we can assume that Syncthing is pulling in the latest changes.
+# Therefore we only need to cd into the repository at a known location and run the switch command.
+cd ~/github.com/liamawhite/os/main || exit 1
+nix run .#macos-switch

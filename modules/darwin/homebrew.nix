@@ -33,6 +33,8 @@
     # System Tools
     "nikitabobko/tap/aerospace"
     "docker" # docker for mac is required on macOS
+    "raspberry-pi-imager"
+    "balenaetcher"
 
     # Consumer Applications
     "elgato-stream-deck"

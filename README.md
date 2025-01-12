@@ -14,7 +14,7 @@ softwareupdate --install-rosetta
 Install nix from Determinate Systems
 
 ```sh
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --determinate
 ```
 
 First-time installations require you to move the current /etc/nix/nix.conf out of the way.
@@ -53,4 +53,3 @@ Once bootstrapped, you can just use `./switch`
 switch
 ```
 
-https://github.com/dustinlyons/nixos-config#installing
