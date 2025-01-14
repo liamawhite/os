@@ -28,7 +28,7 @@
   };
 
   fonts = {
-    packages = [ (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
+    packages = [ pkgs.nerd-fonts.jetbrains-mono ];
   };
 
   system = import ./system.nix;

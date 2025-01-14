@@ -33,6 +33,7 @@
     # System Tools
     "nikitabobko/tap/aerospace"
     "docker" # docker for mac is required on macOS
+    "ghostty"
     "raspberry-pi-imager"
     "balenaetcher"
 

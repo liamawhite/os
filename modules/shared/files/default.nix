@@ -17,6 +17,7 @@ in
   "${xdg_home}/.zshrc".source = useLocal "zshrc";
   "${xdg_home}/.zsh".source = useLocal "zsh";
   "${xdg_home}/bin".source = useLocal "bin";
+  "${xdg_configHome}/ghostty".source = useLocal "ghostty";
 
   "${xdg_home}/.ssh" = { source = ./ssh; recursive = true; };
   "${xdg_home}/.zshplugins/zsh-autosuggestions.zsh" = { source = "${zsh-autosuggestions}/zsh/zsh-autosuggestions.zsh"; };

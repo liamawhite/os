@@ -42,6 +42,10 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 # Also see: https://nikitabobko.github.io/AeroSpace/goodies#disable-hide-app --focus-follows-window --focus-follows-window
 automatically-unhide-macos-hidden-apps = true
 
+[workspace-to-monitor-force-assignment]
+N = 'Dell U2718Q'
+T = 'LG Ultrawide'
+
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
 run = 'layout floating'

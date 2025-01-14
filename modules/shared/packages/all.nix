@@ -14,6 +14,7 @@ with pkgs; [
   coreutils
   buf
   gh
+  # ghostty
   licenser
   neofetch
   neovim
@@ -57,7 +58,6 @@ with pkgs; [
 
   ## Misc
   nodePackages.bash-language-server
-  buf-language-server
   jdk23 # latest LTS
   lua-language-server
   luarocks
@@ -79,8 +79,7 @@ with pkgs; [
   azure-cli
   awscli2
   cmctl
-  # docker needs to be installed on linux only as it's included in the docker-desktop on mac
-  # docker-compose
+  fluxcd
   google-cloud-sdk
   kubectl
   k9s
@@ -104,7 +103,9 @@ with pkgs; [
   fzf
   gitmux
   grpcurl
+  inetutils
   lazygit
+  nmap
   openssh
   ripgrep
   starship
