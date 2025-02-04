@@ -8,4 +8,5 @@ shared-packages ++ [
   gnused # Fix macOS sed and grep
   gnugrep # Fix macOS sed and grep
   mas # Mac App Store CLI
+  asitop
 ]

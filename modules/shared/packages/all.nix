@@ -81,18 +81,20 @@ with pkgs; [
   cmctl
   fluxcd
   google-cloud-sdk
+  kubernetes-helm
   kubectl
   k9s
   istioctl
   podman
   qemu # required for podman
   terraform
-  kubernetes-helm
+  vcluster
 
   # Text and terminal utilities
   bash-completion
   bat
   bottom
+  btop
   cht-sh
   du-dust
   htop
