@@ -1,6 +1,5 @@
 
 export EDITOR=nvim
-export HISTIGNORE="pwd:ls:cd" # Remove history data we don't want to see
 
 # Plugins
 source ~/.zshplugins/zsh-autosuggestions.zsh
