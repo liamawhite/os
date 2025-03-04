@@ -12,6 +12,7 @@ with pkgs; [
   aspell
   aspellDicts.en
   coreutils
+  code-cursor
   buf
   gh
   # ghostty
@@ -38,6 +39,7 @@ with pkgs; [
   ## Python
   python3
   pyright
+  python312Packages.pip
   mypy
   ruff
   poetry
@@ -87,6 +89,7 @@ with pkgs; [
   istioctl
   podman
   qemu # required for podman
+  skopeo
   terraform
   vcluster
 
@@ -101,6 +104,7 @@ with pkgs; [
   iftop
   jq
   eza
+  fabric-ai
   flock
   fzf
   gitmux
@@ -134,3 +138,4 @@ with pkgs; [
   (import ./vaulted.nix { inherit pkgs; })
   (import ./zsh-autosuggestions.nix { inherit pkgs; })
 ]
+

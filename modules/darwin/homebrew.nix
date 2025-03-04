@@ -36,11 +36,14 @@
     "ghostty"
     "raspberry-pi-imager"
     "balenaetcher"
+    "karabiner-elements"
 
     # Consumer Applications
     "elgato-stream-deck"
+    "zen-browser"
     "firefox" # for some reason the pkg doesn't work on macOS
     "google-chrome"
+    "morgen"
     "obs"
     "vivaldi"
     "vlc"
