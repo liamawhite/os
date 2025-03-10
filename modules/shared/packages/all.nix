@@ -7,6 +7,7 @@ with pkgs; [
   obsidian
   discord
   ookla-speedtest
+  home-assistant-cli
 
   # General packages for development and system management
   aspell
