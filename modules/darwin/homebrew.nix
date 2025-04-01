@@ -13,7 +13,6 @@
   };
 
   taps = [
-    "homebrew/bundle"
     "pulumi/tap"
     "dagger/tap"
     "nikitabobko/tap"
@@ -25,7 +24,6 @@
     "pulumi/homebrew-tap/pulumi"
     "pulumi/homebrew-tap/esc"
     "dagger/homebrew-tap/dagger"
-    "sketchybar"
     "borders"
   ];
 
@@ -39,13 +37,13 @@
     "karabiner-elements"
 
     # Consumer Applications
+    "chatgpt"
     "elgato-stream-deck"
     "zen-browser"
     "firefox" # for some reason the pkg doesn't work on macOS
     "google-chrome"
     "morgen"
     "obs"
-    "vivaldi"
     "vlc"
 
     # Security
@@ -62,7 +60,6 @@
   masApps = {
     "Amazon Kindle" = 302584613;
     "Logic Pro" = 634148309;
-    "NordVPN: VPN Fast & Secure" = 905953485;
     "Tailscale" = 1475387142;
   };
 }

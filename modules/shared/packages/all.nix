@@ -104,6 +104,7 @@ with pkgs; [
   htop
   iftop
   jq
+  yq-go
   eza
   fabric-ai
   flock

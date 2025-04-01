@@ -14,27 +14,22 @@ softwareupdate --install-rosetta
 Install nix from Determinate Systems
 
 ```sh
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --determinate
-```
-
-First-time installations require you to move the current /etc/nix/nix.conf out of the way.
-
-```sh
-[ -f /etc/nix/nix.conf ] && sudo mv /etc/nix/nix.conf /etc/nix/nix.conf.before-nix-darwin
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 ```
 
 Clone this repo
 
 ```sh
-mkdir ~/.ssh
-ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-git clone https://github.com/liamawhite/os.git
+mkdir ~/.ssh && \
+    ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts && \
+    git clone https://github.com/liamawhite/os.git && \
+    cd os && rm -rf ~/.ssh/known_hosts
 ```
 
 Configure your system!
 
 ```sh
-nix --extra-experimental-features 'nix-command flakes' run .#build-switch
+nix --extra-experimental-features 'nix-command flakes' run .#macos-switch
 ```
 
 ### Additional Steps

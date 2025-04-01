@@ -7,6 +7,8 @@
     ../../modules/shared
   ];
 
+  ids.gids.nixbld = 350;
+
   nix = {
     enable = true;
     package = pkgs.nixVersions.latest; # not macos specific
