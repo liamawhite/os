@@ -22,7 +22,7 @@ return {
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
             lspconfig.bashls.setup({ capabilities = capabilities })
-            lspconfig.bufls.setup({ capabilities = capabilities })
+            lspconfig.buf_ls.setup({ capabilities = capabilities })
             lspconfig.cssls.setup({ capabilities = capabilities })
             lspconfig.gopls.setup({
                 capabilities = capabilities,
@@ -56,7 +56,7 @@ return {
             })
             lspconfig.rust_analyzer.setup({ capabilities = capabilities })
             lspconfig.tailwindcss.setup({ capabilities = capabilities })
-            lspconfig.tsserver.setup({
+            lspconfig.ts_ls.setup({
                 capabilities = capabilities,
                 init_options = {
                     hostInfo = "neovim",
