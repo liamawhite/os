@@ -39,11 +39,11 @@
     # Consumer Applications
     "chatgpt"
     "elgato-stream-deck"
-    "zen-browser"
+    "zen"
     "firefox" # for some reason the pkg doesn't work on macOS
     "google-chrome"
-    "morgen"
     "obs"
+    "steam"
     "vlc"
 
     # Security
