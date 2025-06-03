@@ -82,6 +82,7 @@ with pkgs; [
   azure-cli
   awscli2
   cmctl
+  eksctl
   fluxcd
   google-cloud-sdk
   kubernetes-helm

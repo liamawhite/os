@@ -46,6 +46,7 @@ automatically-unhide-macos-hidden-apps = true
 N = 'Dell U2718Q'  # mnemonic 
 T = 'LG Ultrawide' # mnemonic terminal
 W = 'Dell U2415'   # mnemonic watch
+I = 'LG Ultrawide' # mnemonic interrupt
 
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
