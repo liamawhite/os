@@ -1,6 +1,7 @@
 {
   checks.verifyNixPath = false; # Turn off NIX_PATH warnings now that we're using flakes
   stateVersion = 5;
+  primaryUser = "liam";
 
   defaults = {
     NSGlobalDomain = {
@@ -67,17 +68,17 @@
     remapCapsLockToControl = true;
   };
 
-  activationScripts.preUserActivation.text = ''
-    if ! xcode-select --version 2>/dev/null; then
-      xcode-select --install
-    fi
-    if ! /opt/homebrew/bin/brew --version 2>/dev/null; then
-      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    fi
-  '';
-
-  # Avoid a logout/login cycle
-  activationScripts.postUserActivation.text = ''
-    /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
-  '';
+  # activationScripts.preUserActivation.text = ''
+  #   if ! xcode-select --version 2>/dev/null; then
+  #     xcode-select --install
+  #   fi
+  #   if ! /opt/homebrew/bin/brew --version 2>/dev/null; then
+  #     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  #   fi
+  # '';
+  #
+  # # Avoid a logout/login cycle
+  # activationScripts.postUserActivation.text = ''
+  #   /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+  # '';
 }

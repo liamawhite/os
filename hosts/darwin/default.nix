@@ -7,7 +7,7 @@
     ../../modules/shared
   ];
 
-  ids.gids.nixbld = 350;
+  ids.gids.nixbld = 30000;
 
   nix = {
     enable = true;
