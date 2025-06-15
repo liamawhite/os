@@ -12,6 +12,7 @@ with pkgs; [
   # General packages for development and system management
   aspell
   aspellDicts.en
+  claude-code
   coreutils
   code-cursor
   buf
@@ -54,6 +55,7 @@ with pkgs; [
 
   ## JS/TS
   tailwindcss-language-server
+  tailwindcss_4
   nodePackages.typescript-language-server
   vscode-langservers-extracted # markdown html css json eslin (not all are used)
   yarn-berry

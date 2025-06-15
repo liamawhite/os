@@ -43,9 +43,12 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 automatically-unhide-macos-hidden-apps = true
 
 [workspace-to-monitor-force-assignment]
-N = 'Dell U2718Q'  # mnemonic 
-T = 'LG Ultrawide' # mnemonic terminal
 W = 'Dell U2415'   # mnemonic watch
+
+N = 'Dell U2718Q'  # mnemonic 
+
+C = 'LG Ultrawide' # mnemonic code
+T = 'LG Ultrawide' # mnemonic terminal
 I = 'LG Ultrawide' # mnemonic interrupt
 
 [[on-window-detected]]
