@@ -20,14 +20,24 @@
       apps = nixpkgs.lib.genAttrs darwinSystems darwinApps; # // nixpkgs.lib.genAttrs linuxSystems linuxApps;
 
       darwinConfigurations = {
-        macos = darwin.lib.darwinSystem {
+        macbookpro-docusign-2025 = darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           specialArgs = inputs // { inherit user email; };
           modules = [
             mac-app-util.darwinModules.default
             home-manager.darwinModules.home-manager
             ./overlays
-            ./hosts/darwin
+            ./hosts/darwin/macbookpro-docusign-2025
+          ];
+        };
+        macstudio-personal-2023 = darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          specialArgs = inputs // { inherit user email; };
+          modules = [
+            mac-app-util.darwinModules.default
+            home-manager.darwinModules.home-manager
+            ./overlays
+            ./hosts/darwin/macstudio-personal-2023
           ];
         };
       };
