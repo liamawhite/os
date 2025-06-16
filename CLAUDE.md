@@ -5,10 +5,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## System Commands
 
 ### Building and Switching Configuration
-- `switch` - Apply configuration changes (uses the shortcut script)
+- `switch` - Apply configuration changes (detects hostname automatically)
 - `nix run .#macbookpro-docusign-2025-switch` - Apply configuration for MacBook Pro
 - `nix run .#macstudio-personal-2023-switch` - Apply configuration for Mac Studio
-- `nix run .#macos-switch` - Legacy command (still available for compatibility)
 - `nix build .#darwinConfigurations.macbookpro-docusign-2025.system` - Build MacBook Pro config
 - `nix build .#darwinConfigurations.macstudio-personal-2023.system` - Build Mac Studio config
 
