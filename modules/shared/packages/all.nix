@@ -58,12 +58,14 @@ with pkgs; [
   tailwindcss_4
   nodePackages.typescript-language-server
   vscode-langservers-extracted # markdown html css json eslin (not all are used)
+  pnpm
   yarn-berry
   yaml-language-server
 
   ## Misc
   nodePackages.bash-language-server
   jdk23 # latest LTS
+  lua
   lua-language-server
   luarocks
   nodejs_20 # latest LTS

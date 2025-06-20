@@ -51,6 +51,7 @@
     "1password"
 
     # AI
+    "claude"
     "diffusionbee"
     "ollama"
   ];
