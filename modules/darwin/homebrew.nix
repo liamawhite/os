@@ -35,6 +35,7 @@
     "raspberry-pi-imager"
     "balenaetcher"
     "karabiner-elements"
+    "mouseless"
 
     # Consumer Applications
     "chatgpt"

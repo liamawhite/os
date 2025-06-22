@@ -46,6 +46,7 @@ with pkgs; [
   ruff
   poetry
   black
+  uv
 
   ## Rust
   rustc
@@ -58,6 +59,7 @@ with pkgs; [
   tailwindcss_4
   nodePackages.typescript-language-server
   vscode-langservers-extracted # markdown html css json eslin (not all are used)
+  bun
   pnpm
   yarn-berry
   yaml-language-server

@@ -42,6 +42,7 @@ return {
                     leave_dirs_open = false,            -- closes auto expanded dirs
                 },
                 hijack_netrw_behavior = "open_default", -- netrw is left enabled to support gx
+                use_libuv_file_watcher = true,          -- Auto-refresh filesystem changes
             },
         },
         keys = function()
