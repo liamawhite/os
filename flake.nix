@@ -2,13 +2,17 @@
   description = "Configuration for my personal machines";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # TODO: Remove nixpkgs-stable when nix 2.28.3 build issues are resolved on macOS
+    # See: https://github.com/NixOS/nixpkgs/pull/418720
+    # Pin nixpkgs stable for nix package to avoid 2.28.3 build issues
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     home-manager = { url = "github:nix-community/home-manager"; inputs.nixpkgs.follows = "nixpkgs"; };
     darwin = { url = "github:LnL7/nix-darwin/master"; inputs.nixpkgs.follows = "nixpkgs"; };
     disko = { url = "github:nix-community/disko"; inputs.nixpkgs.follows = "nixpkgs"; };
     mac-app-util = { url = "github:hraban/mac-app-util"; inputs.nixpkgs.follows = "nixpkgs"; }; # Fixes spotlight loading
     licenser = { url = "github:liamawhite/licenser"; inputs.nixpkgs.follows = "nixpkgs"; };
   };
-  outputs = { self, darwin, home-manager, nixpkgs, disko, mac-app-util, licenser }@inputs:
+  outputs = { self, darwin, home-manager, nixpkgs, nixpkgs-stable, disko, mac-app-util, licenser }@inputs:
     let
       user = "liam";
       email = "liamawhite@gmail.com";
