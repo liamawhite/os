@@ -60,6 +60,10 @@
         askForPassword = 1;
         askForPasswordDelay = 0;
       };
+      "com.apple.speech.recognition.AppleSpeechRecognition.prefs" = {
+        # Set dictation shortcut to double-tap Control key
+        DictationIMShortcutType = 2;
+      };
     };
   };
 

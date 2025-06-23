@@ -9,7 +9,7 @@
 
     # Uninstalls all formulae not listed in the generated Brewfile, and if the
     # formula is a cask, removes all files associated with that cask
-    cleanup = "zap";
+    # cleanup = "zap"; # TODO: re-enable this when brew doesn't keep uninstalling casks that are in the Brewfile
   };
 
   taps = [

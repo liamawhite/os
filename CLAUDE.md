@@ -53,4 +53,7 @@ This is a personal macOS system configuration using Nix Flakes, nix-darwin, and 
 - Syncthing integration for configuration sync
 - Complete development environment with language servers for Go, Python, Rust, JS/TS
 - Window management via AeroSpace
-- Terminal setup with Ghostty/WezTerm, Neovim, and Zsh
+- Terminal setup with Ghostty/WezTerm, Neovim, and Zsh# Important Instructions
+
+- NEVER run the 'switch' command or any nix rebuild commands automatically
+- The user will handle all system rebuilds manually
