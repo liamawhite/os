@@ -1,0 +1,73 @@
+# https://starship.rs/config/
+# https://www.nerdfonts.com/cheat-sheet
+
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+$os\
+$directory\
+[󰄾 ](bg:#1e1e2e fg:#cdd6f4)"""
+
+right_format = """
+"""
+
+# Disable the blank line at the start of the prompt
+add_newline = true
+
+# An alternative to the username module which displays a symbol that
+# represents the current operating system
+[os]
+format = "[ $symbol ]($style)"
+style = "fg:#585b70 bg:#1e1e2e"
+disabled = false
+
+[directory]
+style = "fg:#f5e0dc bg:#1e1e2e"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = ""
+
+[directory.substitutions]
+"Documents" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[os.symbols]
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = ""
+CentOS = ""
+Debian = ""
+DragonFly = ""
+Emscripten = ""
+EndeavourOS = ""
+Fedora = ""
+FreeBSD = ""
+Garuda = "﯑"
+Gentoo = ""
+HardenedBSD = "ﲊ"
+Illumos = ""
+Linux = ""
+Macos = ""
+Manjaro = ""
+Mariner = ""
+MidnightBSD = ""
+Mint = ""
+NetBSD = ""
+NixOS = ""
+OpenBSD = ""
+openSUSE = ""
+OracleLinux = ""
+Pop = ""
+Raspbian = ""
+Redhat = ""
+RedHatEnterprise = ""
+Redox = ""
+Solus = "ﴱ"
+SUSE = ""
+Ubuntu = ""
+Unknown = ""
+Windows = ""

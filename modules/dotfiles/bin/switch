@@ -1,0 +1,40 @@
+#! /bin/bash
+
+cd ~/github.com/liamawhite/os/main || cd ~/github.com/liamawhite/os ||  exit 1
+
+# Detect hostname and use appropriate configuration
+HOSTNAME=$(hostname -s)
+case "$HOSTNAME" in
+    "DSAF2J3Q36DQG")
+        echo "Detected MacBook Pro DocuSign 2025"
+        nix run .#macbookpro-docusign-2025-switch
+        ;;
+    "macstudio-personal-2023")
+        echo "Detected Mac Studio Personal 2023"
+        nix run .#macstudio-personal-2023-switch
+        ;;
+    *)
+        echo "Unknown hostname: $HOSTNAME"
+        echo "Available configurations:"
+        echo "  - macbookpro-docusign-2025"
+        echo "  - macstudio-personal-2023"
+        echo ""
+        echo "Usage: $0 [configuration-name]"
+        if [ -n "$1" ]; then
+            case "$1" in
+                "macbookpro-docusign-2025")
+                    nix run .#macbookpro-docusign-2025-switch
+                    ;;
+                "macstudio-personal-2023")
+                    nix run .#macstudio-personal-2023-switch
+                    ;;
+                *)
+                    echo "Invalid configuration: $1"
+                    exit 1
+                    ;;
+            esac
+        else
+            exit 1
+        fi
+        ;;
+esac
