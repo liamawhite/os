@@ -1,11 +1,10 @@
-{ user, email, ... }:
+{ user, ... }:
 
 {
   git = {
     enable = true;
     ignores = [ "*.swp" ".DS_Store" ];
     userName = user;
-    userEmail = email;
     difftastic = {
       enable = true;
       background = "dark";

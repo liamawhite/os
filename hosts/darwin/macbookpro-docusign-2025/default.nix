@@ -7,16 +7,25 @@ let
   root = "${home}/github.com/liamawhite/os";
 in
 {
+  # Host-specific configuration
+  ids. gids. nixbld = 350;
+  networking. computerName = machine;
+  networking.hostName = machine;
+
   nix = import ../nix.nix { inherit user pkgs; };
   nixpkgs = import ../nixpkgs.nix;
   fonts = import ../fonts.nix { inherit pkgs; };
   users = import ../../../modules/darwin/user.nix { inherit user pkgs; };
+
   system = lib.mkMerge [
     (import ../system.nix { inherit user; })
     {
       stateVersion = 5;
     }
   ];
+
+  programs = import ../../../modules/programs/nixdarwin/1password.nix;
+
   home-manager = import ../../../modules/darwin/home-manager.nix {
     inherit user mac-app-util root pkgs;
     stateVersion = "23.11";
@@ -27,12 +36,11 @@ in
       ++ import ../../../modules/packages/cloud.nix { inherit pkgs; }
       ++ import ../../../modules/packages/ides.nix { inherit pkgs; }
     );
+
+    programs =
+      import ../../../modules/programs/git.nix { inherit user; };
   };
 
 
-  # Host-specific configuration
-  ids.gids.nixbld = 350;
-  networking.computerName = machine;
-  networking.hostName = machine;
 }
 
