@@ -6,7 +6,9 @@
       "WebFetch(domain:github.com)",
       "Bash(nix flake metadata:*)",
       "Bash(nix log:*)",
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "Bash(ls:*)",
+      "Bash(find:*)"
     ],
     "deny": []
   }

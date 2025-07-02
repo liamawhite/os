@@ -30,8 +30,8 @@ in
     (modules /dotfiles/default.nix { inherit user pkgs root; })
 
     # GUI Applications
-    (modules /programs/aerospace/default.nix { inherit user pkgs; })
     (modules /programs/1password/darwin.nix null)
+    (modules /programs/aerospace/darwin.nix { inherit user pkgs; })
   ];
 }
 
