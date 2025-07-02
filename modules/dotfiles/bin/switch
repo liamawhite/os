@@ -1,6 +1,6 @@
 #! /bin/bash
 
-cd ~/github.com/liamawhite/os/main || cd ~/github.com/liamawhite/os ||  exit 1
+cd ~/github.com/liamawhite/os ||  exit 1
 
 # Detect hostname and use appropriate configuration
 HOSTNAME=$(hostname -s)

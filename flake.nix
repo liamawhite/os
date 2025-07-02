@@ -18,7 +18,6 @@
       email = "liamawhite@gmail.com";
       darwinSystems = [ "aarch64-darwin" ];
       darwinApps = import ./apps/darwin.nix { inherit self nixpkgs email; };
-      # linuxSystems = [ ];
     in
     {
       apps = nixpkgs.lib.genAttrs darwinSystems darwinApps; # // nixpkgs.lib.genAttrs linuxSystems linuxApps;
@@ -31,7 +30,7 @@
             mac-app-util.darwinModules.default
             home-manager.darwinModules.home-manager
             ./overlays
-            ./hosts/darwin/macbookpro-docusign-2025
+            ./hosts/darwin/macbookpro-docusign-2025.nix
           ];
         };
         macstudio-personal-2023 = darwin.lib.darwinSystem {
@@ -41,7 +40,7 @@
             mac-app-util.darwinModules.default
             home-manager.darwinModules.home-manager
             ./overlays
-            ./hosts/darwin/macstudio-personal-2023
+            ./hosts/darwin/macstudio-personal-2023.nix
           ];
         };
       };
