@@ -12,10 +12,30 @@ function manager.attach()
 end
 
 function manager.build()
-    workspace.setup_notes()
-    workspace.setup_task()
-    mux.set_active_workspace 'notes'
-    history.handle_jump('notes')
+    -- workspace.setup_notes()
+end
+
+local function add_directory_choices(choices, base_dir, label_prefix, min_depth, max_depth)
+    local dirs = utils.find(base_dir, 'd', min_depth, max_depth)
+    if not dirs then
+        return
+    end
+
+    for _, dir in ipairs(dirs) do
+        -- filter .git, .stversions and .bare subdirectories
+        if string.match(dir, '/%.git') or string.match(dir, '/%.stversions') or string.match(dir, '/%.bare') then
+            goto continue
+        end
+
+        -- trim base_dir from dir and add prefix if provided
+        local label = string.sub(dir, string.len(base_dir) + 2)
+        if label_prefix then
+            label = label_prefix .. label
+        end
+
+        table.insert(choices, { label = label, id = dir })
+        ::continue::
+    end
 end
 
 function manager.choices()
@@ -23,23 +43,12 @@ function manager.choices()
 
     -- Github directories
     local github_dir = wezterm.home_dir .. '/github.com'
-    local github_dirs = utils.find(github_dir, 'd', 2, 2)
-    if not github_dirs then
-        utils.display_notification("no github directories found in " .. github_dir)
-        return choices
-    end
-    for _, dir in ipairs(github_dirs) do
-        -- filter .git, .stversions and .bare subdirectories
-        if string.match(dir, '/%.git') or string.match(dir, '/%.stversions') or string.match(dir, '/%.bare') then
-            goto continue
-        end
+    add_directory_choices(choices, github_dir, nil, 2, 2)
 
-        -- trim github_dir from dir
-        local label = string.sub(dir, string.len(github_dir) + 2)
+    -- Notes directories
+    local notes_dir = wezterm.home_dir .. '/notes'
+    add_directory_choices(choices, notes_dir, "notes/", 1, 1)
 
-        table.insert(choices, { label = label, id = dir })
-        ::continue::
-    end
     return choices
 end
 

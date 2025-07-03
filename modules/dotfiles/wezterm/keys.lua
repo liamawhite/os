@@ -87,15 +87,6 @@ function module.apply_to_config(config)
             window:perform_action(act.SwitchToWorkspace { name = 'notes' }, pane)
         end),
     })
-    -- Task Manager
-    table.insert(keys, {
-        key = 'a',
-        mods = 'CMD',
-        action = wezterm.action_callback(function(window, pane)
-            history.handle_jump('tasks')
-            window:perform_action(act.SwitchToWorkspace { name = 'tasks' }, pane)
-        end),
-    })
 
     config.keys = keys
 end
