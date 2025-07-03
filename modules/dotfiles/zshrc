@@ -24,3 +24,4 @@ alias du=dust
 alias cat=bat
 alias k=kubectl
 alias i=istioctl
+alias nxsearch='nix search nixpkgs'

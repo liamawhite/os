@@ -18,7 +18,7 @@ fi
 wt_usage() {
     echo "Usage: wt <command> [args]"
     echo "Commands:"
-    echo "  setup <user|org>/<repo> <base-branch?main>"
+    echo "  setup [<domain>/]<user|org>/<repo> <base-branch?main>"
     echo "  add <worktree-name> <base-branch?main>"
     echo "  rm"
     echo "  switch (alias: sw)"
@@ -30,48 +30,62 @@ setup_worktree_repo() {
     branch=$3
 
     # Validate inputs
-    # repo should be in format of <user>/<repo>
-    case "$repo" in
-        */*) ;;
-        *) wt_usage ;;
-    esac
-
+    
     # if branch is not provided, default to main
     if [ -z "$branch" ]; then
         echo "Base branch not provided, defaulting to main"
         branch="main"
     fi
 
-    baserepo=$(echo "$repo" | cut -d'/' -f2)
-    org=$(echo "$repo" | cut -d'/' -f1)
 
-    echo "Ensuring fork of $repo exists"
-    gh repo fork "$repo"
+    # repo should be in format of <user|org>/<repo> or <domain>/<user|org>/<repo>
+    case "$repo" in
+        */*/*) # ghe
+            domain=$(echo "$repo" | cut -d'/' -f1)
+            baserepo=$(echo "$repo" | cut -d'/' -f3)
+            org=$(echo "$repo" | cut -d'/' -f2)
 
-    echo "Cloning forked $baserepo repository and hiding .git internals"
-    mkdir -p "$baserepo"
-    cd "$baserepo" || return 1
-    git clone --bare "https://github.com/liamawhite/$baserepo.git" ".bare"
-    echo "gitdir: $(pwd)/.bare" > .git
+            echo "Skipping fork for $domain GHE"
 
-    echo "Adding upstream remote"
-    git remote add upstream "https://github.com/$org/$baserepo.git"
+            echo "Cloning $domain/$org/$baserepo repository and hiding .git internals"
+            mkdir -p "$baserepo"
+            cd "$baserepo" || return 1
+            git clone --bare "https://$domain/$org/$baserepo.git" ".bare"
+            echo "gitdir: $(pwd)/.bare" > .git
+
+            base="origin"
+            ;;
+
+        */*) # github.com
+            baserepo=$(echo "$repo" | cut -d'/' -f2)
+            org=$(echo "$repo" | cut -d'/' -f1)
+
+            echo "Ensuring fork of $repo exists"
+            gh repo fork "$repo"
+
+            echo "Cloning forked $baserepo repository and hiding .git internals"
+            mkdir -p "$baserepo"
+            cd "$baserepo" || return 1
+            git clone --bare "https://github.com/liamawhite/$baserepo.git" ".bare"
+            echo "gitdir: $(pwd)/.bare" > .git
+
+            echo "Adding upstream remote"
+            git remote add upstream "https://github.com/$org/$baserepo.git"
+            base="upstream"
+            ;;
+
+        *) wt_usage ;;
+    esac
 
     echo "Creating worktree hooks"
     worktree_hooks="$(pwd)/.hooks"
     worktree_hooks_post_add="$worktree_hooks/post-add.sh"
     mkdir -p "$worktree_hooks"
-    printf "#!/bin/sh\n\n# Anything here will be ran in the root of a newly created worktree\ngit pull upstream $branch" > "$worktree_hooks_post_add"
+    printf "#!/bin/sh\n\n# Anything here will be ran in the root of a newly created worktree\ngit pull $base $branch" > "$worktree_hooks_post_add"
     chmod +x "$worktree_hooks_post_add"
 
     echo "Creating worktree for base branch $branch"
     git worktree add "$branch"
-
-    echo "Ensuring $branch branch is up to date with upstream"
-    cd "$branch" || return 1
-    git pull upstream "$branch"
-    git push -f origin "$branch"
-    cd ..
 
     echo "Creating worktree for a review branch"
     git worktree add "review" --force

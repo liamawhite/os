@@ -6,6 +6,7 @@
       azure-cli
       awscli2
       cmctl
+      docker-compose
       eksctl
       fluxcd
       google-cloud-sdk
@@ -16,6 +17,7 @@
       minikube
       podman
       qemu # required for podman
+      skaffold
       skopeo
       terraform
       vcluster
