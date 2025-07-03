@@ -12,6 +12,7 @@
       google-cloud-sdk
       kubernetes-helm
       kubectl
+      kubelogin
       k9s
       istioctl
       minikube

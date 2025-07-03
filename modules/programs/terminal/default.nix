@@ -22,6 +22,7 @@
       gh
       grpcurl
       inetutils
+      moreutils
       nmap
       openssh
       ripgrep

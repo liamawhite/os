@@ -49,6 +49,7 @@
 
       ## Misc
       nodePackages.bash-language-server
+      dotnet-sdk
       jdk23 # latest LTS
       lua
       lua-language-server
