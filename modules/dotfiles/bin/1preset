@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# https://support.1password.com/cs/cannot-connect-browser/
+echo "Restarting 1Password browser connectivity..."
+/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
+
+echo "Expecting\npath: /Applications/1Password.app/Contents/Library/LoginItems/1Password Browser Helper.app (0xxxxx)"
+echo $(/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -dump| grep '.*path.*1Password Browser Helper')
+

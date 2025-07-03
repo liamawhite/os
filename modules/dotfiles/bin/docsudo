@@ -1,0 +1,6 @@
+#!/bin/sh
+
+ID="5msr44atsqdbuc7lpwian74wqy"
+
+op item get ${ID} --field password --reveal | tr -d ' \t\n\r' | pbcopy
+
