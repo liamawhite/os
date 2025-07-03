@@ -19,6 +19,7 @@
       yq-go
       flock
       fzf
+      gh
       grpcurl
       inetutils
       nmap

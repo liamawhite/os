@@ -13,6 +13,7 @@
       kubectl
       k9s
       istioctl
+      minikube
       podman
       qemu # required for podman
       skopeo
@@ -21,3 +22,4 @@
     ];
   };
 }
+
