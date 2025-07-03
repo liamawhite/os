@@ -41,12 +41,12 @@ end
 function manager.choices()
     local choices = {}
 
-    -- Github directories
     local github_dir = wezterm.home_dir .. '/github.com'
-    add_directory_choices(choices, github_dir, nil, 2, 2)
-
-    -- Notes directories
+    local docusign_github_dir = wezterm.home_dir .. '/github.docusignhq.com'
     local notes_dir = wezterm.home_dir .. '/notes'
+
+    add_directory_choices(choices, github_dir, nil, 2, 2)
+    add_directory_choices(choices, docusign_github_dir, nil, 2, 2)
     add_directory_choices(choices, notes_dir, "notes/", 1, 1)
 
     return choices
