@@ -22,6 +22,7 @@ Clone this repo
 ```sh
 mkdir ~/.ssh && \
     ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts && \
+    mkdir -p ~/github.com/liamawhite && cd ~/github.com/liamawhite && \
     git clone https://github.com/liamawhite/os.git && \
     cd os && rm -rf ~/.ssh/known_hosts
 ```
@@ -29,7 +30,7 @@ mkdir ~/.ssh && \
 Configure your system!
 
 ```sh
-nix --extra-experimental-features 'nix-command flakes' run .#macos-switch
+nix --extra-experimental-features 'nix-command flakes' run .#darwinConfigurations.macbookpro-personal-2018.system
 ```
 
 ### Additional Steps
