@@ -12,7 +12,7 @@
     let
       user = "liam";
       email = "liamawhite@gmail.com";
-      darwinSystems = [ "aarch64-darwin" ];
+      darwinSystems = [ "aarch64-darwin" "x86_64-darwin" ];
       darwinApps = import ./apps/darwin.nix { inherit self nixpkgs email; };
     in
     {
@@ -37,6 +37,16 @@
             home-manager.darwinModules.home-manager
             ./overlays
             ./hosts/darwin/macstudio-personal-2023.nix
+          ];
+        };
+        macbookpro-personal-2018 = darwin.lib.darwinSystem {
+          system = "x84_64-darwin";
+          specialArgs = inputs // { inherit user email; };
+          modules = [
+            mac-app-util.darwinModules.default
+            home-manager.darwinModules.home-manager
+            ./overlays
+            ./hosts/darwin/macbookpro-personal-2018.nix
           ];
         };
       };
