@@ -8,6 +8,7 @@
     settings = {
       trusted-users = [ "@admin" "${user}" ];
       experimental-features = [ "nix-command" "flakes" ];
+      download-buffer-size = 524288000; # 500 MiB
     };
 
     gc = {
