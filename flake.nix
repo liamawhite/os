@@ -40,7 +40,7 @@
           ];
         };
         macbookpro-personal-2018 = darwin.lib.darwinSystem {
-          system = "x84_64-darwin";
+          system = "x86_64-darwin";
           specialArgs = inputs // { inherit user email; };
           modules = [
             mac-app-util.darwinModules.default
