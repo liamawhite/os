@@ -30,7 +30,8 @@ mkdir ~/.ssh && \
 Configure your system!
 
 ```sh
-nix --extra-experimental-features 'nix-command flakes' run .#darwinConfigurations.macbookpro-personal-2018.system
+nix --extra-experimental-features 'nix-command flakes' build .#darwinConfigurations.macbookpro-personal-2018.system
+sudo ./result/sw/bin/darwin-rebuild switch --flake .#macbookpro-personal-2018
 ```
 
 ### Additional Steps
