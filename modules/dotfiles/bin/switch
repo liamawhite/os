@@ -13,11 +13,16 @@ case "$HOSTNAME" in
         echo "Detected Mac Studio Personal 2023"
         nix run .#macstudio-personal-2023-switch
         ;;
+    "macbookpro-personal-2018")
+        echo "Detected MacBook Pro Personal 2018"
+        nix run .#macbookpro-personal-2023-switch
+        ;;
     *)
         echo "Unknown hostname: $HOSTNAME"
         echo "Available configurations:"
         echo "  - macbookpro-docusign-2025"
         echo "  - macstudio-personal-2023"
+        echo "  - macbookpro-personal-2018"
         echo ""
         echo "Usage: $0 [configuration-name]"
         if [ -n "$1" ]; then
@@ -27,6 +32,9 @@ case "$HOSTNAME" in
                     ;;
                 "macstudio-personal-2023")
                     nix run .#macstudio-personal-2023-switch
+                    ;;
+                "macbookpro-personal-2018")
+                    nix run .#macbookpro-personal-2023-switch
                     ;;
                 *)
                     echo "Invalid configuration: $1"
