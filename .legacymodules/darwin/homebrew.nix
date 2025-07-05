@@ -24,33 +24,21 @@
     "pulumi/homebrew-tap/pulumi"
     "pulumi/homebrew-tap/esc"
     "dagger/homebrew-tap/dagger"
-    "borders"
   ];
 
   casks = [
     # System Tools
-    "nikitabobko/tap/aerospace"
     "docker" # docker for mac is required on macOS
     "ghostty"
-    "raspberry-pi-imager"
-    "balenaetcher"
-    "karabiner-elements"
-    "mouseless"
 
     # Consumer Applications
     "chatgpt"
     "elgato-stream-deck"
-    "zen"
-    "firefox" # for some reason the pkg doesn't work on macOS
-    "google-chrome"
     "obs"
-    "steam"
     "vlc"
 
     # AI
     "claude"
-    "diffusionbee"
-    "ollama"
   ];
 
   # These app IDs are from using the mas CLI app
