@@ -33,12 +33,14 @@ in
     (modules /programs/1password/darwin.nix null)
     (modules /programs/aerospace/darwin.nix { inherit user pkgs; })
     (modules /programs/kindle/default.nix { inherit user pkgs; })
-    (modules /programs/logic-pro/default.nix { inherit user pkgs; })
     (modules /programs/obsidian/default.nix { inherit user pkgs; })
     (modules /programs/tailscale/default.nix { inherit user pkgs; })
 
     (modules /programs/browsers/chrome/default.nix { inherit user pkgs; })
     (modules /programs/browsers/zen/darwin.nix { inherit user pkgs; })
+
+    (modules /programs/logic-pro/default.nix { inherit user pkgs; })
+    (modules /programs/final-cut-pro/default.nix { inherit user pkgs; })
 
     (modules /programs/llms/default.nix { inherit user pkgs; })
   ];
