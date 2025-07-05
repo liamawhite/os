@@ -15,7 +15,7 @@ case "$HOSTNAME" in
         ;;
     "macbookpro-personal-2018")
         echo "Detected MacBook Pro Personal 2018"
-        nix run .#macbookpro-personal-2023-switch
+        nix run .#macbookpro-personal-2018-switch
         ;;
     *)
         echo "Unknown hostname: $HOSTNAME"
@@ -34,7 +34,7 @@ case "$HOSTNAME" in
                     nix run .#macstudio-personal-2023-switch
                     ;;
                 "macbookpro-personal-2018")
-                    nix run .#macbookpro-personal-2023-switch
+                    nix run .#macbookpro-personal-2018-switch
                     ;;
                 *)
                     echo "Invalid configuration: $1"
