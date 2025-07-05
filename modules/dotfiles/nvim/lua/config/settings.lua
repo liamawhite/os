@@ -13,3 +13,4 @@ vim.opt.relativenumber = true
 vim.opt.numberwidth = 4
 vim.opt.splitright = true
 vim.opt.scrolloff = 10
+vim.opt.conceallevel = 2 -- Required for obsidian.nvim UI features
