@@ -19,7 +19,6 @@ in
     (modules /darwin/settings.nix { inherit user machine; stateVersion = 5; })
     (modules /darwin/user.nix { inherit user pkgs home; })
     (modules /darwin/home-manager.nix { inherit user mac-app-util; stateVersion = "23.11"; })
-    (modules /programs/homebrew/darwin.nix null)
 
     # Development
     (modules /programs/development/cloud.nix { inherit user pkgs; })
