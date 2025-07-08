@@ -23,5 +23,6 @@ alias ls=eza
 alias du=dust
 alias cat=bat
 alias k=kubectl
+alias ktx=kubectx
 alias i=istioctl
 alias nxsearch='nix search nixpkgs'
