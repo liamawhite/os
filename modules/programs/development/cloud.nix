@@ -14,9 +14,9 @@ let
 
     vendorHash = "sha256-A8wAfM6GN4NUVuZFhadiaaJPinPRHCjs2L+CRflwqFI=";
 
-    ldflags = [ 
-      "-s" 
-      "-w" 
+    ldflags = [
+      "-s"
+      "-w"
       "-X fortio.org/fortio/version.shortVersion=${version}"
     ];
 
@@ -42,6 +42,7 @@ in
       fortio
       fluxcd
       google-cloud-sdk
+      kind
       kubernetes-helm
       kubectl
       kubectx
