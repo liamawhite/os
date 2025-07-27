@@ -6,6 +6,18 @@
   :init
   (vertico-mode))
 
+;; Vertico Posframe - Floating window for completions
+(use-package vertico-posframe
+  :straight t
+  :after vertico
+  :config
+  (vertico-posframe-mode 1)
+  ;; Window sizing
+  (setq vertico-posframe-width 140)
+  (setq vertico-posframe-height 30)
+  ;; Show more results
+  (setq vertico-count 24))
+
 ;; Orderless - Better filtering methods
 (use-package orderless
   :straight (:host github :repo "oantolin/orderless" :commit "a5be52b1ee36bb82b09e6a6d8b9c4b5d6e479b42")
