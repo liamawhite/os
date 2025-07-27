@@ -5,8 +5,14 @@
     home.packages = with pkgs; [
       aspell
       aspellDicts.en
+      cmake
       coreutils
       buf
+      libtool
+      gnumake
+      autoconf
+      automake
+      emacs
       neovim
       protoc-gen-connect-go
       protoc-gen-go
@@ -17,6 +23,7 @@
       go
       golangci-lint
       gopls
+      goreleaser
       gotools
       delve
       cobra-cli

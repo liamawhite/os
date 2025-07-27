@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Wrapper script to call libtool as glibtool for compatibility
+exec libtool "$@"

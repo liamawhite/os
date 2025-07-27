@@ -13,6 +13,7 @@
       cht-sh
       du-dust
       eza
+      fd
       htop
       iftop
       jq

@@ -48,8 +48,16 @@ This is a personal macOS system configuration using Nix Flakes, nix-darwin, and 
 
 ### Dotfiles Management
 - Dotfiles are managed in `modules/dotfiles/` and applied through Home Manager
-- Configuration files are organized by application (nvim, wezterm, zsh, aerospace, etc.)
+- Configuration files are organized by application (nvim, wezterm, zsh, aerospace, emacs, etc.)
 - The system uses different users per host and shared email "liamawhite@gmail.com"
+
+#### Emacs Configuration Architecture
+- **Modular structure**: `modules/dotfiles/emacs.d/modules/` contains feature-specific modules
+- **Core module** (`modules/core/`): Essential functionality (Evil mode, UI, package management, keybindings)
+- **Feature modules**: `completions/`, `themes/` - each with packages.el and main loader
+- **Evil keybindings**: Space leader key with organized prefixes (fb=find buffer, ff=find file, fg=grep)
+- **Modern completion**: Vertico + Consult + Embark + Marginalia + Orderless stack
+- **Pinned packages**: All packages use specific commit hashes for reproducibility
 
 ### Key Features
 - Automatic garbage collection (weekly)
@@ -57,8 +65,13 @@ This is a personal macOS system configuration using Nix Flakes, nix-darwin, and 
 - Window management via AeroSpace
 - Terminal setup with WezTerm, Neovim, and Zsh
 - AI development agents (Claude, etc.) integrated into workflow
+- Minimal Emacs setup with UI cleanup and spell checking support
 
 ## Important Instructions
 
 - NEVER run the 'switch' command or any nix rebuild commands automatically
 - The user will handle all system rebuilds manually
+- Do what has been asked; nothing more, nothing less
+- NEVER create files unless they're absolutely necessary for achieving your goal
+- ALWAYS prefer editing an existing file to creating a new one
+- NEVER proactively create documentation files (*.md) or README files. Only create documentation files if explicitly requested by the User
