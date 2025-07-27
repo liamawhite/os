@@ -1,4 +1,4 @@
-;;; packages.el --- Completion packages configuration -*- lexical-binding: t -*-
+;;; vertico.el --- Completion packages configuration -*- lexical-binding: t -*-
 
 ;; Vertico - Vertical completion UI
 (use-package vertico
@@ -52,5 +52,5 @@
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 
-(provide 'packages)
-;;; packages.el ends here
+(provide 'vertico)
+;;; vertico.el ends here

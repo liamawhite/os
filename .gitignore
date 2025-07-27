@@ -7,4 +7,5 @@ modules/dotfiles/emacs.d/auto-save-list/
 modules/dotfiles/emacs.d/transient/
 modules/dotfiles/emacs.d/eln-cache/
 modules/dotfiles/emacs.d/history
+modules/dotfiles/emacs.d/bookmarks
 

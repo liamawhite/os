@@ -1,7 +1,7 @@
 ;;; completions.el --- Completion system configuration -*- lexical-binding: t -*-
 
 ;; Load completion packages
-(require 'packages)
+(require 'vertico)
 
 ;; Enable savehist-mode to persist history over Emacs restarts
 (use-package savehist

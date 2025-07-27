@@ -11,5 +11,9 @@
 (setq frame-resize-pixelwise t)
 (add-to-list 'default-frame-alist '(undecorated . t))
 
+;; Font configuration
+(set-face-attribute 'default nil :font "JetBrainsMono Nerd Font")
+(set-face-attribute 'fixed-pitch nil :font "JetBrainsMono Nerd Font")
+
 (provide 'ui)
 ;;; ui.el ends here
