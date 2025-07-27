@@ -6,8 +6,10 @@
   :config
   ;; Basic org configuration
   (setq org-directory "~/org")
-  (setq org-agenda-files '("~/org"))
-  (setq org-default-notes-file (concat org-directory "/notes.org"))
+  (setq org-personal-directory (expand-file-name "personal" org-directory))
+  (setq org-docusign-directory (expand-file-name "docusign" org-directory))
+  (setq org-agenda-files (list org-personal-directory org-docusign-directory))
+  (setq org-default-notes-file (expand-file-name "notes.org" org-personal-directory))
   
   ;; TODO keywords
   (setq org-todo-keywords
@@ -15,9 +17,13 @@
   
   ;; Capture templates
   (setq org-capture-templates
-        '(("t" "Todo" entry (file+headline "~/org/inbox.org" "Tasks")
+        `(("pt" "Personal Todo" entry (file+headline ,(expand-file-name "inbox.org" org-personal-directory) "Tasks")
            "* TODO %?\n  %i\n  %a")
-          ("n" "Note" entry (file+headline "~/org/notes.org" "Notes")
+          ("pn" "Personal Note" entry (file+headline ,(expand-file-name "notes.org" org-personal-directory) "Notes")
+           "* %?\nEntered on %U\n  %i\n  %a")
+          ("dt" "Docusign Todo" entry (file+headline ,(expand-file-name "inbox.org" org-docusign-directory) "Tasks")
+           "* TODO %?\n  %i\n  %a")
+          ("dn" "Docusign Note" entry (file+headline ,(expand-file-name "notes.org" org-docusign-directory) "Notes")
            "* %?\nEntered on %U\n  %i\n  %a")))
   
   ;; Agenda configuration
@@ -25,10 +31,17 @@
   (setq org-log-done 'time)
   (setq org-log-into-drawer t)
   
+  ;; Custom functions for consult grep in org directories
+  (defun consult-grep-org-all ()
+    "Run consult-grep in all org directories."
+    (interactive)
+    (consult-grep org-directory))
+  
   :bind (:map evil-normal-state-map
          ("<leader>oa" . org-agenda)
          ("<leader>oc" . org-capture)
-         ("<leader>ol" . org-store-link)))
+         ("<leader>ol" . org-store-link)
+         ("<leader>fo" . consult-grep-org-all)))
 
 ;; Org Modern - Modern UI for org mode
 ;; (use-package org-modern
