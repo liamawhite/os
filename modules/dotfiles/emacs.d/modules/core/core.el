@@ -3,7 +3,7 @@
 ;; Load all core modules
 (require 'straight)
 (require 'path)
-(require 'ui)
+(require 'ui_elements)
 (require 'evil)
 
 (provide 'core)
