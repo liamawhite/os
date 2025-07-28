@@ -25,4 +25,5 @@ alias cat=bat
 alias k=kubectl
 alias ktx=kubectx
 alias i=istioctl
+alias nav=navctl
 alias nxsearch='nix search nixpkgs'
