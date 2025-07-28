@@ -41,7 +41,15 @@
          ("<leader>oa" . org-agenda)
          ("<leader>oc" . org-capture)
          ("<leader>ol" . org-store-link)
-         ("<leader>fo" . consult-grep-org-all)))
+         ("<leader>fo" . consult-grep-org-all))
+  :config
+  ;; Org-mode specific evil keybindings
+  (evil-define-key 'normal org-mode-map
+    (kbd "p") 'org-set-property
+    (kbd "#") 'org-set-tags-command
+    (kbd "s") 'org-schedule
+    (kbd "d") 'org-deadline
+    (kbd "c") 'org-toggle-checkbox))
 
 ;; Org Modern - Modern UI for org mode
 ;; (use-package org-modern
