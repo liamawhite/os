@@ -2,16 +2,16 @@
 
 ;; Load modules
 (add-to-list 'load-path (expand-file-name "modules/core" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "modules/completions" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "modules/themes" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "modules/org" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "modules/ui" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "modules/programs" user-emacs-directory))
 
 (require 'core)
-(require 'completions)
 (require 'themes)
-(require 'orgmode)
 (require 'ui)
+(require 'orgmode)
+(require 'projectile)
+(require 'completions)  ; Load completions last per user request
 
 ;; (require 'packages)
 ;; (require 'git)

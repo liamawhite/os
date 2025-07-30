@@ -14,11 +14,12 @@
   (setq doom-modeline-modal t)
   (setq doom-modeline-modal-icon nil)                                 ; Disable modal state icons (keep text)
 
-  (setq doom-modeline-major-mode-icon t)                              ; Show major mode icon (e.g., language icons)
-  ;; (setq doom-modeline-major-mode-color-icon t)                        ; Use colored major mode icons
+  (setq doom-modeline-major-mode-icon nil)                              ; Disable major mode icon (e.g., language icons)
+  (setq doom-modeline-major-mode-color-icon nil)                      ; Disable colored major mode icons
   ;; (setq doom-modeline-buffer-file-name-style 'truncate-upto-project)  ; Show file path relative to project
-  ;; (setq doom-modeline-buffer-state-icon t)                            ; Show buffer state icons (modified, read-only, etc.)
-  ;; (setq doom-modeline-buffer-modification-icon t)                     ; Show modification indicator
+  (setq doom-modeline-buffer-state-icon nil)                          ; Disable buffer state icons (modified, read-only, etc.)
+  (setq doom-modeline-buffer-modification-icon nil)                   ; Disable modification indicator
+  ;; (setq doom-modeline-icon nil)                                       ; Disable all icons
   ;; (setq doom-modeline-minor-modes nil)                                ; Hide minor modes list
   ;; (setq doom-modeline-enable-word-count nil)                          ; Disable word count display
   ;; (setq doom-modeline-buffer-encoding t)                              ; Show buffer encoding (UTF-8, etc.)

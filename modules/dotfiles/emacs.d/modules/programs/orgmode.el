@@ -1,4 +1,4 @@
-;;; packages.el --- Org mode packages configuration -*- lexical-binding: t -*-
+;;; orgmode.el --- Org mode configuration -*- lexical-binding: t -*-
 
 ;; Org mode - Built-in but configured
 (use-package org
@@ -70,5 +70,19 @@
     (when (fboundp 'evil-org-agenda-set-keys)
       (evil-org-agenda-set-keys))))
 
-(provide 'packages)
-;;; packages.el ends here
+;; Manual evil bindings for org-mode (in addition to evil-org)
+(with-eval-after-load 'org
+  (evil-define-key 'normal org-mode-map
+    "t" 'org-todo
+    "T" 'org-insert-todo-heading
+    ",c" 'org-ctrl-c-ctrl-c
+    ",e" 'org-export-dispatch
+    ",n" 'org-narrow-to-subtree
+    ",r" 'org-refile
+    "TAB" 'org-cycle
+    "S-TAB" 'org-shifttab
+    "{" 'org-backward-paragraph
+    "}" 'org-forward-paragraph))
+
+(provide 'orgmode)
+;;; orgmode.el ends here
