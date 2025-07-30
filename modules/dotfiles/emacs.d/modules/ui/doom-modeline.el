@@ -14,8 +14,7 @@
   (setq doom-modeline-modal t)
   (setq doom-modeline-modal-icon nil)                                 ; Disable modal state icons (keep text)
 
-  ;; (setq doom-modeline-icon nil)                                       ; Disable all-the-icons (use text fallbacks)
-  ;; (setq doom-modeline-major-mode-icon t)                              ; Show major mode icon (e.g., language icons)
+  (setq doom-modeline-major-mode-icon t)                              ; Show major mode icon (e.g., language icons)
   ;; (setq doom-modeline-major-mode-color-icon t)                        ; Use colored major mode icons
   ;; (setq doom-modeline-buffer-file-name-style 'truncate-upto-project)  ; Show file path relative to project
   ;; (setq doom-modeline-buffer-state-icon t)                            ; Show buffer state icons (modified, read-only, etc.)

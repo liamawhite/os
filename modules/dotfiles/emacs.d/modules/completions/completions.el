@@ -44,5 +44,15 @@
   (when (>= emacs-major-version 30)
     (text-mode-ispell-word-completion nil)))
 
+;; Manual evil bindings for vertico
+(with-eval-after-load 'vertico
+  (evil-define-key 'normal vertico-map
+    "j" 'vertico-next
+    "k" 'vertico-previous
+    "gg" 'vertico-first
+    "G" 'vertico-last
+    "q" 'minibuffer-keyboard-quit
+    [escape] 'minibuffer-keyboard-quit))
+
 (provide 'completions)
 ;;; completions.el ends here

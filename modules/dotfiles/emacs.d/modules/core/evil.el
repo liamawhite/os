@@ -22,12 +22,6 @@
   ;; Core keybindings
   (evil-define-key 'normal 'global (kbd "<leader>RR") 'restart-emacs))
 
-;; Evil Collection - Evil bindings for many built-in modes
-(use-package evil-collection
-  :straight (:host github :repo "emacs-evil/evil-collection" :commit "d65a4ecc9e094d11de35ed3736e7b19b67e3b6b2")
-  :after evil
-  :config
-  (evil-collection-init))
 
 ;; Evil Surround - Surround text objects
 (use-package evil-surround
