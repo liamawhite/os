@@ -12,6 +12,7 @@
 
   ;; Enable modal display
   (setq doom-modeline-modal t)
+  (setq doom-modeline-modal-icon nil)                                 ; Disable modal state icons (keep text)
 
   ;; (setq doom-modeline-icon nil)                                       ; Disable all-the-icons (use text fallbacks)
   ;; (setq doom-modeline-major-mode-icon t)                              ; Show major mode icon (e.g., language icons)
