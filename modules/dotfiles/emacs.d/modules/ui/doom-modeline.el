@@ -16,7 +16,7 @@
 
   (setq doom-modeline-major-mode-icon nil)                              ; Disable major mode icon (e.g., language icons)
   (setq doom-modeline-major-mode-color-icon nil)                      ; Disable colored major mode icons
-  ;; (setq doom-modeline-buffer-file-name-style 'truncate-upto-project)  ; Show file path relative to project
+  (setq doom-modeline-buffer-file-name-style 'truncate-upto-project)  ; Show file path relative to project
   (setq doom-modeline-buffer-state-icon nil)                          ; Disable buffer state icons (modified, read-only, etc.)
   (setq doom-modeline-buffer-modification-icon nil)                   ; Disable modification indicator
   ;; (setq doom-modeline-icon nil)                                       ; Disable all icons
@@ -25,7 +25,7 @@
   ;; (setq doom-modeline-buffer-encoding t)                              ; Show buffer encoding (UTF-8, etc.)
   ;; (setq doom-modeline-indent-info nil)                                ; Hide indentation info
   ;; (setq doom-modeline-checker-simple-format t)                        ; Use simple format for syntax checker
-  ;; (setq doom-modeline-vcs-max-length 12)                              ; Max length for VCS branch names
+  (setq doom-modeline-project-detection 'projectile)                  ; Use projectile for project detection
   ;; (setq doom-modeline-env-version t)                                  ; Show environment version (Python, Node, etc.)
   ;; (setq doom-modeline-irc-stylize 'identity)                          ; IRC styling option
   ;; (setq doom-modeline-github-timer nil)                               ; Disable GitHub notifications timer
