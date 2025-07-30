@@ -43,13 +43,12 @@
          ("<leader>ol" . org-store-link)
          ("<leader>fo" . consult-grep-org-all))
   :config
-  ;; Org-mode specific evil keybindings
+  ;; Org-mode specific evil keybindings using comma as secondary leader
   (evil-define-key 'normal org-mode-map
-    (kbd "p") 'org-set-property
-    (kbd "#") 'org-set-tags-command
-    (kbd "s") 'org-schedule
-    (kbd "d") 'org-deadline
-    (kbd "c") 'org-toggle-checkbox))
+    (kbd ",p") 'org-set-property
+    (kbd ",#") 'org-set-tags-command
+    (kbd ",s") 'org-schedule
+    (kbd ",d") 'org-deadline))
 
 ;; Org Modern - Modern UI for org mode
 ;; (use-package org-modern
@@ -59,15 +58,17 @@
 ;;   (global-org-modern-mode))
 
 ;; Evil Org - Better Evil integration for org mode
-;; (use-package evil-org
-;;   :straight (:host github :repo "Somelauw/evil-org-mode" :commit "2b2139ca25228c83fc9646a42e1d1f7f71a9c334")
-;;   :after org
-;;   :hook (org-mode . evil-org-mode)
-;;   :config
-;;   ;; Only set up agenda keys when actually using agenda
-;;   (with-eval-after-load 'org-agenda
-;;     (when (fboundp 'evil-org-agenda-set-keys)
-;;       (evil-org-agenda-set-keys))))
+(use-package evil-org
+  :straight (:host github :repo "Somelauw/evil-org-mode" :commit "2b2139ca25228c83fc9646a42e1d1f7f71a9c334")
+  :after org
+  :hook (org-mode . evil-org-mode)
+  :config
+  ;; Enable desired key themes
+  (evil-org-set-key-theme '(navigation insert textobjects additional shift todo heading))
+  ;; Set up agenda keys when actually using agenda
+  (with-eval-after-load 'org-agenda
+    (when (fboundp 'evil-org-agenda-set-keys)
+      (evil-org-agenda-set-keys))))
 
 (provide 'packages)
 ;;; packages.el ends here
