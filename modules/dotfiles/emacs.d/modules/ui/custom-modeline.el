@@ -38,20 +38,20 @@
 ;;
 
 (defface custom-modeline-evil-normal
-  '((t (:background "#89b4fa" :foreground "#11111b" :weight bold 
+  '((t (:background "#89b4fa" :foreground "#11111b" :weight normal 
         :box (:line-width 2 :color "#89b4fa" :style nil))))
   "Face for Evil normal state."
   :group 'custom-modeline)
 
 (defface custom-modeline-evil-insert
-  '((t (:background "#a6e3a1" :foreground "#11111b" :weight bold
+  '((t (:background "#a6e3a1" :foreground "#11111b" :weight normal
         :box (:line-width 2 :color "#a6e3a1" :style nil))))
   "Face for Evil insert state."
   :group 'custom-modeline)
 
 (defface custom-modeline-evil-visual
-  '((t (:background "#fab387" :foreground "#11111b" :weight bold
-        :box (:line-width 2 :color "#fab387" :style nil))))
+  '((t (:background "#cba6f7" :foreground "#11111b" :weight normal
+        :box (:line-width 2 :color "#cba6f7" :style nil))))
   "Face for Evil visual state."
   :group 'custom-modeline)
 
