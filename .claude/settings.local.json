@@ -10,7 +10,9 @@
       "Bash(ls:*)",
       "Bash(find:*)",
       "Bash(nix flake show:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(rg:*)",
+      "WebFetch(domain:www.gnu.org)"
     ],
     "deny": []
   }
