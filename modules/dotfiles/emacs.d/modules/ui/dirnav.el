@@ -1,5 +1,10 @@
 ;;; dirnav.el --- Dired Configuration -*- lexical-binding: t -*-
 
+;; Auto-refresh dired buffers when files change on disk
+(setq dired-auto-revert-buffer t)      ; Refresh dired when you visit it
+(setq auto-revert-verbose nil)         ; Don't show revert messages
+(add-hook 'dired-mode-hook 'auto-revert-mode)  ; Enable auto-revert in dired
+
 (defun my/dired-current-directory ()
   "Open Dired in the current buffer's directory in a new buffer."
   (interactive)

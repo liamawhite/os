@@ -3,6 +3,10 @@
 ;; Org mode - Built-in but configured
 (use-package org
   :mode ("\\.org\\'" . org-mode)
+  :init
+  ;; Ensure .org files always open in org-mode
+  (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+  (add-to-list 'auto-mode-alist '("\\.org_archive\\'" . org-mode))
   :config
   ;; Basic org configuration
   (setq org-directory "~/org")
@@ -30,6 +34,48 @@
   (setq org-agenda-start-with-log-mode t)
   (setq org-log-done 'time)
   (setq org-log-into-drawer t)
+  
+  ;; Org Babel configuration
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (shell . t)
+     (python . t)
+     (js . t)
+     (sql . t)
+     (dot . t)))
+  
+  ;; Don't ask for confirmation before executing code blocks
+  (setq org-confirm-babel-evaluate nil)
+  
+  ;; Enable syntax highlighting in code blocks
+  (setq org-src-fontify-natively t)
+  (setq org-src-tab-acts-natively t)
+  
+  ;; Better code block editing
+  (setq org-edit-src-content-indentation 0)
+  (setq org-src-preserve-indentation t)
+  
+  ;; Smart auto-revert: check for external changes before saving
+  (defun my/check-external-changes-before-save ()
+    "Check if file was modified externally before saving."
+    (when (and buffer-file-name
+               (file-exists-p buffer-file-name)
+               (not (verify-visited-file-modtime (current-buffer))))
+      (if (y-or-n-p "File was modified externally. Reload before saving? ")
+          (progn
+            (revert-buffer t t t)  ; Revert without confirmation
+            (message "File reloaded from disk"))
+        (message "Saving anyway - external changes will be overwritten"))))
+  
+  ;; Add the check to org-mode save hook
+  (add-hook 'org-mode-hook
+            (lambda ()
+              (add-hook 'before-save-hook 'my/check-external-changes-before-save nil t)))
+  
+  ;; Basic auto-revert for when there are no unsaved changes
+  (setq auto-revert-verbose nil)
+  (add-hook 'org-mode-hook 'auto-revert-mode)
   
   ;; Custom functions for consult grep in org directories
   (defun consult-grep-org-all ()

@@ -65,8 +65,21 @@
         (let ((default-directory (projectile-project-root)))
           (vterm buffer-name)))))
   
-  ;; Open vterm when switching to a project
-  (setq projectile-switch-project-action #'my/projectile-open-vterm)
+  ;; Safe version that works with any directory
+  (defun my/projectile-open-vterm-safe ()
+    "Open vterm in the selected directory, handling both projects and regular directories."
+    (let* ((project-dir (or (ignore-errors (projectile-project-root))
+                            default-directory))
+           (project-name (file-name-nondirectory (directory-file-name project-dir)))
+           (buffer-name (format "*vterm-%s*" project-name))
+           (existing-buffer (get-buffer buffer-name)))
+      (if existing-buffer
+          (switch-to-buffer existing-buffer)
+        (let ((default-directory project-dir))
+          (vterm buffer-name)))))
+  
+  ;; Open vterm when switching to a project (safe version)
+  (setq projectile-switch-project-action #'my/projectile-open-vterm-safe)
   
   ;; Cache location
   (setq projectile-cache-file (expand-file-name "projectile.cache" user-emacs-directory))

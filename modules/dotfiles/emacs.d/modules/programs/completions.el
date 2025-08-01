@@ -54,10 +54,10 @@
 (use-package consult
   :straight (:host github :repo "minad/consult" :commit "6de7b685a01a6a0ba11fe4d5dfc46134a86dd8d6")
   :bind (:map evil-normal-state-map
-         ("<leader>fb" . consult-buffer)
          ("<leader>ff" . consult-fd)
-         ("<leader>fg" . consult-ripgrep)
-         ("<leader>jj" . my/consult-projectile-switch-project)))
+         ("<leader>fg" . consult-ripgrep))
+  :bind (("M-j" . my/consult-projectile-switch-project)
+         ("M-b" . consult-buffer)))
 
 ;; Custom function to use consult interface but respect projectile action
 (with-eval-after-load 'consult
@@ -69,7 +69,9 @@
                                   :sort nil
                                   :category 'project)))
       (when project
-        (projectile-switch-project-by-name project)))))
+        ;; Set default-directory and call the action directly
+        (let ((default-directory project))
+          (funcall projectile-switch-project-action))))))
 
 ;; Embark Consult integration
 (use-package embark-consult

@@ -20,7 +20,7 @@
   (evil-set-initial-state 'dashboard-mode 'normal)
   
   ;; Core keybindings
-  (evil-define-key 'normal 'global (kbd "<leader>RR") 'restart-emacs))
+  (define-key global-map (kbd "M-R M-R") 'restart-emacs))
 
 ;; Evil Surround - Surround text objects
 (use-package evil-surround

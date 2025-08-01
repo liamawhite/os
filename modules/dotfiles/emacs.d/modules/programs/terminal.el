@@ -11,16 +11,30 @@
   ;; Don't ask for confirmation when killing vterm buffers
   (setq vterm-kill-buffer-on-exit t)
   
-  ;; Always start vterm in insert mode
-  (add-hook 'vterm-mode-hook (lambda () (evil-insert-state)))
+  ;; Prevent vterm from sending certain keys to the shell
+  (setq vterm-keymap-exceptions '("M-R" "M-j" "M-b"))
   
-  ;; Enter insert mode when switching to any vterm buffer
-  (add-hook 'buffer-list-update-hook
-            (lambda ()
-              (when (and (derived-mode-p 'vterm-mode)
-                         (bound-and-true-p evil-mode)
-                         (not (evil-insert-state-p)))
-                (evil-insert-state)))))
+  ;; Disable Evil modal editing in vterm (but keep global keybindings)
+  (evil-set-initial-state 'vterm-mode 'emacs)
+  
+  ;; Ensure vterm always uses emacs state and hide modeline
+  (add-hook 'vterm-mode-hook 
+            (lambda () 
+              (when (bound-and-true-p evil-local-mode)
+                (evil-local-mode -1))
+              ;; Hide the modeline in vterm
+              (setq-local mode-line-format nil)))
+  
+  ;; Override vterm keybindings to use Emacs commands
+  (with-eval-after-load 'vterm
+    ;; Bind keys directly in vterm-mode-map with higher priority
+    (define-key vterm-mode-map (kbd "M-j") 'my/consult-projectile-switch-project)
+    (define-key vterm-mode-map (kbd "M-b") 'consult-buffer)
+    
+    ;; For M-R M-R, we need to create a prefix keymap
+    (define-prefix-command 'my/vterm-M-R-map)
+    (define-key vterm-mode-map (kbd "M-R") 'my/vterm-M-R-map)
+    (define-key my/vterm-M-R-map (kbd "M-R") 'restart-emacs)))
 
 ;; Global keybinding for terminal
 (evil-define-key 'normal 'global (kbd "<leader>tt") 'vterm)
