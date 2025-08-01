@@ -45,11 +45,11 @@ automatically-unhide-macos-hidden-apps = true
 [workspace-to-monitor-force-assignment]
 W = 'Dell U2415'   # mnemonic watch
 
-N = 'Dell U2718Q'  # mnemonic 
+N = ['Dell U2718Q', 'P24h-10 (1)']  # mnemonic 
 
-C = 'LG Ultrawide' # mnemonic code
-T = 'LG Ultrawide' # mnemonic terminal
-I = 'LG Ultrawide' # mnemonic interrupt
+C = 'LG Ultrawide'                  # mnemonic code
+T = ['LG Ultrawide', 'P24h-10 (2)'] # mnemonic terminal
+I = 'LG Ultrawide'                  # mnemonic interrupt
 
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'

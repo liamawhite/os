@@ -17,6 +17,7 @@
       protoc-gen-connect-go
       protoc-gen-go
       vscode
+      graphviz
 
       # Languages
       ## Golang
