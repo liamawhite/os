@@ -21,7 +21,7 @@
         folders = {
           "org/personal" = {
             path = "~/org/personal";
-            devices = [ "macstudio-personal-2023" "macbookpro-personal-2018" ];
+            devices = [ "macstudio-personal-2023" "macbookpro-personal-2018" "macbookpro-docusign-2025" ];
             type = "sendreceive";
           };
         };
