@@ -5,6 +5,15 @@
   (interactive)
   (dired (expand-file-name default-directory)))
 
+(defun my/dired-create-file ()
+  "Create a new file in the current dired directory."
+  (interactive)
+  (let ((filename (read-string "Create file: ")))
+    (when (and filename (not (string-empty-p filename)))
+      (find-file (expand-file-name filename (dired-current-directory)))
+      (save-buffer)
+      (revert-buffer))))
+
 (evil-define-key 'normal 'global (kbd "<leader>dd") 'my/dired-current-directory)
 
 ;; Manual evil bindings for dired
@@ -21,6 +30,7 @@
     "D" 'dired-do-delete
     "C" 'dired-do-copy
     "+" 'dired-create-directory
+    "N" 'my/dired-create-file
     "m" 'dired-mark
     "u" 'dired-unmark
     "U" 'dired-unmark-all-marks))

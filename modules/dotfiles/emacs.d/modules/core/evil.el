@@ -22,7 +22,6 @@
   ;; Core keybindings
   (evil-define-key 'normal 'global (kbd "<leader>RR") 'restart-emacs))
 
-
 ;; Evil Surround - Surround text objects
 (use-package evil-surround
   :straight (:host github :repo "emacs-evil/evil-surround" :commit "e40dcf4b9efba31b8ae4c30dc6b78b24b1b37a1b")
