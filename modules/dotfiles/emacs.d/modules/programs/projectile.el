@@ -16,8 +16,57 @@
   (setq projectile-generic-command "find . -type f -print0")  ; Fast file finding
   (setq projectile-git-command "git ls-files -zco --exclude-standard")  ; Git-aware file listing
   
-  ;; Project discovery
-  (setq projectile-project-search-path '("~/github.com/"))  ; Look for projects in github directory
+  ;; Project discovery (handled by custom function below)
+  (setq projectile-project-search-path '())
+  
+  ;; Custom function to discover all directories under github.com/*/* and ~/org/* as projects
+  (defun my/discover-projects ()
+    "Discover all directories under ~/github.com/*/*, ~/github.docusignhq.com/*/*, and ~/org/* as projects"
+    ;; Discover github.com/*/* projects
+    (let ((github-dir (expand-file-name "~/github.com/")))
+      (when (file-directory-p github-dir)
+        ;; Loop through each user directory
+        (dolist (user-dir (directory-files github-dir t "^[^.]"))
+          (when (file-directory-p user-dir)
+            ;; Loop through each repo directory under the user
+            (dolist (repo-dir (directory-files user-dir t "^[^.]"))
+              (when (file-directory-p repo-dir)
+                (projectile-add-known-project repo-dir)))))))
+    
+    ;; Discover github.docusignhq.com/*/* projects
+    (let ((docusign-github-dir (expand-file-name "~/github.docusignhq.com/")))
+      (when (file-directory-p docusign-github-dir)
+        ;; Loop through each user directory
+        (dolist (user-dir (directory-files docusign-github-dir t "^[^.]"))
+          (when (file-directory-p user-dir)
+            ;; Loop through each repo directory under the user
+            (dolist (repo-dir (directory-files user-dir t "^[^.]"))
+              (when (file-directory-p repo-dir)
+                (projectile-add-known-project repo-dir)))))))
+    
+    ;; Discover ~/org/* projects  
+    (let ((org-dir (expand-file-name "~/org/")))
+      (when (file-directory-p org-dir)
+        (dolist (project-dir (directory-files org-dir t "^[^.]"))
+          (when (file-directory-p project-dir)
+            (projectile-add-known-project project-dir))))))
+  
+  ;; Ensure projects are discovered after projectile is fully loaded
+  (add-hook 'after-init-hook #'my/discover-projects)
+  
+  ;; Custom function to open vterm in project
+  (defun my/projectile-open-vterm ()
+    "Open vterm in the project root directory, reusing existing buffer if available."
+    (let* ((project-name (projectile-project-name))
+           (buffer-name (format "*vterm-%s*" project-name))
+           (existing-buffer (get-buffer buffer-name)))
+      (if existing-buffer
+          (switch-to-buffer existing-buffer)
+        (let ((default-directory (projectile-project-root)))
+          (vterm buffer-name)))))
+  
+  ;; Open vterm when switching to a project
+  (setq projectile-switch-project-action #'my/projectile-open-vterm)
   
   ;; Cache location
   (setq projectile-cache-file (expand-file-name "projectile.cache" user-emacs-directory))

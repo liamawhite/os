@@ -11,10 +11,10 @@
 (require 'ui)
 (require 'orgmode)
 (require 'projectile)
-(require 'completions)  ; Load completions last per user request
+(require 'terminal)
+(require 'completions) 
 
 ;; (require 'packages)
 ;; (require 'git)
-;; (require 'terminal)
 ;; (require 'org-config)
 ;; (require 'keybindings)

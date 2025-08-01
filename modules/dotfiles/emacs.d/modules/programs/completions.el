@@ -56,7 +56,20 @@
   :bind (:map evil-normal-state-map
          ("<leader>fb" . consult-buffer)
          ("<leader>ff" . consult-fd)
-         ("<leader>fg" . consult-ripgrep)))
+         ("<leader>fg" . consult-ripgrep)
+         ("<leader>jj" . my/consult-projectile-switch-project)))
+
+;; Custom function to use consult interface but respect projectile action
+(with-eval-after-load 'consult
+  (defun my/consult-projectile-switch-project ()
+    "Switch to project using consult interface and run projectile action."
+    (interactive)
+    (let ((project (consult--read (projectile-relevant-known-projects)
+                                  :prompt "Switch to project: "
+                                  :sort nil
+                                  :category 'project)))
+      (when project
+        (projectile-switch-project-by-name project)))))
 
 ;; Embark Consult integration
 (use-package embark-consult
