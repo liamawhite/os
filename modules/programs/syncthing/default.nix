@@ -24,6 +24,11 @@
             devices = [ "macstudio-personal-2023" "macbookpro-personal-2018" "macbookpro-docusign-2025" ];
             type = "sendreceive";
           };
+          "github.com" = {
+            path = "~/github.com";
+            devices = [ "macstudio-personal-2023" "macbookpro-personal-2018" "macbookpro-docusign-2025" ];
+            type = "sendreceive";
+          };
         };
       };
     };
