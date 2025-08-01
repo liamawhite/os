@@ -3,10 +3,6 @@
 ;; Org mode - Built-in but configured
 (use-package org
   :mode ("\\.org\\'" . org-mode)
-  :init
-  ;; Ensure .org files always open in org-mode
-  (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
-  (add-to-list 'auto-mode-alist '("\\.org_archive\\'" . org-mode))
   :config
   ;; Basic org configuration
   (setq org-directory "~/org")
@@ -56,26 +52,15 @@
   (setq org-edit-src-content-indentation 0)
   (setq org-src-preserve-indentation t)
   
-  ;; Smart auto-revert: check for external changes before saving
-  (defun my/check-external-changes-before-save ()
-    "Check if file was modified externally before saving."
-    (when (and buffer-file-name
-               (file-exists-p buffer-file-name)
-               (not (verify-visited-file-modtime (current-buffer))))
-      (if (y-or-n-p "File was modified externally. Reload before saving? ")
-          (progn
-            (revert-buffer t t t)  ; Revert without confirmation
-            (message "File reloaded from disk"))
-        (message "Saving anyway - external changes will be overwritten"))))
-  
-  ;; Add the check to org-mode save hook
-  (add-hook 'org-mode-hook
-            (lambda ()
-              (add-hook 'before-save-hook 'my/check-external-changes-before-save nil t)))
-  
-  ;; Basic auto-revert for when there are no unsaved changes
-  (setq auto-revert-verbose nil)
+  ;; Auto-revert org files when changed on disk
+  (setq auto-revert-verbose nil)  ; Don't show revert messages
+  (setq auto-revert-use-notify t) ; Use file system notifications
+  (setq auto-revert-interval 1)   ; Check every 1 second as fallback
   (add-hook 'org-mode-hook 'auto-revert-mode)
+  
+  ;; Also enable global auto-revert for all org files
+  (global-auto-revert-mode 1)
+  (setq global-auto-revert-non-file-buffers t)
   
   ;; Custom functions for consult grep in org directories
   (defun consult-grep-org-all ()
