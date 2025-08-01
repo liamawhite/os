@@ -8,14 +8,17 @@
       settings = {
         devices = {
           "macstudio-personal-2023" = {
-            id = "BXLJQAD-JGO6OW4-Z5YXHZN-N33HASZ-LJBVBVR-XCJKVLX-PSWF3ZP-EU7XZAK";
+            id = "Y6NSC7H-7ISVMIQ-MG6CA4Z-TIXVGBU-CPCRHHN-EAKVOKC-RVWTF45-ZIEANQ7";
+          };
+          "macbookpro-personal-2018" = {
+            id = "OIDLC3D-EX3JH4E-FKEE2X5-YKGVYM4-7QLPPJQ-6ELD5T6-2GQB473-N6CRSAA";
           };
         };
 
         folders = {
           "org" = {
             path = "~/org/personal";
-            devices = [ "macstudio-personal-2023" ];
+            devices = [ "macstudio-personal-2023" "macbookpro-personal-2018" ];
             type = "sendreceive";
           };
         };
