@@ -16,17 +16,20 @@
           "macbookpro-docusign-2025" = {
             id = "VNBUOSV-NBA7BXM-FCQ2KWS-5YIJNTQ-ZXP2LI6-6HL5ESK-UZY7RRG-7BTW3AU";
           };
+          "kubernetes-syncthing-mirror" = {
+            id = "WWRWTXL-2QLS6J7-QNSA5MZ-XLLUS4R-TKBA754-GXYFAEF-33IO7G4-LH5FIAW";
+          };
         };
 
         folders = {
           "org/personal" = {
             path = "~/org/personal";
-            devices = [ "macstudio-personal-2023" "macbookpro-personal-2018" "macbookpro-docusign-2025" ];
+            devices = [ "macstudio-personal-2023" "macbookpro-personal-2018" "macbookpro-docusign-2025" "kubernetes-syncthing-mirror" ];
             type = "sendreceive";
           };
           "github.com" = {
             path = "~/github.com";
-            devices = [ "macstudio-personal-2023" "macbookpro-personal-2018" "macbookpro-docusign-2025" ];
+            devices = [ "macstudio-personal-2023" "macbookpro-personal-2018" "macbookpro-docusign-2025" "kubernetes-syncthing-mirror" ];
             type = "sendreceive";
           };
         };
