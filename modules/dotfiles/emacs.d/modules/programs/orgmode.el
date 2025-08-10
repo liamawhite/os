@@ -68,11 +68,18 @@
     (interactive)
     (consult-grep org-directory))
   
+  (defun consult-fd-org-all ()
+    "Run consult-fd in all org directories."
+    (interactive)
+    (let ((default-directory org-directory))
+      (consult-fd)))
+  
   :bind (:map evil-normal-state-map
          ("<leader>oa" . org-agenda)
          ("<leader>oc" . org-capture)
          ("<leader>ol" . org-store-link)
-         ("<leader>fo" . consult-grep-org-all))
+         ("<leader>fog" . consult-grep-org-all)
+         ("<leader>fof" . consult-fd-org-all))
   :config
   ;; Org-mode specific evil keybindings using comma as secondary leader
   (evil-define-key 'normal org-mode-map
