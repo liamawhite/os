@@ -32,6 +32,7 @@
       unrar
       unzip
       wget
+      worktree
       zip
       zoxide
     ];

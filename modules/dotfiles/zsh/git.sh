@@ -2,5 +2,5 @@
 
 eval "$(ssh-agent -s)" > /dev/null
 
-alias wt='source worktree' # source it so it can change the current shell
-alias wts='source worktree switch'
+alias wt='worktree'
+alias wts='worktree switch'
