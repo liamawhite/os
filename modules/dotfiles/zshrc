@@ -28,3 +28,4 @@ alias i=istioctl
 alias nav=navctl
 alias nxsearch='nix search nixpkgs'
 alias msf=msf-cli
+alias wt=worktree
