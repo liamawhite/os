@@ -65,6 +65,7 @@
       nodejs_20 # latest LTS
       nil
       nixpkgs-fmt
+      terraform-ls
       elixir
     ];
   };
