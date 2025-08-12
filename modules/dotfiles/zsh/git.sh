@@ -1,6 +1,7 @@
 #! /bin/bash
 
-eval "$(ssh-agent -s)" > /dev/null
+export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+# eval "$(ssh-agent -s)" > /dev/null
 
 worktree() {
     local cmd="$1"
