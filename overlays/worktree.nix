@@ -13,6 +13,14 @@ buildGoModule rec {
 
   vendorHash = "sha256-E240usBl6kFhLXlo8ktgdW3PMtP/Qg2yz9n0Ctbkas8=";
 
+  # Build with version info and optimization flags matching Makefile
+  ldflags = [
+    "-w"
+    "-s"
+    "-X github.com/liamawhite/worktree/pkg/version.version=${version}"
+    "-X github.com/liamawhite/worktree/pkg/version.commit=${src.rev}"
+  ];
+
   doCheck = false;
 
   meta = with lib; {
