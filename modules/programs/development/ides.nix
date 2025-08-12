@@ -37,6 +37,7 @@
       poetry
       black
       uv
+      virtualenv
 
       ## Rust
       rustc
