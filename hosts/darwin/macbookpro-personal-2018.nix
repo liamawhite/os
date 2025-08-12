@@ -23,6 +23,7 @@ in
     # Development
     (modules /programs/development/cloud.nix { inherit user pkgs; })
     (modules /programs/development/ides.nix { inherit user pkgs; })
+    (modules /programs/development/vscode.nix { inherit user pkgs; })
     (modules /programs/development/agents.nix { inherit user pkgs; })
 
     # Terminal and Dotfiles
