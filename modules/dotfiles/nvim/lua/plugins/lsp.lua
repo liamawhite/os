@@ -65,6 +65,7 @@ return {
             })
             lspconfig.yamlls.setup({ capabilities = capabilities })
             lspconfig.terraformls.setup({ capabilities = capabilities })
+            lspconfig.clangd.setup({ capabilities = capabilities })
 
             -- Use LspAttach autocommand to only map the following keys
             -- after the language server attaches to the current buffer

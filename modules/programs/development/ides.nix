@@ -66,6 +66,7 @@
       nil
       nixpkgs-fmt
       terraform-ls
+      clang-tools
       elixir
     ];
   };
