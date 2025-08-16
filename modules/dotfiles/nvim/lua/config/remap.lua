@@ -30,3 +30,7 @@ vim.keymap.set("n", "<leader>x", ":.lua<CR>")                 -- Execute current
 vim.keymap.set("v", "<leader>x", ":lua<CR>")                  -- Execute selected lines
 
 vim.keymap.set("n", "<leader>X", ":!chmod +x %<CR>")          -- Make current file executable
+
+-- Visual mode indentation
+vim.keymap.set("v", "<Tab>", ">gv")   -- Indent selection and re-select
+vim.keymap.set("v", "<S-Tab>", "<gv") -- Un-indent selection and re-select
