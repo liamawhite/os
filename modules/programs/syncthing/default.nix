@@ -27,6 +27,16 @@
             devices = [ "macstudio-personal-2023" "macbookpro-personal-2018" "macbookpro-docusign-2025" "kubernetes-syncthing-mirror" ];
             type = "sendreceive";
           };
+          "notes/personal" = {
+            path = "~/notes/personal";
+            devices = [ "macstudio-personal-2023" "macbookpro-personal-2018" "macbookpro-docusign-2025" "kubernetes-syncthing-mirror" ];
+            type = "sendreceive";
+          };
+          "notes/.notedown" = {
+            path = "~/notes/.notedown";
+            devices = [ "macstudio-personal-2023" "macbookpro-personal-2018" "macbookpro-docusign-2025" "kubernetes-syncthing-mirror" ];
+            type = "sendreceive";
+          };
         };
       };
     };
