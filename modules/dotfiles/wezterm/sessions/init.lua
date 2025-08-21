@@ -1,9 +1,6 @@
 -- Effectively a fork of https://github.com/danielcopper/wezterm-session-manager
 local wezterm = require("wezterm")
-local workspace = require("sessions.workspace")
 local utils = require("sessions.utils")
-local history = require("sessions.history")
-local mux = wezterm.mux
 local manager = {}
 
 function manager.attach()
@@ -47,7 +44,7 @@ function manager.choices()
 
     add_directory_choices(choices, github_dir, nil, 2, 2)
     add_directory_choices(choices, docusign_github_dir, nil, 2, 2)
-    add_directory_choices(choices, notes_dir, "notes/", 1, 1)
+    table.insert(choices, { label = 'notes', id = notes_dir })
 
     return choices
 end

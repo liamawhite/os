@@ -15,7 +15,7 @@ let
 
     src = pkgs.fetchurl {
       url = "https://artifactory.docusigntest.com/artifactory/github-releases-local/msf-cli/${version}/${artifactName}";
-      sha256 = "sha256-2KXrwC1J9eatyEZHRyuZQo+YWDY/iOXaFe/7XXOaOrg="; # Replace with actual sha256
+      sha256 = "sha256-3nio9Pisb8nbKOBfu1bhyej+FF7xunCPMELROwkVCG8="; 
     };
 
     nativeBuildInputs = [ pkgs.unzip ];
