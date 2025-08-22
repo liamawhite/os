@@ -1,0 +1,60 @@
+# Theme: Catppuccin Mocha
+background = 1e1e2e
+foreground = cdd6f4
+
+# Black
+palette = 0=45475a
+palette = 8=585b70
+
+# Red
+palette = 1=f38ba8
+palette = 9=f38ba8
+
+# Green
+palette = 2=a6e3a1
+palette = 10=a6e3a1
+
+# Yellow
+palette = 3=f9e2af
+palette = 11=f9e2af
+
+# Blue
+palette = 4=89b4fa
+palette = 12=89b4fa
+
+# Magenta
+palette = 5=f5c2e7
+palette = 13=f5c2e7
+
+# Cyan
+palette = 6=94e2d5
+palette = 14=94e2d5
+
+# White
+palette = 7=bac2de
+palette = 15=a6adc8
+
+# Cursor
+cursor-color = f5e0dc
+cursor-text = 1e1e2e
+
+# Selection
+selection-background = 414356
+selection-foreground = cdd6f4
+
+# Terminal settings
+font-family = "JetBrainsMono Nerd Font"
+font-size = 12
+
+# Window settings
+window-decoration = false
+window-theme = dark
+
+# Misc settings
+mouse-hide-while-typing = true
+copy-on-select = false
+confirm-close-surface = false
+
+# Shell integration
+shell-integration = fish
+shell-integration-features = cursor,sudo,title
