@@ -44,7 +44,9 @@ selection-foreground = cdd6f4
 
 # Terminal settings
 font-family = "JetBrainsMono Nerd Font"
-font-size = 12
+font-size = 11
+font-style = Medium
+adjust-cell-width = -5%
 
 # Window settings
 window-decoration = false
@@ -56,5 +58,5 @@ copy-on-select = false
 confirm-close-surface = false
 
 # Shell integration
-shell-integration = fish
+shell-integration = zsh
 shell-integration-features = cursor,sudo,title
