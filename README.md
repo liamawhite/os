@@ -30,15 +30,9 @@ mkdir ~/.ssh && \
 Configure your system!
 
 ```sh
-nix --extra-experimental-features 'nix-command flakes' build .#darwinConfigurations.macbookpro-personal-2018.system
-sudo ./result/sw/bin/darwin-rebuild switch --flake .#macbookpro-personal-2018
+nix --extra-experimental-features 'nix-command flakes' build .#darwinConfigurations.macbookpro-personal-2025.system
+sudo ./result/sw/bin/darwin-rebuild switch --flake .#macbookpro-personal-2025
 ```
-
-### Additional Steps
-
-Its probably possible to automate these steps but I've not had time to research how.
-
-- Remove mission control control arrow bindings. Settings -> Keyboard -> shortcuts -> Mission Control -> All ^<direction> shortcuts. 
 
 ## Setup syncthing...
 

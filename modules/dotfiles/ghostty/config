@@ -37,6 +37,8 @@ palette = 15=a6adc8
 # Cursor
 cursor-color = f5e0dc
 cursor-text = 1e1e2e
+cursor-style = block
+cursor-style-blink = true
 
 # Selection
 selection-background = 414356
@@ -59,4 +61,4 @@ confirm-close-surface = false
 
 # Shell integration
 shell-integration = zsh
-shell-integration-features = cursor,sudo,title
+shell-integration-features = no-cursor,sudo,title
