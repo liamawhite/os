@@ -34,7 +34,7 @@ in
 {
   home-manager.users.${user} = { ... }: {
     home.packages = with pkgs; [
-      azure-cli
+      # azure-cli
       awscli2
       cmctl
       docker-compose

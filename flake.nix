@@ -39,16 +39,6 @@
             ./hosts/darwin/macstudio-personal-2023.nix
           ];
         };
-        macbookpro-personal-2018 = darwin.lib.darwinSystem {
-          system = "x86_64-darwin";
-          specialArgs = inputs // { inherit user email; };
-          modules = [
-            mac-app-util.darwinModules.default
-            home-manager.darwinModules.home-manager
-            ./overlays
-            ./hosts/darwin/macbookpro-personal-2018.nix
-          ];
-        };
         macbookpro-personal-2025 = darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           specialArgs = inputs // { inherit user email; };
