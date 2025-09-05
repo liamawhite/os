@@ -40,10 +40,12 @@ function manager.choices()
 
     local github_dir = wezterm.home_dir .. '/github.com'
     local docusign_github_dir = wezterm.home_dir .. '/github.docusignhq.com'
+    local docusign_ado_dir = wezterm.home_dir .. '/dev.azure.com'
     local notes_dir = wezterm.home_dir .. '/notes'
 
-    add_directory_choices(choices, github_dir, nil, 2, 2)
-    add_directory_choices(choices, docusign_github_dir, nil, 2, 2)
+    add_directory_choices(choices, github_dir, 'github/', 2, 2)
+    add_directory_choices(choices, docusign_github_dir, 'docusign/', 2, 2)
+    add_directory_choices(choices, docusign_ado_dir, 'ado/', 2, 2)
     table.insert(choices, { label = 'notes', id = notes_dir })
 
     return choices
