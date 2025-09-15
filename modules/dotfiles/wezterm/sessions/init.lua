@@ -45,7 +45,7 @@ function manager.choices()
 
     add_directory_choices(choices, github_dir, 'github/', 2, 2)
     add_directory_choices(choices, docusign_github_dir, 'docusign/', 2, 2)
-    add_directory_choices(choices, docusign_ado_dir, 'ado/', 2, 2)
+    add_directory_choices(choices, docusign_ado_dir, 'ado/', 3, 3)
     table.insert(choices, { label = 'notes', id = notes_dir })
 
     return choices
