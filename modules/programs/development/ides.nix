@@ -39,6 +39,7 @@
       black
       uv
       virtualenv
+      pyenv
 
       ## Rust
       rustc
