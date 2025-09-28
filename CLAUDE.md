@@ -5,10 +5,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## System Commands
 
 ### Building and Switching Configuration
-- `nix run .#macbookpro-docusign-2025-switch` - Apply configuration for MacBook Pro (user: liam.white)
+- `nix run .#macbookpro-docusign-2025-switch` - Apply configuration for MacBook Pro Work (user: liam.white)
 - `nix run .#macstudio-personal-2023-switch` - Apply configuration for Mac Studio (user: liam)
-- `nix build .#darwinConfigurations.macbookpro-docusign-2025.system` - Build MacBook Pro config
+- `nix run .#macbookpro-personal-2025-switch` - Apply configuration for MacBook Pro Personal (user: liam)
+- `nix build .#darwinConfigurations.macbookpro-docusign-2025.system` - Build MacBook Pro Work config
 - `nix build .#darwinConfigurations.macstudio-personal-2023.system` - Build Mac Studio config
+- `nix build .#darwinConfigurations.macbookpro-personal-2025.system` - Build MacBook Pro Personal config
 
 Note: Host-specific switch scripts are located in `apps/aarch64-darwin/` and handle the full build + switch process
 
@@ -24,8 +26,9 @@ This is a personal macOS system configuration using Nix Flakes, nix-darwin, and 
 ### Key Structure
 - **flake.nix**: Main flake definition with inputs and multiple host configurations
 - **hosts/darwin/**: Host-specific configurations
-  - **macbookpro-docusign-2025.nix**: MacBook Pro config (user: liam.white, buildId: 350)
+  - **macbookpro-docusign-2025.nix**: MacBook Pro Work config (user: liam.white, buildId: 350)
   - **macstudio-personal-2023.nix**: Mac Studio config (user: liam, buildId: 351)
+  - **macbookpro-personal-2025.nix**: MacBook Pro Personal config (user: liam, buildId: 352)
 - **modules/**: Modular configuration components
   - **darwin/**: macOS-specific settings (user, home-manager integration)
   - **programs/**: Application configurations (development tools, terminal, GUI apps)

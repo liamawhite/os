@@ -35,6 +35,7 @@ in
     (modules /programs/aerospace/darwin.nix { inherit user pkgs; })
     (modules /programs/obsidian/default.nix { inherit user pkgs; })
     (modules /programs/syncthing/default.nix { inherit user pkgs; })
+    (modules /programs/tailscale/default.nix { inherit user pkgs; })
     (modules /programs/browsers/chrome/default.nix { inherit user pkgs; })
     (modules /programs/browsers/zen/darwin.nix { inherit user pkgs; })
   ];
