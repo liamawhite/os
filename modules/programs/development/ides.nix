@@ -12,7 +12,6 @@
       gnumake
       autoconf
       automake
-      emacs
       neovim
       protoc-gen-connect-go
       protoc-gen-go

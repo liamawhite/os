@@ -1,14 +1,3 @@
 result
 .luarc.json
 
-# Emacs package directories
-modules/dotfiles/emacs.d/straight/
-modules/dotfiles/emacs.d/auto-save-list/
-modules/dotfiles/emacs.d/transient/
-modules/dotfiles/emacs.d/eln-cache/
-modules/dotfiles/emacs.d/history
-modules/dotfiles/emacs.d/bookmarks
-projectile-bookmarks.eld
-
-projectile-bookmarks.eld
-

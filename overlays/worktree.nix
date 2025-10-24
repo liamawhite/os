@@ -2,13 +2,13 @@
 
 buildGoModule rec {
   pname = "worktree";
-  version = "0.1.2";
+  version = "0.1.3";
 
   src = fetchFromGitHub {
     owner = "liamawhite";
     repo = "worktree";
     rev = "v${version}";
-    sha256 = "sha256-FGNuIauWDNSHtU3SFgZcDbHr5HoBUHlSem5iAQje6P8=";
+    sha256 = "sha256-/KnugRQQ/CQdrEP57aG48UBW7OGT9IFreL1+6MB7EIE=";
   };
 
   vendorHash = "sha256-E240usBl6kFhLXlo8ktgdW3PMtP/Qg2yz9n0Ctbkas8=";

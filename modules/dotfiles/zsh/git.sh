@@ -7,7 +7,7 @@ worktree() {
     local cmd="$1"
     
     # Commands that should change directory
-    if [[ "$cmd" == "add" || "$cmd" == "switch" || "$cmd" == "sw" ]]; then
+    if [[ "$cmd" == "add" || "$cmd" == "switch" || "$cmd" == "sw" || "$cmd" == "setup" ]]; then
         # Capture stderr to look for WT_CHDIR while preserving stdout and interactive TUI
         local temp_file
         temp_file=$(mktemp)

@@ -32,7 +32,6 @@
       unrar
       unzip
       wget
-      wireshark-qt
       worktree
       zip
       zoxide
