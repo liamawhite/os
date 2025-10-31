@@ -12,7 +12,11 @@
       "Bash(nix flake show:*)",
       "Bash(grep:*)",
       "Bash(rg:*)",
-      "WebFetch(domain:www.gnu.org)"
+      "WebFetch(domain:www.gnu.org)",
+      "Bash(nix-shell:*)",
+      "Read(//nix/store/slgwzscm3qw2fs1fdd7daarzynazcrw8-gh-copilot-overlay/**)",
+      "Bash(nix-build:*)",
+      "Read(//nix/store/**)"
     ],
     "deny": []
   }

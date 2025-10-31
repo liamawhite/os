@@ -7,8 +7,9 @@
     disko = { url = "github:nix-community/disko"; inputs.nixpkgs.follows = "nixpkgs"; };
     mac-app-util = { url = "github:hraban/mac-app-util"; inputs.nixpkgs.follows = "nixpkgs"; }; # Fixes spotlight loading
     licenser = { url = "github:liamawhite/licenser"; inputs.nixpkgs.follows = "nixpkgs"; };
+    nix-ai-tools = { url = "github:numtide/nix-ai-tools"; inputs.nixpkgs.follows = "nixpkgs"; };
   };
-  outputs = { self, darwin, home-manager, nixpkgs, disko, mac-app-util, licenser }@inputs:
+  outputs = { self, darwin, home-manager, nixpkgs, disko, mac-app-util, licenser, nix-ai-tools }@inputs:
     let
       user = "liam";
       email = "liamawhite@gmail.com";
