@@ -59,11 +59,11 @@
       ## Misc
       nodePackages.bash-language-server
       dotnet-sdk
-      jdk23 # latest LTS
+      jdk23 # LTS
       lua
       lua-language-server
       luarocks
-      nodejs_20 # latest LTS
+      nodejs_22
       nil
       nixpkgs-fmt
       terraform-ls

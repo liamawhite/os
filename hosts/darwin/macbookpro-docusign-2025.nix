@@ -24,6 +24,7 @@ in
     (modules /programs/development/cloud.nix { inherit user pkgs; })
     (modules /programs/development/ides.nix { inherit user pkgs; })
     (modules /programs/development/ds.nix { inherit user pkgs; })
+    (modules /programs/development/agents.nix { inherit user pkgs; })
 
     # Terminal and Dotfiles
     (modules /programs/terminal/darwin.nix { inherit user pkgs; })
