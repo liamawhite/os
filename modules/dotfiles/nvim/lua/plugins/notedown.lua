@@ -1,6 +1,5 @@
 return {
-    dir = "~/.config/notedown/nvim",
-    name = "notedown",
+    "notedownorg/notedown.nvim",
     config = function()
         vim.treesitter.language.register('markdown', 'notedown')
         require("notedown").setup({})
