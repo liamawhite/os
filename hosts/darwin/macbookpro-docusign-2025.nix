@@ -1,4 +1,4 @@
-{ pkgs, mac-app-util, ... }:
+{ pkgs, ... }:
 
 let
   user = "liam.white";
@@ -18,7 +18,7 @@ in
     # Darwin-specific configuration
     (modules /darwin/settings.nix { inherit user machine; stateVersion = 5; })
     (modules /darwin/user.nix { inherit user pkgs home; })
-    (modules /darwin/home-manager.nix { inherit user mac-app-util; stateVersion = "23.11"; })
+    (modules /darwin/home-manager.nix { inherit user; stateVersion = "23.11"; })
 
     # Development
     (modules /programs/development/cloud.nix { inherit user pkgs; })

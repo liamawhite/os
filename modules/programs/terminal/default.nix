@@ -11,7 +11,7 @@
       btop
       coreutils
       cht-sh
-      du-dust
+      dust
       eza
       fd
       htop

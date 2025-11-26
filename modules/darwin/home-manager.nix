@@ -1,9 +1,8 @@
-{ user, mac-app-util, stateVersion }:
+{ user, stateVersion }:
 
 {
   home-manager = {
     useGlobalPkgs = true;
-    sharedModules = [ mac-app-util.homeManagerModules.default ];
 
     users.${user} = { config, lib, pkgs, ... }: {
       home = {

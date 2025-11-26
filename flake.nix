@@ -5,11 +5,10 @@
     home-manager = { url = "github:nix-community/home-manager"; inputs.nixpkgs.follows = "nixpkgs"; };
     darwin = { url = "github:LnL7/nix-darwin/master"; inputs.nixpkgs.follows = "nixpkgs"; };
     disko = { url = "github:nix-community/disko"; inputs.nixpkgs.follows = "nixpkgs"; };
-    mac-app-util = { url = "github:hraban/mac-app-util"; inputs.nixpkgs.follows = "nixpkgs"; }; # Fixes spotlight loading
     licenser = { url = "github:liamawhite/licenser"; inputs.nixpkgs.follows = "nixpkgs"; };
     nix-ai-tools = { url = "github:numtide/nix-ai-tools"; inputs.nixpkgs.follows = "nixpkgs"; };
   };
-  outputs = { self, darwin, home-manager, nixpkgs, disko, mac-app-util, licenser, nix-ai-tools }@inputs:
+  outputs = { self, darwin, home-manager, nixpkgs, disko, licenser, nix-ai-tools }@inputs:
     let
       user = "liam";
       email = "liamawhite@gmail.com";
@@ -24,7 +23,6 @@
           system = "aarch64-darwin";
           specialArgs = inputs // { inherit user email; };
           modules = [
-            mac-app-util.darwinModules.default
             home-manager.darwinModules.home-manager
             ./overlays
             ./hosts/darwin/macbookpro-docusign-2025.nix
@@ -34,7 +32,6 @@
           system = "aarch64-darwin";
           specialArgs = inputs // { inherit user email; };
           modules = [
-            mac-app-util.darwinModules.default
             home-manager.darwinModules.home-manager
             ./overlays
             ./hosts/darwin/macstudio-personal-2023.nix
@@ -44,7 +41,6 @@
           system = "aarch64-darwin";
           specialArgs = inputs // { inherit user email; };
           modules = [
-            mac-app-util.darwinModules.default
             home-manager.darwinModules.home-manager
             ./overlays
             ./hosts/darwin/macbookpro-personal-2025.nix
