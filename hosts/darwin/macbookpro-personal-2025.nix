@@ -38,5 +38,6 @@ in
     (modules /programs/tailscale/default.nix { inherit user pkgs; })
     (modules /programs/browsers/chrome/default.nix { inherit user pkgs; })
     (modules /programs/browsers/zen/darwin.nix { inherit user pkgs; })
+    (modules /programs/productivity/default.nix { inherit user pkgs; })
   ];
 }

@@ -45,6 +45,7 @@ in
     (modules /programs/final-cut-pro/default.nix { inherit user pkgs; })
 
     (modules /programs/llms/default.nix { inherit user pkgs; })
+    (modules /programs/productivity/default.nix { inherit user pkgs; })
   ];
 }
 

@@ -40,15 +40,11 @@
     programs.git = {
       enable = true;
       ignores = [ "*.swp" ".DS_Store" ];
-      userName = "Liam White";
-      difftastic = {
-        enable = true;
-        background = "dark";
-      };
       lfs = {
         enable = true;
       };
-      extraConfig = {
+      settings = {
+        user.name = "Liam White";
         init.defaultBranch = "main";
         pull.rebase = true;
         rebase.autoStash = true;
@@ -61,6 +57,14 @@
             insteadOf = "https://github.com/";
           };
         };
+      };
+    };
+
+    programs.difftastic = {
+      enable = true;
+      git.enable = true;
+      options = {
+        background = "dark";
       };
     };
   };
