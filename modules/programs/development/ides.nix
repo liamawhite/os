@@ -59,7 +59,7 @@
 
       ## Misc
       nodePackages.bash-language-server
-      dotnet-sdk
+      dotnet-sdk_10
       jdk
       lua
       lua-language-server
