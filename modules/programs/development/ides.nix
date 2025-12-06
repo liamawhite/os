@@ -25,8 +25,9 @@
       gopls
       goreleaser
       gotools
-      delve
       cobra-cli
+      delve
+      wails
 
       ## Python
       python3
