@@ -70,6 +70,13 @@
         background = "dark";
       };
     };
+
+    programs.gpg = {
+      enable = true;
+      settings = {
+        default-key = "A180F839D002DDB8520C128DE1B2B65F25D58D34";
+      };
+    };
   };
 }
 
