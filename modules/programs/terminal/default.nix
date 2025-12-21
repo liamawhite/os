@@ -21,6 +21,8 @@
       flock
       fzf
       gh
+      git-remote-gcrypt
+      gnupg
       grpcurl
       inetutils
       moreutils
