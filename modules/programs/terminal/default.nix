@@ -51,6 +51,7 @@
         pull.rebase = true;
         rebase.autoStash = true;
         push.autoSetupRemote = true;
+        gcrypt.gpg-args = "--use-agent";
         core = {
           editor = "nvim";
         };
