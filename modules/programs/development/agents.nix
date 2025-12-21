@@ -6,7 +6,6 @@
       packages = [
         pkgs.claude-code
         pkgs.gh-copilot
-        pkgs.codex
       ];
     };
   };
