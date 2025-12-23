@@ -37,6 +37,7 @@ in
       azure-cli
       awscli2
       cmctl
+      crd2pulumi
       docker-compose
       eksctl
       fortio
