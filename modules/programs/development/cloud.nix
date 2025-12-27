@@ -36,6 +36,7 @@ in
     home.packages = with pkgs; [
       azure-cli
       awscli2
+      cloudflared
       cmctl
       crd2pulumi
       docker-compose
