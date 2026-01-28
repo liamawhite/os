@@ -27,6 +27,7 @@
       gotools
       cobra-cli
       delve
+      hugo
       wails
 
       ## Python
@@ -67,6 +68,7 @@
       nil
       notedown-language-server
       nixpkgs-fmt
+      dart-sass
       terraform-ls
       clang-tools
       elixir

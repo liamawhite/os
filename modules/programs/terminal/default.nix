@@ -14,6 +14,7 @@
       dust
       eza
       fd
+      ffmpeg
       htop
       iftop
       jq
@@ -35,6 +36,7 @@
       unzip
       wget
       worktree
+      yt-dlp
       zip
       zoxide
     ];
