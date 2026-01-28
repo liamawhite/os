@@ -30,7 +30,7 @@
       wails
 
       ## Python
-      python3
+      pyenv # use pyenv to manage all python versions
       pyright
       python312Packages.pip
       mypy
@@ -39,7 +39,6 @@
       black
       uv
       virtualenv
-      pyenv
 
       ## Rust
       rustc
