@@ -8,18 +8,23 @@ FLAKE="macstudio-personal-2023"
 SYSTEM="darwinConfigurations.$FLAKE.system"
 
 echo "${YELLOW}Ensuring secrets are decrypted...${NC}"
-# git-crypt unlock requires a clean working directory
-# Stash changes if present, unlock, then restore
-STASH_COUNT_BEFORE=$(git stash list | wc -l)
-if ! git diff-index --quiet HEAD --; then
-  echo "${YELLOW}Temporarily stashing uncommitted changes (git-crypt unlock requires clean directory)...${NC}"
-  git stash -q
-fi
-git-crypt unlock
-STASH_COUNT_AFTER=$(git stash list | wc -l)
-if [ $STASH_COUNT_AFTER -gt $STASH_COUNT_BEFORE ]; then
-  echo "${YELLOW}Restoring uncommitted changes...${NC}"
-  git stash pop -q
+# Skip if git-crypt is not installed yet (first run)
+if command -v git-crypt >/dev/null 2>&1; then
+  # git-crypt unlock requires a clean working directory
+  # Stash changes if present, unlock, then restore
+  STASH_COUNT_BEFORE=$(git stash list | wc -l)
+  if ! git diff-index --quiet HEAD --; then
+    echo "${YELLOW}Temporarily stashing uncommitted changes (git-crypt unlock requires clean directory)...${NC}"
+    git stash -q
+  fi
+  git-crypt unlock
+  STASH_COUNT_AFTER=$(git stash list | wc -l)
+  if [ $STASH_COUNT_AFTER -gt $STASH_COUNT_BEFORE ]; then
+    echo "${YELLOW}Restoring uncommitted changes...${NC}"
+    git stash pop -q
+  fi
+else
+  echo "${YELLOW}git-crypt not found, skipping decryption (will be available after this build)${NC}"
 fi
 
 echo "${YELLOW}Starting build...${NC}"
