@@ -46,5 +46,12 @@ in
     (modules /programs/llms/default.nix { inherit user pkgs; })
     (modules /programs/productivity/default.nix { inherit user pkgs; })
   ];
+
+  # Secrets
+  home-manager.users.${user} = { config, lib, pkgs, ... }: {
+    programs.zsh.sessionVariables = {
+      TEST_SECRET = "$(cat ${../../secrets/shared/test-secret.txt})";
+    };
+  };
 }
 

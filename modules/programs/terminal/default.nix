@@ -15,6 +15,7 @@
       eza
       fd
       ffmpeg
+      git-crypt
       htop
       iftop
       jq
