@@ -1,4 +1,4 @@
-{ user, root, pkgs, ... }:
+{ user, root, pkgs, secrets ? {}, ... }:
 
 {
   home-manager.users.${user} = { config, lib, ... }:
@@ -9,6 +9,11 @@
 
       # Symlinks to a place in this repo so we can edit them without rebuilding the system
       useLocal = rel: config.lib.file.mkOutOfStoreSymlink "${root}/modules/dotfiles/${rel}";
+
+      # Generate .env content from secrets attribute set
+      secretsContent = lib.concatStringsSep "\n" (
+        lib.mapAttrsToList (name: value: "${name}=\"${value}\"") secrets
+      );
     in
     {
       home.file = {
@@ -23,6 +28,9 @@
         "${xdg_home}/.aerospace.toml".source = useLocal "aerospace.toml";
         "${xdg_home}/.ssh" = { source = ./ssh; recursive = true; };
         "${xdg_home}/.zshplugins/zsh-autosuggestions.zsh" = { source = "${zsh-autosuggestions}/zsh/zsh-autosuggestions.zsh"; };
+
+        # Secrets .env file (always created, even if empty)
+        "${xdg_home}/.env".text = secretsContent;
       };
     };
 }

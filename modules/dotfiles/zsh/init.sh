@@ -14,3 +14,8 @@ fi
 if [[ "$PATH" != *"$HOME/bin:"* ]]; then
     export PATH="$PATH:$HOME/bin"
 fi
+
+# Load secrets from .env file
+set -a
+source "$HOME/.env"
+set +a
