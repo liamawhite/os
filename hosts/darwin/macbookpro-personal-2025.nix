@@ -30,9 +30,9 @@ in
     (modules /programs/terminal/darwin.nix { inherit user pkgs; })
     (modules /dotfiles/default.nix {
       inherit user pkgs root;
-      secrets = {
-        TEST_SECRET = builtins.readFile ../../secrets/shared/test-secret.txt;
-      };
+      secretsFiles = [
+        ../../secrets/personal/api-keys.env
+      ];
     })
 
     # GUI Applications

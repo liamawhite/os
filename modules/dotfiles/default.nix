@@ -1,4 +1,4 @@
-{ user, root, pkgs, secrets ? {}, ... }:
+{ user, root, pkgs, secretsFiles ? [], ... }:
 
 {
   home-manager.users.${user} = { config, lib, ... }:
@@ -10,9 +10,28 @@
       # Symlinks to a place in this repo so we can edit them without rebuilding the system
       useLocal = rel: config.lib.file.mkOutOfStoreSymlink "${root}/modules/dotfiles/${rel}";
 
+      # Parse a secrets file with KEY=VALUE pairs into an attribute set
+      parseSecretsFile = file:
+        let
+          content = builtins.readFile file;
+          lines = lib.splitString "\n" content;
+          nonEmptyLines = builtins.filter (line: line != "" && !(lib.hasPrefix "#" line)) lines;
+          parseLine = line:
+            let
+              parts = lib.splitString "=" line;
+              key = builtins.head parts;
+              value = lib.concatStringsSep "=" (builtins.tail parts);
+            in
+            { name = key; value = value; };
+        in
+        builtins.listToAttrs (map parseLine nonEmptyLines);
+
+      # Merge secrets from all files
+      allSecrets = lib.foldl' (acc: file: acc // (parseSecretsFile file)) {} secretsFiles;
+
       # Generate .env content from secrets attribute set
       secretsContent = lib.concatStringsSep "\n" (
-        lib.mapAttrsToList (name: value: "${name}=\"${value}\"") secrets
+        lib.mapAttrsToList (name: value: "${name}=\"${value}\"") allSecrets
       );
     in
     {
