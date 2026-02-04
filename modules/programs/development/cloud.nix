@@ -45,7 +45,9 @@ in
       fluxcd
       google-cloud-sdk
       kind
+      kubernetes-code-generator
       kubernetes-helm
+      kubetype-gen # istio client-go tool see overlays
       kubectl
       kubectx
       kubelogin

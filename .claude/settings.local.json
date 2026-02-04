@@ -17,7 +17,8 @@
       "Read(//nix/store/slgwzscm3qw2fs1fdd7daarzynazcrw8-gh-copilot-overlay/**)",
       "Bash(nix-build:*)",
       "Read(//nix/store/**)",
-      "Bash(git-crypt status:*)"
+      "Bash(git-crypt status:*)",
+      "Bash(nix build:*)"
     ],
     "deny": []
   }
