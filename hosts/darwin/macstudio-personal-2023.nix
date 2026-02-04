@@ -30,9 +30,7 @@ in
     (modules /programs/terminal/darwin.nix { inherit user pkgs; })
     (modules /dotfiles/default.nix {
       inherit user pkgs root;
-      secretsFiles = [
-        ../../secrets/personal/api-keys.env
-      ];
+      secretsFiles = [ ];
     })
 
     # GUI Applications

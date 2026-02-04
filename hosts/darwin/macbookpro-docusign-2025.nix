@@ -31,7 +31,7 @@ in
     (modules /dotfiles/default.nix {
       inherit user pkgs root;
       secretsFiles = [
-        ../../secrets/personal/api-keys.env
+        ../../secrets/docusign/claudecode.env
       ];
     })
 
