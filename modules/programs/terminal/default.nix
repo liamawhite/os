@@ -23,6 +23,7 @@
       flock
       fzf
       gh
+      jira-cli-go
       git-remote-gcrypt
       gnupg
       grpcurl

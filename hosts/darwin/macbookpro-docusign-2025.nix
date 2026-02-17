@@ -32,6 +32,7 @@ in
       inherit user pkgs root;
       secretsFiles = [
         ../../secrets/docusign/claudecode.env
+        ../../secrets/docusign/jira.env
       ];
     })
 
