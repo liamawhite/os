@@ -43,7 +43,7 @@ in
       eksctl
       fortio
       fluxcd
-      google-cloud-sdk
+      (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
       kind
       kubernetes-code-generator
       kubernetes-helm
