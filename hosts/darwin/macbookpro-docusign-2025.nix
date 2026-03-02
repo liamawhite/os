@@ -33,6 +33,7 @@ in
       secretsFiles = [
         ../../secrets/docusign/claudecode.env
         ../../secrets/docusign/jira.env
+        ../../secrets/docusign/llmhub.env
       ];
     })
 
