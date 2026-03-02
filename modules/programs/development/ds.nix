@@ -3,7 +3,7 @@
 let
   msf-cli = pkgs.stdenv.mkDerivation rec {
     pname = "msf-cli";
-    version = "1.9.3";
+    version = "2.0.1";
 
     platform =
       if pkgs.stdenv.isDarwin then
@@ -15,7 +15,7 @@ let
 
     src = pkgs.fetchurl {
       url = "https://artifactory.docusigntest.com/artifactory/github-releases-local/msf-cli/${version}/${artifactName}";
-      sha256 = "sha256-gbnK2UxrkKKAa2Mbm4xqCeW8ySEk9gh3zKTuVSDYC3w=";
+      sha256 = "sha256-3i9xr40tn3i8ARgvDsupKYJnTmZlgLsJJ9xGt3rn6cI=";
     };
 
     nativeBuildInputs = [ pkgs.unzip ];

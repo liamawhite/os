@@ -3,7 +3,7 @@
 cd ~/github.com/liamawhite/os ||  exit 1
 
 # Detect hostname and use appropriate configuration
-HOSTNAME=$(hostname -s)
+HOSTNAME=$(hostname -s | tr '[:lower:]' '[:upper:]')
 case "$HOSTNAME" in
     "DSAF2J3Q36DQG")
         echo "Detected MacBook Pro DocuSign 2025"
