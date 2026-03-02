@@ -13,13 +13,13 @@ buildGoModule rec {
     owner = "istio";
     repo = "tools";
     rev = "master";
-    hash = "sha256-Ye0rUoLy71Ka4JQYcyDyopfeW94T4xUxZi6h+5tb0v4=";
+    hash = "sha256-qJXmSCVkyYfCk2hHCjPxzNzVckt+P4gbeSLa3oGamPA=";
   };
 
   # The tool is in a subdirectory of the repo
   subPackages = [ "cmd/kubetype-gen" ];
 
-  vendorHash = "sha256-NFXwhj/qkN3Q5dz1IdZhRTNSOa3IF5the6OsW3oY+7s=";
+  vendorHash = "sha256-96g/rt/ZPVCJYkAGy1BASkm+8fcu6dg9zUqyb9UNc2I=";
 
   doCheck = false;
 
