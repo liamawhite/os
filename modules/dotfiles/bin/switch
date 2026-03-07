@@ -3,9 +3,9 @@
 cd ~/github.com/liamawhite/os ||  exit 1
 
 # Detect hostname and use appropriate configuration
-HOSTNAME=$(hostname -s | tr '[:lower:]' '[:upper:]')
+HOSTNAME=$(hostname -s | tr '[:upper:]' '[:lower:]')
 case "$HOSTNAME" in
-    "DSAF2J3Q36DQG")
+    "dsaf2j3q36dqg")
         echo "Detected MacBook Pro DocuSign 2025"
         nix run .#macbookpro-docusign-2025-switch
         ;;
