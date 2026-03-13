@@ -44,6 +44,7 @@
         "${xdg_home}/.zsh".source = useLocal "zsh";
         "${xdg_home}/bin".source = useLocal "bin";
         "${xdg_home}/.claude/settings.json".source = useLocal "claude/settings.json";
+        "${xdg_home}/workspaces".source = useLocal "workspaces";
         "${xdg_home}/.aerospace.toml".source = useLocal "aerospace.toml";
         "${xdg_home}/.ssh" = { source = ./ssh; recursive = true; };
         "${xdg_home}/.zshplugins/zsh-autosuggestions.zsh" = { source = "${zsh-autosuggestions}/zsh/zsh-autosuggestions.zsh"; };
