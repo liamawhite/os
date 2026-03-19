@@ -49,6 +49,9 @@
         "${xdg_home}/.ssh" = { source = ./ssh; recursive = true; };
         "${xdg_home}/.zshplugins/zsh-autosuggestions.zsh" = { source = "${zsh-autosuggestions}/zsh/zsh-autosuggestions.zsh"; };
 
+        # msf-cli configuration
+        "${xdg_home}/.msf-cli/config.yaml".source = useLocal "msf-cli/config.yaml";
+
         # Secrets .env file (always created, even if empty)
         "${xdg_home}/.env".text = secretsContent;
       };
