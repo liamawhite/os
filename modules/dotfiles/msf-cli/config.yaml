@@ -1,0 +1,4 @@
+options:
+  prompt: true          # Keep asking for confirmation (default)
+  upgrade: disable      # No upgrade checks
+  dependencies: check   # Check deps, fail if missing
