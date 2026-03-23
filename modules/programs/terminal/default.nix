@@ -46,6 +46,7 @@
     programs.git = {
       enable = true;
       ignores = [ "*.swp" ".DS_Store" ];
+      signing.format = "openpgp";
       lfs = {
         enable = true;
       };
