@@ -16,22 +16,6 @@
       kubelogin = prev.kubelogin.overrideAttrs (oldAttrs: {
         doCheck = false;
       });
-
-      # Temporary fix for yt-dlp to avoid secretstorage dependency issues
-      yt-dlp = prev.yt-dlp.overridePythonAttrs (o: {
-        # don't use gnome keyring
-        dependencies = (
-          __filter
-            (
-              p:
-                !(__elem p.pname [
-                  "cffi"
-                  "secretstorage"
-                ])
-            )
-            o.dependencies
-        );
-      });
     })
   ];
 }
