@@ -50,7 +50,7 @@
       ## JS/TS
       tailwindcss-language-server
       tailwindcss_4
-      nodePackages.typescript-language-server
+      typescript-language-server
       vscode-langservers-extracted # markdown html css json eslin (not all are used)
       bun
       pnpm
@@ -58,7 +58,7 @@
       yaml-language-server
 
       ## Misc
-      nodePackages.bash-language-server
+      bash-language-server
       dotnet-sdk_10
       jdk
       lua
