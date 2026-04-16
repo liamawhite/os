@@ -24,7 +24,6 @@
       golangci-lint
       gopls
       goreleaser
-      gotools
       cobra-cli
       delve
       hugo
