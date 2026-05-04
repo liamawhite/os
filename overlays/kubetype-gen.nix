@@ -19,7 +19,7 @@ buildGoModule rec {
   # The tool is in a subdirectory of the repo
   subPackages = [ "cmd/kubetype-gen" ];
 
-  vendorHash = "sha256-yYcVqfI6ccgLNQ+AVc8m1XrJ+XAaf6nvLvcEfQnYUDg=";
+  vendorHash = "sha256-n18Bclcxw3Sciq+u/T/xvsRkzohkYy19lnyxygfjywk=";
 
   doCheck = false;
 
