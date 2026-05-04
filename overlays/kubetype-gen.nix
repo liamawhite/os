@@ -7,13 +7,13 @@
 
 buildGoModule rec {
   pname = "kubetype-gen";
-  version = "unstable-2024-01-01";
+  version = "unstable-2026-04-20";
 
   src = fetchFromGitHub {
     owner = "istio";
     repo = "tools";
-    rev = "master";
-    hash = "sha256-/C0Lzw7Jbq3TatGaTxSYIP+l6SA3mQwOgGFSsrcZwV4=";
+    rev = "c0833221e33cd0bf80795ce91a62fe3bd5d337ed";
+    hash = "sha256-XTTD/N3BrBzRmfXU07n15q0R87vc9eHHOdj4NGgVIVU=";
   };
 
   # The tool is in a subdirectory of the repo
