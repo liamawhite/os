@@ -65,7 +65,6 @@
       luarocks
       nodejs_22
       nil
-      notedown-language-server
       nixpkgs-fmt
       dart-sass
       terraform-ls

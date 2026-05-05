@@ -1,11 +1,5 @@
 return {
     {
-        'ggandor/leap.nvim',
-        config = function()
-            require('leap').create_default_mappings()
-        end
-    },
-    {
         "rmagatti/goto-preview",
         config = function()
             local preview = require("goto-preview")

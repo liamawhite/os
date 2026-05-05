@@ -18,54 +18,48 @@ return {
             "folke/lazydev.nvim",
         },
         config = function()
-            local lspconfig = require("lspconfig")
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-            lspconfig.bashls.setup({ capabilities = capabilities })
-            lspconfig.buf_ls.setup({ capabilities = capabilities })
-            lspconfig.cssls.setup({ capabilities = capabilities })
-            lspconfig.gopls.setup({
-                capabilities = capabilities,
+            vim.lsp.config('*', { capabilities = capabilities })
+
+            vim.lsp.config('gopls', {
                 cmd = { "gopls" },
                 filetypes = { "go", "gomod", "gowork", "gotmpl" },
-                root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
+                root_markers = { "go.work", "go.mod", ".git" },
                 settings = {
                     gopls = {
                         completeUnimported = true,
                     },
                 },
             })
-            lspconfig.pyright.setup({ capabilities = capabilities })
-            lspconfig.lua_ls.setup({
-                capabilities = capabilities,
+            vim.lsp.config('lua_ls', {
                 settings = {
                     Lua = {
                         completion = { callSnippet = "Replace" },
                     },
                 },
             })
-            lspconfig.nil_ls.setup({
-                capabilities = capabilities,
+            vim.lsp.config('nil_ls', {
                 settings = {
                     ['nil'] = {
                         formatting = {
                             command = { "nixpkgs-fmt" },
                         },
                     },
-                }
+                },
             })
-            lspconfig.rust_analyzer.setup({ capabilities = capabilities })
-            lspconfig.tailwindcss.setup({ capabilities = capabilities })
-            lspconfig.ts_ls.setup({
-                capabilities = capabilities,
+            vim.lsp.config('ts_ls', {
                 init_options = {
                     hostInfo = "neovim",
                     maxTsServerMemory = 15360,
                 },
             })
-            lspconfig.yamlls.setup({ capabilities = capabilities })
-            lspconfig.terraformls.setup({ capabilities = capabilities })
-            lspconfig.clangd.setup({ capabilities = capabilities })
+
+            vim.lsp.enable({
+                'bashls', 'buf_ls', 'cssls', 'gopls', 'pyright',
+                'lua_ls', 'nil_ls', 'rust_analyzer', 'tailwindcss',
+                'ts_ls', 'yamlls', 'terraformls', 'clangd',
+            })
 
             -- Use LspAttach autocommand to only map the following keys
             -- after the language server attaches to the current buffer
