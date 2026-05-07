@@ -1,5 +1,0 @@
-# Ignore all directories except .agent and .claude
-/*
-!/.gitignore
-!/.agent/
-!/.claude/

@@ -29,5 +29,5 @@ alias nav=navctl
 alias nxsearch='nix search nixpkgs'
 alias msf=msf-cli
 alias wt=worktree
-alias ws=workspaces
+alias ws=workstreams
 alias msf="msf-cli"
