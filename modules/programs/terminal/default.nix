@@ -38,6 +38,7 @@
       unzip
       wget
       worktree
+      workstreams
       yt-dlp
       zip
       zoxide

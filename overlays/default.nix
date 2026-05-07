@@ -6,6 +6,7 @@
     (import ./nix-ai-tools.nix)
     (final: prev: {
       worktree = prev.callPackage ./worktree.nix { };
+      workstreams = prev.callPackage ./workstreams.nix { };
       kubetype-gen = prev.callPackage ./kubetype-gen.nix { };
       # Add nix-ai-tools packages to pkgs
       nix-ai-tools = nix-ai-tools;
