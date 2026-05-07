@@ -25,7 +25,7 @@ function module.apply_to_config(config)
                 act.InputSelector {
                     action = wezterm.action_callback(
                         function(inner_window, inner_pane, id, label)
-                            if not id and not label then
+                            if (not id and not label) or id == '' then
                                 wezterm.log_info 'cancelled'
                             else
                                 wezterm.log_info('id = ' .. id .. ' label = ' .. label)

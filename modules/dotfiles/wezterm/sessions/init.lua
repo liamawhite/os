@@ -38,10 +38,23 @@ end
 function manager.choices()
     local choices = {}
 
+    local workstreams_dir = wezterm.home_dir .. '/workstreams'
     local github_dir = wezterm.home_dir .. '/github.com'
     local docusign_github_dir = wezterm.home_dir .. '/github.docusignhq.com'
     local docusign_ado_dir = wezterm.home_dir .. '/dev.azure.com'
     local notes_dir = wezterm.home_dir .. '/notes'
+
+    local ws_dirs = utils.find(workstreams_dir, 'd', 1, 1)
+    if ws_dirs then
+        for _, dir in ipairs(ws_dirs) do
+            local name = string.match(dir, '[^/]+$')
+            if name and not string.match(name, '^%.') then
+                table.insert(choices, { label = name, id = dir })
+            end
+        end
+    end
+
+    table.insert(choices, { label = '─── repositories ───', id = '' })
 
     add_directory_choices(choices, github_dir, 'github/', 2, 2)
     add_directory_choices(choices, docusign_github_dir, 'docusign/', 2, 2)
