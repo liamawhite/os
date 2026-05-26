@@ -60,7 +60,6 @@ in
       skopeo
       terraform
       vcluster
-      wrangler
     ];
   };
 }
