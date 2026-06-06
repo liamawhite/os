@@ -56,7 +56,7 @@ window-theme = dark
 
 # Misc settings
 mouse-hide-while-typing = true
-copy-on-select = false
+copy-on-select = true
 confirm-close-surface = false
 
 # Shell integration

@@ -21,6 +21,7 @@ in
     (modules /darwin/home-manager.nix { inherit user; stateVersion = "23.11"; })
 
     # Development
+    (modules /programs/llms/default.nix { inherit user pkgs; })
     (modules /programs/development/cloud.nix { inherit user pkgs; })
     (modules /programs/development/ides.nix { inherit user pkgs; })
     (modules /programs/development/vscode.nix { inherit user pkgs; })
