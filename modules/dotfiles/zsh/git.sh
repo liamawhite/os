@@ -38,8 +38,8 @@ worktree() {
 workstreams() {
     local cmd="$1"
 
-    # Commands that may change the working directory
-    if [[ "$cmd" == "add" || "$cmd" == "switch" || "$cmd" == "sw" || "$cmd" == "remove" || "$cmd" == "rm" ]]; then
+    # Commands that may change the working directory (includes empty cmd for root TUI)
+    if [[ -z "$cmd" || "$cmd" == "add" || "$cmd" == "switch" || "$cmd" == "sw" || "$cmd" == "remove" || "$cmd" == "rm" ]]; then
         local temp_file
         temp_file=$(mktemp)
 
