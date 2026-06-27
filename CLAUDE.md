@@ -64,9 +64,10 @@ This is a personal macOS system configuration using Nix Flakes, nix-darwin, and 
 
 ## Important Instructions
 
-- NEVER run the 'switch' command or any nix rebuild commands automatically
-- The user will handle all system rebuilds manually
+- NEVER run the 'switch' command automatically
+- The user will handle any switching system rebuilds manually
 - Do what has been asked; nothing more, nothing less
 - NEVER create files unless they're absolutely necessary for achieving your goal
 - ALWAYS prefer editing an existing file to creating a new one
 - NEVER proactively create documentation files (*.md) or README files. Only create documentation files if explicitly requested by the User
+- When applying temporary package fixes (e.g. `doCheck = false`, hash overrides), always create a dedicated file in `overlays/` (e.g. `overlays/istioctl.nix`) and import it in `overlays/default.nix` — never add inline fixes inside the main overlay block

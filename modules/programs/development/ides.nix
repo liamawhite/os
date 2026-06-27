@@ -69,7 +69,7 @@
       dart-sass
       terraform-ls
       clang-tools
-      elixir
+      beamPackages.elixir
     ];
   };
 }

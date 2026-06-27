@@ -4,7 +4,7 @@
   nixpkgs.overlays = [
     licenser.overlay
     (import ./nix-ai-tools.nix)
-    (import ./1password.nix)
+(import ./istioctl.nix)
     (final: prev: {
       worktree = prev.callPackage ./worktree.nix { };
       workstreams = prev.callPackage ./workstreams.nix { };
