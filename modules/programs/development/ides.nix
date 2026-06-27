@@ -64,7 +64,7 @@
       lua-language-server
       luarocks
       nodejs_22
-      nil
+      nixd
       nixpkgs-fmt
       dart-sass
       terraform-ls

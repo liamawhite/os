@@ -39,15 +39,19 @@ return {
                     },
                 },
             })
-            vim.lsp.config('nil_ls', {
+            local flake_path = vim.fn.expand("~") .. "/github.com/liamawhite/os"
+            vim.lsp.config('nixd', {
                 settings = {
-                    ['nil'] = {
+                    nixd = {
+                        nixpkgs = {
+                            expr = 'import (builtins.getFlake "' .. flake_path .. '").inputs.nixpkgs {}',
+                        },
                         formatting = {
                             command = { "nixpkgs-fmt" },
                         },
-                        nix = {
-                            flake = {
-                                autoEvalInputs = false,
+                        options = {
+                            nix_darwin = {
+                                expr = '(builtins.getFlake "' .. flake_path .. '").darwinConfigurations.macbookpro-personal-2025.options',
                             },
                         },
                     },
@@ -62,7 +66,7 @@ return {
 
             vim.lsp.enable({
                 'bashls', 'buf_ls', 'cssls', 'gopls', 'pyright',
-                'lua_ls', 'nil_ls', 'rust_analyzer', 'tailwindcss',
+                'lua_ls', 'nixd', 'rust_analyzer', 'tailwindcss',
                 'ts_ls', 'yamlls', 'terraformls', 'clangd',
             })
 
