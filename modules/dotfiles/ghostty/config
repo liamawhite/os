@@ -51,7 +51,6 @@ font-style = Medium
 adjust-cell-width = -5%
 
 # Window settings
-window-decoration = false
 window-theme = dark
 
 # Misc settings
