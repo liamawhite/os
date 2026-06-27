@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+path="$1"
+
+if [[ "$path" == "$HOME"* ]]; then
+    echo "~${path#$HOME}"
+else
+    echo "${path##*/}"
+fi

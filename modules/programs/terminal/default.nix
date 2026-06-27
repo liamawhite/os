@@ -33,6 +33,7 @@
       openssh
       ripgrep
       starship
+      tmux
       tree
       unrar
       unzip

@@ -40,6 +40,7 @@
         "${xdg_configHome}/wezterm".source = useLocal "wezterm";
         "${xdg_configHome}/nvim".source = useLocal "nvim";
         "${xdg_configHome}/ghostty".source = useLocal "ghostty";
+        "${xdg_configHome}/tmux".source = useLocal "tmux";
         "${xdg_home}/.zshrc".source = useLocal "zshrc";
         "${xdg_home}/.zsh".source = useLocal "zsh";
         "${xdg_home}/bin".source = useLocal "bin";

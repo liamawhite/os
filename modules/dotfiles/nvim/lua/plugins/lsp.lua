@@ -45,6 +45,11 @@ return {
                         formatting = {
                             command = { "nixpkgs-fmt" },
                         },
+                        nix = {
+                            flake = {
+                                autoEvalInputs = false,
+                            },
+                        },
                     },
                 },
             })

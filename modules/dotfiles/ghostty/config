@@ -46,7 +46,7 @@ selection-foreground = cdd6f4
 
 # Terminal settings
 font-family = "JetBrainsMono Nerd Font"
-font-size = 11
+font-size = 12
 font-style = Medium
 adjust-cell-width = -5%
 
@@ -61,3 +61,31 @@ confirm-close-surface = false
 # Shell integration
 shell-integration = zsh
 shell-integration-features = no-cursor,sudo,title
+
+# tmux keybinds (send escape sequences, bypassing Ghostty defaults)
+keybind = cmd+w=esc:w
+keybind = cmd+one=esc:1
+keybind = cmd+two=esc:2
+keybind = cmd+three=esc:3
+keybind = cmd+four=esc:4
+keybind = cmd+five=esc:5
+keybind = cmd+six=esc:6
+keybind = cmd+seven=esc:7
+keybind = cmd+eight=esc:8
+keybind = cmd+nine=esc:9
+keybind = cmd+t=esc:t
+keybind = cmd+d=esc:d
+keybind = cmd+shift+backslash=esc:|
+keybind = cmd+shift+minus=esc:_
+keybind = cmd+h=esc:h
+keybind = cmd+j=esc:j
+keybind = cmd+k=esc:k
+keybind = cmd+l=esc:l
+keybind = cmd+shift+h=esc:H
+keybind = cmd+shift+j=esc:J
+keybind = cmd+shift+k=esc:K
+keybind = cmd+shift+l=esc:L
+keybind = cmd+alt+h=esc:{
+keybind = cmd+alt+j=esc:}
+keybind = cmd+alt+k=esc:~
+keybind = cmd+alt+l=esc:>
