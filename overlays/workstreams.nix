@@ -2,13 +2,13 @@
 
 buildGoModule rec {
   pname = "workstreams";
-  version = "0.5.0";
+  version = "0.6.0";
 
   src = fetchFromGitHub {
     owner = "liamawhite";
     repo = "workstreams";
     rev = "v${version}";
-    sha256 = "sha256-6kAp5Kfd3t2sGm/vFOrJMvdHd0wZRSbeBLOo6mR9QZ0=";
+    sha256 = "sha256-IByV2tm2iVpuvFpnzMl//HoRamZdfTPm7qY2s0gng5c=";
   };
 
   vendorHash = "sha256-/DvjHWgWqZO++XblUQ1hJtnm096zMm2ttdThQvZu96Q=";

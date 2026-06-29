@@ -71,3 +71,4 @@ This is a personal macOS system configuration using Nix Flakes, nix-darwin, and 
 - ALWAYS prefer editing an existing file to creating a new one
 - NEVER proactively create documentation files (*.md) or README files. Only create documentation files if explicitly requested by the User
 - When applying temporary package fixes (e.g. `doCheck = false`, hash overrides), always create a dedicated file in `overlays/` (e.g. `overlays/istioctl.nix`) and import it in `overlays/default.nix` — never add inline fixes inside the main overlay block
+- When adding or changing tmux keybindings, always update the Ghostty config (`modules/dotfiles/ghostty/config`) as well — Ghostty must explicitly map `cmd+<key>=esc:<key>` for each binding so the escape sequence reaches tmux

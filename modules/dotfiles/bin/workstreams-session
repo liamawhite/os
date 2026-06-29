@@ -1,0 +1,16 @@
+#!/bin/bash
+# Runs workstreams TUI and cd's into the selected workstream before exec'ing zsh.
+# Used by tmux new-window so the shell starts in the right directory.
+temp_file=$(mktemp)
+
+command workstreams "$@" 2> >(tee "$temp_file" >&2)
+exit_code=$?
+
+target_dir=$(grep "^WS_CHDIR:" "$temp_file" 2>/dev/null | sed 's/^WS_CHDIR://')
+rm -f "$temp_file"
+
+if [[ -n "$target_dir" && -d "$target_dir" ]]; then
+    cd "$target_dir" || true
+fi
+
+exec zsh

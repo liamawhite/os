@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+# Ensure single instance
+[[ -n "$(pgrep -f tmux-claude-daemon | grep -v $$)" ]] && exit 0
+
+STATE_DIR="$HOME/.tmux/claude"
+mkdir -p "$STATE_DIR"
+
+declare -A name_cache  # window_id -> "pane_path:base_name"
+declare -A pane_states
+
+while sleep 1; do
+    # Load all pane states from state files
+    unset pane_states; declare -A pane_states
+    for f in "$STATE_DIR"/%*; do
+        [[ -f "$f" ]] || continue
+        pane_states[$(basename "$f")]=$(< "$f")
+    done
+
+    # Process each window
+    while IFS=$'\t' read -r window_id pane_path; do
+        # Base name, cached per path to avoid re-running workstreams current
+        cached="${name_cache[$window_id]}"
+        if [[ "$cached" == "$pane_path:"* ]]; then
+            base="${cached#$pane_path:}"
+        else
+            base=$(cd "$pane_path" 2>/dev/null && workstreams current 2>/dev/null)
+            [[ -z "$base" ]] && base=$(basename "$pane_path")
+            name_cache[$window_id]="$pane_path:$base"
+        fi
+
+        # Aggregate pane states for this window: alert > running > idle
+        win_state="idle"
+        while IFS= read -r pane_id; do
+            pstate="${pane_states[$pane_id]:-idle}"
+            if [[ "$pstate" == "alert" ]]; then
+                win_state="alert"; break
+            elif [[ "$pstate" == "running" ]]; then
+                win_state="running"
+            fi
+        done < <(tmux list-panes -t "$window_id" -F '#{pane_id}' 2>/dev/null)
+
+        case "$win_state" in
+            alert)   name="󰔔 $base" ;;
+            running) name="󰚩 $base" ;;
+            *)       name="$base" ;;
+        esac
+
+        tmux rename-window -t "$window_id" "$name" 2>/dev/null
+    done < <(tmux list-windows -a -F $'#{window_id}\t#{pane_current_path}' 2>/dev/null)
+done

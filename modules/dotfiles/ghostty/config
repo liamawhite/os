@@ -73,6 +73,7 @@ keybind = cmd+six=esc:6
 keybind = cmd+seven=esc:7
 keybind = cmd+eight=esc:8
 keybind = cmd+nine=esc:9
+keybind = cmd+f=esc:f
 keybind = cmd+t=esc:t
 keybind = cmd+d=esc:d
 keybind = cmd+shift+backslash=esc:|

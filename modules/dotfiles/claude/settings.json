@@ -6,5 +6,38 @@
   },
   "alwaysThinkingEnabled": true,
   "skipDangerousModePermissionPrompt": true,
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "model": "sonnet",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [{"type": "command", "command": "bash", "args": ["-c", "~/bin/tmux-claude-state running"]}]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [{"type": "command", "command": "bash", "args": ["-c", "~/bin/tmux-claude-state running"]}]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [{"type": "command", "command": "bash", "args": ["-c", "~/bin/tmux-claude-state idle"]}]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "",
+        "hooks": [{"type": "command", "command": "bash", "args": ["-c", "~/bin/tmux-claude-state idle"]}]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [{"type": "command", "command": "bash", "args": ["-c", "~/bin/tmux-claude-state alert"]}]
+      }
+    ]
+  }
 }

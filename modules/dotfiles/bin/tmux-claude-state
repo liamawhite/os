@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Usage: tmux-claude-state <running|alert|idle>
+[ -z "$TMUX" ] && exit 0
+state="$1"
+state_dir="$HOME/.tmux/claude"
+mkdir -p "$state_dir"
+pid=$(tmux display-message -p '#{pane_id}')
+
+case "$state" in
+    running|alert)
+        echo "$state" > "$state_dir/$pid"
+        [[ "$state" == "alert" ]] && printf '\a'
+        ;;
+    idle)
+        rm -f "$state_dir/$pid"
+        ;;
+esac
