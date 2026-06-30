@@ -8,6 +8,12 @@ vim.opt.showmode = false
 vim.opt.wrap = true
 vim.opt.clipboard = "unnamedplus"
 
+vim.opt.autoread = true
+vim.opt.updatetime = 1000
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+    command = "checktime",
+})
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.numberwidth = 4
