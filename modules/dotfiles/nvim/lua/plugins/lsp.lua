@@ -97,7 +97,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end, opts)
         vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
 
-        if client.supports_method('textDocument/formatting') then
+        if client:supports_method('textDocument/formatting') then
             vim.api.nvim_create_autocmd('BufWritePre', {
                 buffer = args.buf,
                 callback = function()
