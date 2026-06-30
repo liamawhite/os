@@ -12,7 +12,7 @@
     "SessionStart": [
       {
         "matcher": "",
-        "hooks": [{"type": "command", "command": "bash", "args": ["-c", "~/bin/tmux-claude-state running"]}]
+        "hooks": [{"type": "command", "command": "bash", "args": ["-c", "~/bin/tmux-claude-state idle"]}]
       }
     ],
     "UserPromptSubmit": [

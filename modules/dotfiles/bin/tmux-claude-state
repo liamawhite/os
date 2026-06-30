@@ -9,7 +9,7 @@ pid=$(tmux display-message -p '#{pane_id}')
 case "$state" in
     running|alert)
         echo "$state" > "$state_dir/$pid"
-        [[ "$state" == "alert" ]] && printf '\a'
+        if [[ "$state" == "alert" ]]; then printf '\a'; fi
         ;;
     idle)
         rm -f "$state_dir/$pid"
