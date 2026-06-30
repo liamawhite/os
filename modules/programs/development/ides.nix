@@ -5,6 +5,8 @@
     home.packages = with pkgs; [
       (pkgs.neovim.override {
         configure = {
+          # nix sets VIMINIT to a generated init that skips ~/.config/nvim/init.lua; this re-connects it
+          customRC = "luafile $HOME/.config/nvim/init.lua";
           packages.plugins = {
             start = (with pkgs.vimPlugins; [
               auto-save-nvim
