@@ -37,7 +37,7 @@ require("neo-tree").setup({
 vim.keymap.set("n", "<leader>ee", ":Neotree filesystem toggle <CR>", { desc = "Open file explorer" })
 
 local lsps = function()
-    local clients = vim.lsp.buf_get_clients()
+    local clients = vim.lsp.get_clients({ bufnr = 0 })
     if next(clients) == nil then
         return 'No Active Lsp'
     end
