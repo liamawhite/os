@@ -1,7 +1,1 @@
-return {
-    "okuuva/auto-save.nvim",
-    event = { "InsertLeave", "TextChanged" },
-    opts = {
-        write_all_buffers = true,
-    },
-}
+require("auto-save").setup({ write_all_buffers = true })

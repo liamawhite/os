@@ -3,6 +3,49 @@
 {
   home-manager.users.${user} = { ... }: {
     home.packages = with pkgs; [
+      (pkgs.neovim.override {
+        configure = {
+          packages.plugins = {
+            start = (with pkgs.vimPlugins; [
+              auto-save-nvim
+              catppuccin-nvim
+              nvim-ufo
+              promise-async
+              neogit
+              gitsigns-nvim
+              diffview-nvim
+              neodev-nvim
+              lazydev-nvim
+              nvim-lspconfig
+              copilot-vim
+              cmp-nvim-lsp
+              cmp-path
+              nvim-cmp
+              trouble-nvim
+              lspsaga-nvim
+              inc-rename-nvim
+              render-markdown-nvim
+              plenary-nvim
+              none-ls-nvim
+              telescope-nvim
+              telescope-fzf-native-nvim
+              telescope-ui-select-nvim
+              comment-nvim
+              neo-tree-nvim
+              nvim-web-devicons
+              nui-nvim
+              lualine-nvim
+              noice-nvim
+              nvim-notify
+              which-key-nvim
+            ]) ++ (with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+              bash c cpp go gomod html javascript json lua
+              markdown markdown_inline python regex rust tsx
+              typescript vim yaml terraform
+            ]);
+          };
+        };
+      })
       aspell
       aspellDicts.en
       cmake
@@ -12,7 +55,6 @@
       gnumake
       autoconf
       automake
-      neovim
       protoc-gen-connect-go
       protoc-gen-go
       graphviz
