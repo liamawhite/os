@@ -27,6 +27,8 @@
               lspsaga-nvim
               inc-rename-nvim
               render-markdown-nvim
+              image-nvim
+              diagram-nvim
               plenary-nvim
               none-ls-nvim
               telescope-nvim
@@ -60,6 +62,7 @@
       protoc-gen-connect-go
       protoc-gen-go
       graphviz
+      mermaid-cli # mmdc, used by diagram.nvim to render mermaid blocks
       vhs
 
       # Languages
