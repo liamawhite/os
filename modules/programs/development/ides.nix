@@ -57,6 +57,7 @@
       yaml-language-server
 
       ## Misc
+      marksman
       bash-language-server
       dotnet-sdk_10
       jdk

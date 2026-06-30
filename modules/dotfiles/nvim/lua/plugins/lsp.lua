@@ -65,9 +65,9 @@ return {
             })
 
             vim.lsp.enable({
-                'bashls', 'buf_ls', 'cssls', 'gopls', 'pyright',
-                'lua_ls', 'nixd', 'rust_analyzer', 'tailwindcss',
-                'ts_ls', 'yamlls', 'terraformls', 'clangd',
+                'bashls', 'buf_ls', 'cssls', 'gopls', 'marksman',
+                'lua_ls', 'nixd', 'pyright', 'rust_analyzer',
+                'tailwindcss', 'ts_ls', 'yamlls', 'terraformls', 'clangd',
             })
 
             -- Use LspAttach autocommand to only map the following keys

@@ -17,13 +17,6 @@ return {
         end,
     },
     {
-        'tpope/vim-rhubarb',
-        config = function()
-            -- Pass selection to gbrowse
-            vim.keymap.set("v", "<leader>ghu", ":'<,'>GBrowse upstream:% <CR>")
-        end
-    },
-    {
         'lewis6991/gitsigns.nvim',
         opts = {
             current_line_blame = true
