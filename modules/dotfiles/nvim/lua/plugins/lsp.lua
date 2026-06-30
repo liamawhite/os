@@ -51,10 +51,22 @@ vim.lsp.config('ts_ls', {
         maxTsServerMemory = 15360,
     },
 })
+vim.lsp.config('eslint', {
+    filetypes = {
+        "javascript", "javascriptreact", "typescript", "typescriptreact",
+        "svelte", "vue",
+    },
+})
+vim.lsp.config('ruff', {
+    -- disable hover in favour of pyright
+    on_attach = function(client)
+        client.server_capabilities.hoverProvider = false
+    end,
+})
 
 vim.lsp.enable({
-    'bashls', 'buf_ls', 'cssls', 'gopls', 'marksman',
-    'lua_ls', 'nixd', 'pyright', 'rust_analyzer',
+    'bashls', 'buf_ls', 'cssls', 'eslint', 'gopls', 'marksman',
+    'lua_ls', 'nixd', 'pyright', 'ruff', 'rust_analyzer',
     'tailwindcss', 'ts_ls', 'yamlls', 'terraformls', 'clangd',
 })
 
