@@ -7,11 +7,11 @@
 set -e
 
 repos=(
-  "git@github.com:istio/istio.git"
-  "git@github.com:istio/istio.io.git"
-  "git@github.com:istio/api.git"
-  "git@github.com:envoyproxy/envoy.git"
-  "git@github.com:envoyproxy/envoy-website.git"
+  "git@github.com:kubernetes/kubernetes.git"
+  "git@github.com:kubernetes/api.git"
+  "git@github.com:kubernetes/apimachinery.git"
+  "git@github.com:kubernetes/client-go.git"
+  "git@github.com:liamawhite/poltergeist.git"
 )
 
 pids=()
