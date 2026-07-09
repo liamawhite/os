@@ -12,6 +12,8 @@ repos=(
   "git@github.com:istio/api.git"
   "git@github.com:envoyproxy/envoy.git"
   "git@github.com:envoyproxy/envoy-website.git"
+  "git@github.com:proxy-wasm/proxy-wasm-go-sdk.git"
+  "git@github.com:proxy-wasm/spec.git"
 )
 
 pids=()
