@@ -14,6 +14,7 @@ repos=(
   "git@github.docusignhq.com:Microservices/msf-tools.git"
   "git@github.docusignhq.com:traffic-mgmt/network-edge-msf-alerting.git"
   "git@github.docusignhq.com:Microservices/terraform-platform-provisioning.git"
+  "git@github.docusignhq.com:Microservices/terraform-service-compute-provisioning.git"
   "git@github.docusignhq.com:Microservices/terraform-system-compute-provisioning.git"
   "git@github.docusignhq.com:Microservices/topology.git"
 )
