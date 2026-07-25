@@ -5,6 +5,8 @@
     licenser.overlay
     (import ./nix-ai-tools.nix)
 (import ./istioctl.nix)
+    (import ./poetry.nix)
+    (import ./minikube.nix)
     (final: prev: {
       worktree = prev.callPackage ./worktree.nix { };
       workstreams = prev.callPackage ./workstreams.nix { };

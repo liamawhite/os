@@ -75,6 +75,7 @@
       delve
       hugo
       wails
+      sqlc # generate type-safe Go code from SQL
 
       ## Python
       pyenv # use pyenv to manage all python versions
