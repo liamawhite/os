@@ -37,6 +37,7 @@
       tree
       unrar
       unzip
+      watch
       wget
       worktree
       workstreams
