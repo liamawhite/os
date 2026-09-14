@@ -18,6 +18,7 @@ repos=(
   "git@github.docusignhq.com:Microservices/terraform-system-compute-provisioning.git"
   "git@github.docusignhq.com:Microservices/topology.git"
   "git@github.docusignhq.com:CloudOps/terraform-network-provisioning.git"
+  "git@github.docusignhq.com:Liam-White/log.git"
 )
 
 pids=()
