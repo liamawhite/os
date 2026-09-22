@@ -34,7 +34,7 @@ in
 {
   home-manager.users.${user} = { ... }: {
     home.packages = with pkgs; [
-      azure-cli
+      (azure-cli.withExtensions [ azure-cli.extensions.azure-devops ])
       awscli2
       cloudflared
       cmctl

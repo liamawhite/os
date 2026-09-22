@@ -15,6 +15,7 @@ repos=(
     workstreams
     finance
     melodical
+    woodworking
 )
 
 pids=()
