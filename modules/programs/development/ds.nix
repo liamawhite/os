@@ -6,7 +6,7 @@ let
     version = "3.9.6";
 
     platform =
-      if pkgs.stdenv.isDarwin then
+      if pkgs.stdenv.hostPlatform.isDarwin then
         if pkgs.stdenv.hostPlatform.isAarch64 then "macos-arm64"
         else "macos-amd64"
       else "linux-amd64";
