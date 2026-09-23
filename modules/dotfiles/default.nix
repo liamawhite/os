@@ -35,18 +35,30 @@
       );
     in
     {
+      # Preserve files created by Herdr onboarding before Home Manager checks
+      # for collisions. Only these two files move; runtime state stays in place.
+      home.activation.backupHerdrFiles = lib.hm.dag.entryBefore [ "checkLinkTargets" ] ''
+        for file in ${lib.escapeShellArg "${xdg_configHome}/herdr/config.toml"} ${lib.escapeShellArg "${xdg_home}/.claude/hooks/herdr-agent-state.sh"}; do
+          if [ -f "$file" ] && [ ! -L "$file" ]; then
+            run ${pkgs.coreutils}/bin/mv --backup=numbered "$file" "$file.before-herdr"
+          fi
+        done
+      '';
+
       home.file = {
         "${xdg_configHome}/starship.toml".source = useLocal "starship.toml";
         "${xdg_configHome}/wezterm".source = useLocal "wezterm";
         "${xdg_configHome}/nvim".source = useLocal "nvim";
         "${xdg_configHome}/ghostty".source = useLocal "ghostty";
         "${xdg_configHome}/tmux".source = useLocal "tmux";
+        "${xdg_configHome}/herdr/config.toml".source = useLocal "herdr/config.toml";
         "${xdg_home}/.tmux/plugins/resurrect".source = "${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect";
         "${xdg_home}/.tmux/plugins/continuum".source = "${pkgs.tmuxPlugins.continuum}/share/tmux-plugins/continuum";
         "${xdg_home}/.zshrc".source = useLocal "zshrc";
         "${xdg_home}/.zsh".source = useLocal "zsh";
         "${xdg_home}/bin".source = useLocal "bin";
         "${xdg_home}/.claude/settings.json".source = useLocal "claude/settings.json";
+        "${xdg_home}/.claude/hooks/herdr-agent-state.sh".source = useLocal "claude/hooks/herdr-agent-state.sh";
         "${xdg_home}/workspaces".source = useLocal "workspaces";
         "${xdg_home}/.workstreams".source = useLocal "workstreams";
         "${xdg_home}/.aerospace.toml".source = useLocal "aerospace.toml";

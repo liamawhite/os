@@ -24,7 +24,7 @@ final: prev:
     augmentedCerts = final.runCommand "cacert-bundle" { } (
       ''
         mkdir -p $out/etc/ssl/certs
-        cp ${final.cacert}/etc/ssl/certs/ca-bundle.crt $out/etc/ssl/certs/ca-bundle.crt
+        cat ${final.cacert}/etc/ssl/certs/ca-bundle.crt > $out/etc/ssl/certs/ca-bundle.crt
       '' + (if builtins.pathExists certFile then ''
         if grep -q "BEGIN CERTIFICATE" ${certFile}; then
           cat ${certFile} >> $out/etc/ssl/certs/ca-bundle.crt

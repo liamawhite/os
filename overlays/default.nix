@@ -6,7 +6,6 @@
     (import ./nix-ai-tools.nix)
 (import ./istioctl.nix)
     (import ./mermaid-cli.nix)
-    (import ./go-proxy.nix)
     (import ./poetry.nix)
     (import ./minikube.nix)
     (final: prev: {

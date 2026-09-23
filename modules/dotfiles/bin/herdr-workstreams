@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+# Run in a Herdr popup. Workstreams reports its selection on stderr.
+set -euo pipefail
+
+fail() {
+    printf '\n%s\n' "$*" >&2
+    if [[ -t 0 ]]; then
+        read -r -p 'Press Enter to close.' _ || true
+    fi
+    exit 1
+}
+
+[[ -n "${HERDR_SOCKET_PATH:-}" ]] || fail 'Run this picker from inside Herdr.'
+herdr_bin="${HERDR_BIN_PATH:-herdr}"
+temp_dir=$(mktemp -d)
+trap 'rm -rf "$temp_dir"' EXIT
+
+# A FIFO lets us wait for tee, so even fast selections are fully captured.
+mkfifo "$temp_dir/stderr"
+tee "$temp_dir/selection" < "$temp_dir/stderr" >&2 &
+tee_pid=$!
+picker_status=0
+command workstreams "$@" 2> "$temp_dir/stderr" || picker_status=$?
+wait "$tee_pid"
+
+target_dir=$(sed -n 's/^WS_CHDIR://p' "$temp_dir/selection" | tail -n 1)
+if [[ -z "$target_dir" ]]; then
+    # Escape/Ctrl+C cancellation does not create a workspace.
+    case "$picker_status" in
+        0|130) exit 0 ;;
+        *) fail "Workstreams failed (exit $picker_status)." ;;
+    esac
+fi
+[[ "$picker_status" == 0 ]] || fail "Workstreams failed (exit $picker_status)."
+[[ -d "$target_dir" ]] || fail "Selected directory no longer exists: $target_dir"
+target_dir=$(cd "$target_dir" && pwd -P)
+label=$(cd "$target_dir" && command workstreams current 2>/dev/null) || label=''
+[[ -n "$label" ]] || label="$target_dir"
+
+if ! "$herdr_bin" workspace list > "$temp_dir/workspaces.json"; then
+    fail 'Could not list Herdr workspaces.'
+fi
+if ! workspace_id=$(python3 - "$label" "$temp_dir/workspaces.json" <<'PY'
+import json
+import sys
+
+try:
+    with open(sys.argv[2]) as stream:
+        response = json.load(stream)
+    matches = [w["workspace_id"] for w in response["result"]["workspaces"]
+               if w["label"] == sys.argv[1]]
+    if len(matches) > 1:
+        raise ValueError("Multiple Herdr workspaces have this label; rename duplicates first.")
+    if matches:
+        print(matches[0])
+except (OSError, ValueError, KeyError, TypeError) as error:
+    print(str(error), file=sys.stderr)
+    sys.exit(1)
+PY
+); then
+    fail 'Could not resolve the selected workstream.'
+fi
+
+if [[ -n "$workspace_id" ]]; then
+    "$herdr_bin" workspace focus "$workspace_id" >/dev/null || fail 'Could not focus the workspace.'
+else
+    "$herdr_bin" workspace create --cwd "$target_dir" --label "$label" --focus >/dev/null || fail 'Could not create the workspace.'
+fi

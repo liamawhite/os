@@ -1,0 +1,120 @@
+# Herdr 0.9.1. Ghostty forwards Cmd shortcuts as Alt escape sequences.
+onboarding = false
+
+[theme]
+name = "catppuccin"
+auto_switch = false
+
+[terminal]
+shell_mode = "auto"
+new_cwd = "follow"
+kitty_graphics = true
+
+[keys]
+prefix = "ctrl+a"
+settings = "prefix+shift+s"
+reload_config = "prefix+r"
+resize_mode = "prefix+shift+r"
+detach = "prefix+q"
+new_tab = "prefix+n"
+next_tab = "prefix+]"
+switch_tab = "prefix+1..9"
+switch_workspace = "alt+1..9"
+focus_pane_left = ["prefix+h", "alt+h"]
+focus_pane_down = ["prefix+j", "alt+j"]
+focus_pane_up = ["prefix+k", "alt+k"]
+focus_pane_right = ["prefix+l", "alt+l"]
+split_vertical = ["prefix+v", "alt+d", "alt+|"]
+# ESC _ starts an APC control string; use Alt+- for reliable terminal input.
+split_horizontal = ["prefix+s", "alt+minus"]
+zoom = ["prefix+z", "alt+f"]
+close_pane = ["prefix+x", "alt+w"]
+copy_mode = "prefix+["
+
+[[keys.command]]
+key = "alt+t"
+type = "popup"
+command = '"$HOME/bin/herdr-workstreams"'
+description = "select workstream"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+key = "prefix+c"
+type = "popup"
+command = '"$HOME/bin/herdr-workstreams"'
+description = "select workstream"
+width = "80%"
+height = "80%"
+
+# Herdr resizes by split ratios, rather than tmux's cell counts.
+[[keys.command]]
+key = "alt+shift+h"
+type = "shell"
+command = '"$HERDR_BIN_PATH" pane resize --pane "$HERDR_ACTIVE_PANE_ID" --direction left --amount 0.01'
+description = "resize left (small)"
+
+[[keys.command]]
+key = "alt+shift+j"
+type = "shell"
+command = '"$HERDR_BIN_PATH" pane resize --pane "$HERDR_ACTIVE_PANE_ID" --direction down --amount 0.01'
+description = "resize down (small)"
+
+[[keys.command]]
+key = "alt+shift+k"
+type = "shell"
+command = '"$HERDR_BIN_PATH" pane resize --pane "$HERDR_ACTIVE_PANE_ID" --direction up --amount 0.01'
+description = "resize up (small)"
+
+[[keys.command]]
+key = "alt+shift+l"
+type = "shell"
+command = '"$HERDR_BIN_PATH" pane resize --pane "$HERDR_ACTIVE_PANE_ID" --direction right --amount 0.01'
+description = "resize right (small)"
+
+# Preserve the existing Ghostty coarse-direction mapping: H/J/K/L = left/right/up/down.
+[[keys.command]]
+key = "alt+{"
+type = "shell"
+command = '"$HERDR_BIN_PATH" pane resize --pane "$HERDR_ACTIVE_PANE_ID" --direction left --amount 0.05'
+description = "resize left (large)"
+
+[[keys.command]]
+key = "alt+}"
+type = "shell"
+command = '"$HERDR_BIN_PATH" pane resize --pane "$HERDR_ACTIVE_PANE_ID" --direction right --amount 0.05'
+description = "resize right (large)"
+
+[[keys.command]]
+key = "alt+~"
+type = "shell"
+command = '"$HERDR_BIN_PATH" pane resize --pane "$HERDR_ACTIVE_PANE_ID" --direction up --amount 0.05'
+description = "resize up (large)"
+
+[[keys.command]]
+key = "alt+>"
+type = "shell"
+command = '"$HERDR_BIN_PATH" pane resize --pane "$HERDR_ACTIVE_PANE_ID" --direction down --amount 0.05'
+description = "resize down (large)"
+
+[ui]
+mouse_capture = true
+copy_on_select = true
+prompt_new_tab_name = false
+pane_borders = "auto"
+pane_outer_borders = false
+pane_gaps = false
+tab_bar_position = "top"
+status_indicators = "symbols"
+tab_bar_right_separator = " │ "
+tab_bar_right = [
+  { type = "command", command = "kubectl config current-context 2>/dev/null || printf 'no kube context\\n'", interval_seconds = 5, timeout_seconds = 2 },
+  { type = "command", command = '''"$HOME/bin/tmux-cwd" "$HERDR_ACTIVE_PANE_CWD"''', interval_seconds = 5, timeout_seconds = 2 },
+  { type = "datetime", format = "%Y-%m-%d  %H:%M" },
+]
+
+[session]
+resume_agents_on_restore = true
+
+[experimental]
+pane_history = true

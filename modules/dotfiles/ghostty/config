@@ -62,7 +62,7 @@ confirm-close-surface = false
 shell-integration = zsh
 shell-integration-features = no-cursor,sudo,title
 
-# tmux keybinds (send escape sequences, bypassing Ghostty defaults)
+# Multiplexer keybinds (Alt sequences for Herdr and the tmux fallback)
 keybind = cmd+w=esc:w
 keybind = cmd+one=esc:1
 keybind = cmd+two=esc:2
@@ -77,7 +77,8 @@ keybind = cmd+f=esc:f
 keybind = cmd+t=esc:t
 keybind = cmd+d=esc:d
 keybind = cmd+shift+backslash=esc:|
-keybind = cmd+shift+minus=esc:_
+# ESC _ is an APC introducer in Herdr; forward Alt+- instead.
+keybind = cmd+shift+minus=esc:-
 keybind = cmd+h=esc:h
 keybind = cmd+j=esc:j
 keybind = cmd+k=esc:k

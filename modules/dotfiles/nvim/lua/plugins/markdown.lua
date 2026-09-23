@@ -13,8 +13,8 @@ require("image").setup({
 			filetypes = { "markdown" },
 		},
 	},
-	-- We live inside tmux (allow-passthrough is on); only draw in the active
-	-- window to avoid stray images bleeding across panes/windows.
+	-- When using the tmux fallback, only draw in its active window.
+	-- Herdr handles Kitty graphics directly when TMUX is unset.
 	tmux_show_only_in_active_window = true,
 })
 

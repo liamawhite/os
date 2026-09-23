@@ -43,5 +43,29 @@ in
     (modules /programs/obsidian/default.nix { inherit user pkgs; })
     (modules /programs/productivity/default.nix { inherit user pkgs; })
   ];
+
+  # Corporate Go module fetching must not affect personal machines.
+  nixpkgs.overlays = [ (import ../../overlays/go-proxy.nix) ];
+
+  # Build an augmented CA bundle at switch time by appending any corporate
+  # proxy root certs (e.g. Zscaler) from the macOS system keychain onto the
+  # standard nss-cacert bundle. This is only needed on the DocuSign machine.
+  #
+  # nix-darwin wires NIX_SSL_CERT_FILE from environment.variables into the
+  # nix-daemon launchd plist, so all nix builds that inherit NIX_SSL_CERT_FILE
+  # via impureEnvVars (e.g. Go module FODs) automatically trust the corporate CA.
+  environment.variables.NIX_SSL_CERT_FILE = "/etc/nix/ssl/ca-bundle.crt";
+
+  # nix-darwin only invokes its predefined activation hooks. Run after the
+  # activation checks and before launchd starts/reloads the Nix daemon.
+  system.activationScripts.extraActivation.text = ''
+    mkdir -p /etc/nix/ssl
+    nix_ca_bundle=$(mktemp /etc/nix/ssl/ca-bundle.crt.XXXXXX)
+    cp ${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt "$nix_ca_bundle"
+    /usr/bin/security find-certificate -a -p -c "Zscaler" \
+      /Library/Keychains/System.keychain >> "$nix_ca_bundle" 2>/dev/null || true
+    chmod 644 "$nix_ca_bundle"
+    mv -f "$nix_ca_bundle" /etc/nix/ssl/ca-bundle.crt
+  '';
 }
 
