@@ -9,6 +9,7 @@
         pkgs.codex
         pkgs.pi
         pkgs.herdr
+        pkgs.plannotator
       ];
     };
   };
