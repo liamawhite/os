@@ -7,6 +7,7 @@
         pkgs.claude-code
         pkgs.gh-copilot
         pkgs.codex
+        pkgs.pi
         pkgs.herdr
       ];
     };
