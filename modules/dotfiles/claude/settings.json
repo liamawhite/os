@@ -12,18 +12,6 @@
           }
         ]
       }
-    ],
-    "PermissionRequest": [
-      {
-        "matcher": "ExitPlanMode",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "\"$HOME/.nix-profile/bin/plannotator\"",
-            "timeout": 345600
-          }
-        ]
-      }
     ]
   },
   "enabledPlugins": {

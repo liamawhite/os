@@ -45,12 +45,7 @@
         done
       '';
 
-      # Preserve Codex's mutable settings and other integrations when adding hooks.
-      home.activation.configurePlannotatorCodex = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
-        run ${pkgs.plannotator.configureCodex} ${lib.escapeShellArg xdg_home}
-      '';
-
-      home.file = pkgs.plannotator.skillFiles // {
+      home.file = {
         "${xdg_configHome}/starship.toml".source = useLocal "starship.toml";
         "${xdg_configHome}/wezterm".source = useLocal "wezterm";
         "${xdg_configHome}/nvim".source = useLocal "nvim";
