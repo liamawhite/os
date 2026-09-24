@@ -3,19 +3,6 @@
   "hooks": {
     "SessionStart": [
       {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash",
-            "args": [
-              "-c",
-              "~/bin/tmux-claude-state idle"
-            ]
-          }
-        ]
-      },
-      {
         "matcher": "^(startup|resume|clear|compact|fork)$",
         "hooks": [
           {
@@ -26,62 +13,14 @@
         ]
       }
     ],
-    "UserPromptSubmit": [
+    "PermissionRequest": [
       {
-        "matcher": "",
+        "matcher": "ExitPlanMode",
         "hooks": [
           {
             "type": "command",
-            "command": "bash",
-            "args": [
-              "-c",
-              "~/bin/tmux-claude-state running"
-            ]
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash",
-            "args": [
-              "-c",
-              "~/bin/tmux-claude-state idle"
-            ]
-          }
-        ]
-      }
-    ],
-    "SessionEnd": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash",
-            "args": [
-              "-c",
-              "~/bin/tmux-claude-state idle"
-            ]
-          }
-        ]
-      }
-    ],
-    "Notification": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash",
-            "args": [
-              "-c",
-              "~/bin/tmux-claude-state alert"
-            ]
+            "command": "\"$HOME/.nix-profile/bin/plannotator\"",
+            "timeout": 345600
           }
         ]
       }

@@ -4,5 +4,4 @@ final: prev: {
   gh-copilot = final.nix-ai-tools.packages.${final.stdenv.hostPlatform.system}.copilot-cli;
   codex = final.nix-ai-tools.packages.${final.stdenv.hostPlatform.system}.codex;
   pi = final.nix-ai-tools.packages.${final.stdenv.hostPlatform.system}.pi;
-  plannotator = final.nix-ai-tools.packages.${final.stdenv.hostPlatform.system}.plannotator;
 }

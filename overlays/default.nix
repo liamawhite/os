@@ -4,6 +4,7 @@
   nixpkgs.overlays = [
     licenser.overlay
     (import ./nix-ai-tools.nix)
+    (import ./plannotator)
 (import ./istioctl.nix)
     (import ./mermaid-cli.nix)
     (import ./poetry.nix)
@@ -24,4 +25,3 @@
     })
   ];
 }
-
