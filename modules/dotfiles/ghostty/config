@@ -64,15 +64,15 @@ shell-integration-features = no-cursor,sudo,title
 
 # Multiplexer keybinds (Alt sequences for Herdr and the tmux fallback)
 keybind = cmd+w=esc:w
-keybind = cmd+one=esc:1
-keybind = cmd+two=esc:2
-keybind = cmd+three=esc:3
-keybind = cmd+four=esc:4
-keybind = cmd+five=esc:5
-keybind = cmd+six=esc:6
-keybind = cmd+seven=esc:7
-keybind = cmd+eight=esc:8
-keybind = cmd+nine=esc:9
+keybind = cmd+digit_1=esc:1
+keybind = cmd+digit_2=esc:2
+keybind = cmd+digit_3=esc:3
+keybind = cmd+digit_4=esc:4
+keybind = cmd+digit_5=esc:5
+keybind = cmd+digit_6=esc:6
+keybind = cmd+digit_7=esc:7
+keybind = cmd+digit_8=esc:8
+keybind = cmd+digit_9=esc:9
 keybind = cmd+f=esc:f
 keybind = cmd+t=esc:t
 keybind = cmd+d=esc:d

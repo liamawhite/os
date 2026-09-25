@@ -36,7 +36,6 @@ in
 
     # GUI Applications
     (modules /programs/1password/darwin.nix null)
-    (modules /programs/aerospace/darwin.nix { inherit user pkgs; })
     (modules /programs/design/default.nix { inherit user pkgs; })
     (modules /programs/obsidian/default.nix { inherit user pkgs; })
     (modules /programs/slack/default.nix { inherit user pkgs; })

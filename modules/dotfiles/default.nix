@@ -61,8 +61,7 @@
         "${xdg_home}/.claude/hooks/herdr-agent-state.sh".source = useLocal "claude/hooks/herdr-agent-state.sh";
         "${xdg_home}/workspaces".source = useLocal "workspaces";
         "${xdg_home}/.workstreams".source = useLocal "workstreams";
-        "${xdg_home}/.aerospace.toml".source = useLocal "aerospace.toml";
-        "${xdg_home}/.ssh" = { source = ./ssh; recursive = true; };
+"${xdg_home}/.ssh" = { source = ./ssh; recursive = true; };
         "${xdg_home}/.zshplugins/zsh-autosuggestions.zsh" = { source = "${zsh-autosuggestions}/zsh/zsh-autosuggestions.zsh"; };
 
         # msf-cli configuration
