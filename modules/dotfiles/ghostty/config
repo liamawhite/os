@@ -75,6 +75,9 @@ keybind = cmd+digit_8=esc:8
 keybind = cmd+digit_9=esc:9
 keybind = cmd+f=esc:f
 keybind = cmd+t=esc:t
+# Avoid ESC [ / ESC ], which introduce terminal control sequences.
+keybind = cmd+left_bracket=esc:p
+keybind = cmd+right_bracket=esc:n
 keybind = cmd+d=esc:d
 keybind = cmd+shift+backslash=esc:|
 # ESC _ is an APC introducer in Herdr; forward Alt+- instead.
