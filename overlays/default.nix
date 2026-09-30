@@ -1,4 +1,4 @@
-{ licenser, nix-ai-tools, ... }:
+{ licenser, nix-ai-tools, mattpocock-skills, ... }:
 
 {
   nixpkgs.overlays = [
@@ -12,6 +12,7 @@
       worktree = prev.callPackage ./worktree.nix { };
       workstreams = prev.callPackage ./workstreams.nix { };
       kubetype-gen = prev.callPackage ./kubetype-gen.nix { };
+      mattpocock-skills = prev.callPackage ./mattpocock-skills.nix { src = mattpocock-skills; };
       # Add nix-ai-tools packages to pkgs
       nix-ai-tools = nix-ai-tools;
 

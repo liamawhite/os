@@ -7,8 +7,9 @@
     disko = { url = "github:nix-community/disko"; inputs.nixpkgs.follows = "nixpkgs"; };
     licenser = { url = "github:liamawhite/licenser"; inputs.nixpkgs.follows = "nixpkgs"; };
     nix-ai-tools = { url = "github:numtide/nix-ai-tools"; inputs.nixpkgs.follows = "nixpkgs"; };
+    mattpocock-skills = { url = "github:mattpocock/skills"; flake = false; };
   };
-  outputs = { self, darwin, home-manager, nixpkgs, disko, licenser, nix-ai-tools }@inputs:
+  outputs = { self, darwin, home-manager, nixpkgs, disko, licenser, nix-ai-tools, mattpocock-skills }@inputs:
     let
       user = "liam";
       email = "liamawhite@gmail.com";

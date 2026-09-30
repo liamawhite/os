@@ -59,10 +59,14 @@
         "${xdg_home}/bin".source = useLocal "bin";
         "${xdg_home}/.claude/settings.json".source = useLocal "claude/settings.json";
         "${xdg_home}/.claude/hooks/herdr-agent-state.sh".source = useLocal "claude/hooks/herdr-agent-state.sh";
-        "${xdg_home}/.claude/skills/grill-me".source = useLocal "skills/grill-me";
-        "${xdg_home}/.claude/skills/grilling".source = useLocal "skills/grilling";
-        "${xdg_home}/.agent/skills/grill-me".source = useLocal "skills/grill-me";
-        "${xdg_home}/.agent/skills/grilling".source = useLocal "skills/grilling";
+        "${xdg_home}/.claude/skills/grill-me".source = "${pkgs.mattpocock-skills}/grill-me";
+        "${xdg_home}/.claude/skills/grilling".source = "${pkgs.mattpocock-skills}/grilling";
+        "${xdg_home}/.claude/skills/grill-with-docs".source = "${pkgs.mattpocock-skills}/grill-with-docs";
+        "${xdg_home}/.claude/skills/domain-modeling".source = "${pkgs.mattpocock-skills}/domain-modeling";
+        "${xdg_home}/.agent/skills/grill-me".source = "${pkgs.mattpocock-skills}/grill-me";
+        "${xdg_home}/.agent/skills/grilling".source = "${pkgs.mattpocock-skills}/grilling";
+        "${xdg_home}/.agent/skills/grill-with-docs".source = "${pkgs.mattpocock-skills}/grill-with-docs";
+        "${xdg_home}/.agent/skills/domain-modeling".source = "${pkgs.mattpocock-skills}/domain-modeling";
         "${xdg_home}/workspaces".source = useLocal "workspaces";
         "${xdg_home}/.workstreams".source = useLocal "workstreams";
 "${xdg_home}/.ssh" = { source = ./ssh; recursive = true; };
