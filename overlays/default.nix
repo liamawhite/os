@@ -1,4 +1,4 @@
-{ licenser, nix-ai-tools, mattpocock-skills, ... }:
+{ licenser, nix-ai-tools, mattpocock-skills, superwhisper-source, ... }:
 
 {
   nixpkgs.overlays = [
@@ -13,6 +13,7 @@
       workstreams = prev.callPackage ./workstreams.nix { };
       kubetype-gen = prev.callPackage ./kubetype-gen.nix { };
       mattpocock-skills = prev.callPackage ./mattpocock-skills.nix { src = mattpocock-skills; };
+      superwhisper = prev.callPackage ./superwhisper.nix { src = superwhisper-source; };
       # Add nix-ai-tools packages to pkgs
       nix-ai-tools = nix-ai-tools;
 

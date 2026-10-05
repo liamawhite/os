@@ -19,7 +19,6 @@
               neodev-nvim
               lazydev-nvim
               nvim-lspconfig
-              copilot-vim
               cmp-nvim-lsp
               cmp-path
               nvim-cmp

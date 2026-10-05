@@ -63,10 +63,12 @@
         "${xdg_home}/.claude/skills/grilling".source = "${pkgs.mattpocock-skills}/grilling";
         "${xdg_home}/.claude/skills/grill-with-docs".source = "${pkgs.mattpocock-skills}/grill-with-docs";
         "${xdg_home}/.claude/skills/domain-modeling".source = "${pkgs.mattpocock-skills}/domain-modeling";
-        "${xdg_home}/.agent/skills/grill-me".source = "${pkgs.mattpocock-skills}/grill-me";
-        "${xdg_home}/.agent/skills/grilling".source = "${pkgs.mattpocock-skills}/grilling";
-        "${xdg_home}/.agent/skills/grill-with-docs".source = "${pkgs.mattpocock-skills}/grill-with-docs";
-        "${xdg_home}/.agent/skills/domain-modeling".source = "${pkgs.mattpocock-skills}/domain-modeling";
+        "${xdg_home}/.claude/skills/teach".source = "${pkgs.mattpocock-skills}/teach";
+        "${xdg_home}/.agents/skills/grill-me".source = "${pkgs.mattpocock-skills}/grill-me";
+        "${xdg_home}/.agents/skills/grilling".source = "${pkgs.mattpocock-skills}/grilling";
+        "${xdg_home}/.agents/skills/grill-with-docs".source = "${pkgs.mattpocock-skills}/grill-with-docs";
+        "${xdg_home}/.agents/skills/domain-modeling".source = "${pkgs.mattpocock-skills}/domain-modeling";
+        "${xdg_home}/.agents/skills/teach".source = "${pkgs.mattpocock-skills}/teach";
         "${xdg_home}/workspaces".source = useLocal "workspaces";
         "${xdg_home}/.workstreams".source = useLocal "workstreams";
 "${xdg_home}/.ssh" = { source = ./ssh; recursive = true; };

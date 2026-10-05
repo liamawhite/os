@@ -8,8 +8,10 @@
     licenser = { url = "github:liamawhite/licenser"; inputs.nixpkgs.follows = "nixpkgs"; };
     nix-ai-tools = { url = "github:numtide/nix-ai-tools"; inputs.nixpkgs.follows = "nixpkgs"; };
     mattpocock-skills = { url = "github:mattpocock/skills"; flake = false; };
+    # Bump the release URL, then run `nix flake update superwhisper-source`.
+    superwhisper-source = { url = "https://builds.superwhisper.com/v2.19.2/superwhisper.zip"; flake = false; };
   };
-  outputs = { self, darwin, home-manager, nixpkgs, disko, licenser, nix-ai-tools, mattpocock-skills }@inputs:
+  outputs = { self, darwin, home-manager, nixpkgs, disko, licenser, nix-ai-tools, mattpocock-skills, superwhisper-source }@inputs:
     let
       user = "liam";
       email = "liamawhite@gmail.com";

@@ -9,6 +9,7 @@ stdenvNoCC.mkDerivation {
     mkdir -p $out
     cp -r skills/productivity/grill-me $out/grill-me
     cp -r skills/productivity/grilling $out/grilling
+    cp -r skills/productivity/teach $out/teach
     cp -r skills/engineering/grill-with-docs $out/grill-with-docs
     cp -r skills/engineering/domain-modeling $out/domain-modeling
   '';
