@@ -201,21 +201,7 @@
         "licenser": "licenser",
         "mattpocock-skills": "mattpocock-skills",
         "nix-ai-tools": "nix-ai-tools",
-        "nixpkgs": "nixpkgs",
-        "superwhisper-source": "superwhisper-source"
-      }
-    },
-    "superwhisper-source": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1791174270,
-        "narHash": "sha256-7a+rHicYixBOQ7FMiI4/omoWRYiXUSLN/x/DDAPeCnk=",
-        "type": "tarball",
-        "url": "https://builds.superwhisper.com/v2.19.2/superwhisper.zip"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://builds.superwhisper.com/v2.19.2/superwhisper.zip"
+        "nixpkgs": "nixpkgs"
       }
     },
     "systems": {

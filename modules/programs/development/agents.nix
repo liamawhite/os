@@ -7,7 +7,6 @@
         pkgs.claude-code
         pkgs.gh-copilot
         pkgs.codex
-        pkgs.superwhisper
         pkgs.pi
         pkgs.herdr
         pkgs.plannotator
