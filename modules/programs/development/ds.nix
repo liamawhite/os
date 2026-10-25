@@ -38,6 +38,7 @@ in
   home-manager.users.${user} = { ... }: {
     home.packages = [
       msf-cli
+      pkgs.acli
     ];
   };
 }
