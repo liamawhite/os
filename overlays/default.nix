@@ -7,6 +7,10 @@
 (import ./istioctl.nix)
     (import ./mermaid-cli.nix)
     (import ./poetry.nix)
+    (import ./fabric.nix)
+    (import ./paramiko.nix)
+    (import ./httpcore2.nix)
+    (import ./mocket.nix)
     (import ./minikube.nix)
     (final: prev: {
       worktree = prev.callPackage ./worktree.nix { };
